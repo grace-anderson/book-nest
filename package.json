@@ -1,0 +1,24 @@
+{
+  "name": "book-nest",
+  "version": "1.0.0",
+  "description": "A free e-book exchange!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grace-anderson/book-nest.git"
+  },
+  "keywords": [
+    "book",
+    "nest"
+  ],
+  "author": "Helen, Muhamad, Marko, Sushan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grace-anderson/book-nest/issues"
+  },
+  "homepage": "https://github.com/grace-anderson/book-nest#readme"
+}
