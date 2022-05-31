@@ -8,8 +8,8 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeds/index.js",
-    "lint": "npx eslint **/*.js",
     "prepare": "husky install",
+    "lint": "npx eslint **/*.js",
     "prettier-check": "npx prettier --check .",
     "prettier-write": "npx prettier --write ."
   },
