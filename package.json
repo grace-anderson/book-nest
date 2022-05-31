@@ -5,7 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js",
+    "prepare": "husky install",
+    "lint": "npx eslint **/*.js",
+    "prettier-check": "npx prettier --check .",
+    "prettier-write": "npx prettier --write ."
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.{js,css,handlebars,hbs}": "prettier --write"
   },
   "repository": {
     "type": "git",
@@ -29,12 +39,13 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
-    "node": "^17.7.2",
     "sequelize": "^6.20.1"
   },
   "devDependencies": {
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^12.4.3",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2"
   }

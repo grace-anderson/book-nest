@@ -1,3 +1,23 @@
 {
-  "singleQuote": true
+  "printWidth": 80,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "semi": true,
+  "bracketSpacing": true,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": [
+        "**/*.json",
+        "**/*.css",
+        "**/*.scss",
+        "**/*.html",
+        "**/*.handlebars",
+        "**/*.hbs"
+      ],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }
