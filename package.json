@@ -14,11 +14,9 @@
     "prettier-write": "npx prettier --write ."
   },
   "lint-staged": {
-      "**/*.{js,jsx}": [
-        "npx prettier --write",
-        "npx eslint --fix"
-      ]
-    },
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,handlebars,hbs}": "prettier --write"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/grace-anderson/book-nest.git"

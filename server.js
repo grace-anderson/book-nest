@@ -1,4 +1,4 @@
-// set up server here
+// import dotenv
 require('dotenv').config();
 
 const path = require('path');
