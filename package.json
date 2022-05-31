@@ -14,7 +14,7 @@
     "prettier-write": "npx prettier --write ."
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
+    "*.js": "eslint --fix",
     "*.{js,css,handlebars,hbs}": "prettier --write"
   },
   "repository": {
