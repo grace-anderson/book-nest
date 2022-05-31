@@ -8,6 +8,7 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeds/index.js",
+    "lint": "npx eslint **/*.js",
     "prepare": "husky install"
   },
   "lint-staged": {
