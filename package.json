@@ -9,7 +9,9 @@
     "watch": "nodemon server.js",
     "seed": "node seeds/index.js",
     "lint": "npx eslint **/*.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier-check": "npx prettier --check .",
+    "prettier-write": "npx prettier --write ."
   },
   "lint-staged": {
       "**/*.{js,jsx}": [
