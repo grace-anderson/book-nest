@@ -36,7 +36,7 @@ Book.init(
     //checkout
     check_out: {
       type: DataTypes.BOOLEAN
-      // how to set to default of false?
+      // how to set checkout to default of false?
     },
     check_out_expiry: {
       type: DataTypes.DATE
