@@ -8,6 +8,7 @@
   "overrides": [
     {
       "files": [
+        "**/*.json",
         "**/*.css",
         "**/*.scss",
         "**/*.html",
