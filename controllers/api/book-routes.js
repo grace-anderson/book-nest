@@ -3,7 +3,7 @@ const { Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Create a book
-router.post('/new', withAuth, async (req, res) => {
+router.post('/new-book', withAuth, async (req, res) => {
   try {
     const bookData = await Book.create({
       title: req.body.title,
