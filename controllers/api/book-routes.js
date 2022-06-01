@@ -3,14 +3,13 @@ const { Book } = require('../../models');
 // const withAuth = require('../../utils/auth');
 // const book sharer = require('../../utils/creator');
 
-
 // Create a book
 router.post('/new-book', async (req, res) => {
   try {
     const bookData = await Book.create({
       title: req.body.title,
       author: req.body.author,
-      genre: req.body.genre,
+      genre: req.body.genre
       //user_shared_id: req.session.loggedInId,
       //date_added: default to today
       //check_out: default to False
