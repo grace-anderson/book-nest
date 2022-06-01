@@ -1,9 +1,10 @@
 const User = require('./User');
 const Book = require('./Book');
+const Genre = require('./Genre');
 const Reading_List = require('./Reading_List');
 const Book_Reading_List = require('./Book_Reading_List');
 
-//user can share many books
+//A user can share many books
 User.hasMany(Book, {
   foreignKey: 'user_shared_id',
   onDelete: 'CASCADE'
@@ -23,6 +24,16 @@ Reading_List.belongsTo(User, {
   foreignKey: 'reader_id'
 });
 
+//A book can have one only genre, a genre can be on many books
+Genre.hasMany(Book, {
+  foreignKey: 'genre_id',
+  onDelete: 'CASCADE'
+});
+
+Book.belongsTo(Genre, {
+  foreignKey: 'genre_id'
+});
+
 //A reading list can have many books, join using Book_Reading_List
 Reading_List.hasMany(Book_Reading_List, {
   foreignKey: 'book_reading_list_id',
@@ -33,7 +44,7 @@ Book_Reading_List.belongsTo(Reading_List, {
   foreignKey: 'reading_list_id'
 });
 
-//One book can be on many Reading_Lists, join using Book_Reading_list
+//A book can be on many Reading_Lists, join using Book_Reading_list
 Book.hasMany(Book_Reading_List, {
   foreignKey: 'book_reading_list_id',
   onDelete: 'CASCADE'
