@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Book extends Model { }
+class Book extends Model {}
 
 Book.init(
   {
@@ -9,29 +9,29 @@ Book.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
     author: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
     //Are genres free text or do we provide default values (manage front end using drop down (for e.g.?)
     genre: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
     //checkout
     check_out: {
@@ -48,8 +48,8 @@ Book.init(
       allowNull: false,
       references: {
         model: 'user',
-        key: 'id',
-      },
+        key: 'id'
+      }
     },
     //date user shared book
     date_added: {
@@ -62,7 +62,7 @@ Book.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'post'
   }
 );
 

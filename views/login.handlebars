@@ -1,4 +1,4 @@
-{{! NB: there are borders around everything to make it easier for layout. These borders need to be removed once styling is more complete }}
+{{! NB: the borders around everything are guides for layout. Delete them when finished with layout }}
 
 <div class="container">
   <div class="row align-items-start" style="border:1px solid red">
@@ -9,7 +9,13 @@
 
   <div class="row align-items-start" style="border:1px solid red">
 
+    {{! <div class="col-12" style="border:1px solid purple">
+      <p> test test</p>
+    </div> }}
+
     <div class="col-12 col-lg-6" style="border:1px solid blue">
+      <p>If you are an existing Book Nest user, please log in using the form
+        below.</p>
       <form>
         <div class="mb-3">
           <label for="email-login" class="form-label">Email address:</label>
@@ -24,11 +30,14 @@
     </div>
 
     <div class="col-12 col-lg-6" style="border:1px solid blue">
-      <p>Book Nest is a wonderful community for those who love to read.</p>
+      <p>Book Nest is a wonderful community for those who love to read. Add
+        books to your reading list and check them out to read, or share a book
+        to the Book Nest app and watch our library grow!</p>
 
-      <p>If you don't have an account, don't fret! Signing up is easy.</p>
+      <p>If you are a new user, don't fret! Becoming a Book Nest user is simple
+        and free.</p>
 
-      <p><a href="/signup">Click here to make your free profile.</a></p>
+      <p><a href="/signup">Click here to get an account on Book Nest!</a></p>
     </div>
   </div>
 </div>

@@ -8,16 +8,16 @@ const createBook = async (event) => {
   const response = await fetch('/api/book/new', {
     method: 'POST',
     body: JSON.stringify({ title, author, genre }),
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' }
   });
 
   if (response.ok) {
     document.location.replace('/book');
   } else {
-    alert('Failed to share book to Book Nest. Remember to add title, author and genre');
+    alert(
+      'Failed to share book to Book Nest. Remember to add title, author and genre'
+    );
   }
 };
 
-document
-  .querySelector('#new-book-form')
-  .addEventListener('submit', createBook);
+document.querySelector('#new-book-form').addEventListener('submit', createBook);
