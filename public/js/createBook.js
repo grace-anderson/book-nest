@@ -5,19 +5,19 @@ const createBook = async (event) => {
   const author = document.querySelector('#author-input').value;
   const genre = document.querySelector('#genre-input').value;
 
-  const response = await fetch('/api/blog/new', {
+  const response = await fetch('/api/book/new', {
     method: 'POST',
     body: JSON.stringify({ title, author, genre }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
-    document.location.replace('/profile');
+    document.location.replace('/book');
   } else {
-    alert('Failed to share book. Remember to add title, author and genre');
+    alert('Failed to share book to Book Nest. Remember to add title, author and genre');
   }
 };
 
 document
-  .querySelector('#new-post-form')
+  .querySelector('#new-book-form')
   .addEventListener('submit', createBook);
