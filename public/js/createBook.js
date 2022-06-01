@@ -12,10 +12,10 @@ const createBook = async (event) => {
   });
 
   if (response.ok) {
-    document.location.replace('/book');
+    document.location.replace('/profile');
   } else {
     alert(
-      'Failed to share book to Book Nest. Remember to add title, author and genre'
+      'Failed to share your book to Book Nest. Did you add your title, author and genre'
     );
   }
 };

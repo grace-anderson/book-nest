@@ -27,10 +27,10 @@
             <a class="nav-link ms-2" aria-current="page" href="/">View Books</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link ms-2 me-1" href="/dashboard">Find a book</a>
+            <a class="nav-link ms-2 me-1" href="/find">Find a book</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link ms-2 me-1" href="/dashboard">Share a book</a>
+            <a class="nav-link ms-2 me-1" href="/new">Share a book</a>
           </li>
         </ul>
       </div>
@@ -62,8 +62,8 @@
       </div>
     </nav>
   </footer>
-  {{!-- {{#if loggedIn}}
-<script src='/js/logout.js'></script>
-{{/if}} --}}
+  {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
 
 </html>

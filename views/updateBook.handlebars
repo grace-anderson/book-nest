@@ -1,0 +1,33 @@
+<div class="row ms-5 me-5 p-1">
+  <h3 class="mt-3">Edit your shared book</h3>
+  <form id="book-update-form">
+    <div class="form-group mt-3 m-1">
+      <label class="p-1" for="title-input"><h5>Update title</h5></label>
+      <textarea
+        class="form-control p-1"
+        id="title-input"
+      >{{book.title}}</textarea>
+      <label class="p-1" for="author-input"><h5>Update author</h5></label>
+      <textarea
+        class="form-control p-1"
+        id="author-input"
+      >{{book.author}}</textarea>
+      <label class="p-1" for="genre-input"><h5>Update genre</h5></label>
+      <textarea
+        class="form-control p-1"
+        id="genre-input"
+      >{{book.genre}}</textarea>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-lg btn btn-dark mt-3 m-1"
+      id="update-button"
+    >Update</button>
+    <button
+      type="button"
+      class="btn btn-lg btn btn-dark mt-3 m-1"
+      id="delete-button"
+    >Delete</button>
+  </form>
+</div>
+<script src="/js/updateBook.js"></script>
