@@ -1,0 +1,11 @@
+{{>header}}
+<div class="back-link"><a href="/">Back to Home</a></div>
+<div>
+    <div class="success-msg"></div>
+    <div class="error-msg"></div>
+    <div>Book name: {{title}}</div>
+    <div><button class="add-to-read-list btn btn-primary" data-book-id="{{id}}">Add to reading list</button></div>
+</div>
+{{!-- have to add it again due to causing error when referencing it via handle bars --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+<script src="/js/view_book.js"></script>

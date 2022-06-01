@@ -1,0 +1,35 @@
+{{> header}}
+<div class="back-link"><a href="/">Back to Home</a></div>
+<div class="container">
+    <h2>Share your book</h2>
+    <form class="share-book-form">
+        <section class="list-options">
+            <h4>Choose age appropriateness</h4>
+            <div class="choose-options-books">
+                <input type="radio" name="age_type" class="form-check-input age_type" value="children" checked />
+                For
+                Children
+                <br />
+                <input type="radio" name="age_type" class="form-check-input age_type" value="adults" /> Adults Only
+                <br />
+                <input type="radio" name="age_type" class="form-check-input age_type" value="all" /> Any Age <br />
+            </div>
+        </section>
+        <section class="genres-list align-left">
+            <h4>Choose one or more genres</h4>
+            <ul class="list-options">
+                {{#each genres as |genre|}}
+                <li>
+                    <input type="checkbox" class="form-check-input" name="{{genre.genre_title}}" value="{{genre.id}}" />
+                    {{genre.genre_title}}
+                </li>
+                {{/each}}
+            </ul>
+            <div class="error-msg"></div>
+        </section>
+        <div>Upload book</div>
+        <input type="file" name="book_to_upload" />
+        <button type="button" class="btn btn-secondary upload-book-btn">Upload</button>
+    </form>
+</div>
+<script src="/js/share_book.js"></script>

@@ -1,0 +1,20 @@
+{{>header}}
+<div class="back-link"><a href="/">Back to Home</a></div>
+
+<div class="container">
+    <h2>My Books</h2>
+    <hr />
+    <ul class="my-books">
+        {{#each myBooks as |book|}}
+        <li class="book-title">
+            <div>
+                {{book.title}} - {{book.author}}
+            </div>
+            <button class="btn btn-primary">Read book</button>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+<script src="/js/my_books.js"></script>

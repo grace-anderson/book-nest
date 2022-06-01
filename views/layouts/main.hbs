@@ -1,0 +1,121 @@
+{{> header }}
+
+<body>
+  <header>
+    <h1>Book Nest</h1>
+  </header>
+  <nav class="navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link ms-2" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ms-2" aria-current="page" href="/viewMyBooks/1">View My Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ms-2 me-1" href="/books">Find a book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ms-2 me-1" href="/shareBook">Share book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ms-2 me-1" href="/dashboard">Share a book</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    {{!-- add body elements here via handlebars --}}
+    {{{body}}}
+    <!-- Adoption section -->
+    <div class="row text-white pillarsOfContent">
+      <div class="adopt col-lg-2 col-sm-4">
+        <P class="border-bottom p-2 mb-3" data-id="aboutus">ABOUT US</P>
+        <P class="border-bottom p-2 mb-3" data-id="howTo">HOW TO BECOME AN AUTHOR</P>
+        <P class="border-bottom p-2 mb-3" data-id="win">WIN</P>
+      </div>
+      <div class="item col-lg-9  ">
+        <div class="aboutus active sideArticleNav" id="aboutus">
+          <h1>About Book-ness</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id, laborum numquam aliquid quos quisquam
+            quidem ratione nostrum veniam quae facilis. Dolorum ipsam reiciendis soluta totam ipsum. Ipsum, odio
+            aliquid.
+          </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id, laborum numquam aliquid quos quisquam
+            quidem ratione nostrum veniam quae facilis. Dolorum ipsam reiciendis soluta totam ipsum. Ipsum, odio
+            aliquid.
+          </p>
+        </div>
+        <div class="howTo sideArticleNav" id="howTo">
+          <h1>How To Become An Author</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        </div>
+        <div class="win sideArticleNav" id="win">
+          <h1>Bookness Compeititon</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id, laborum numquam aliquid quos quisquam
+            quidem ratione nostrum veniam quae facilis. Dolorum ipsam reiciendis soluta totam ipsum. Ipsum, odio
+            aliquid.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+  <script src="/js/main.js"></script>
+</body>
+<footer>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link ms-2" aria-current="page" href="/">Back</a>
+        </li>
+        <li class="nav-item">
+          {{!-- User must be logged in to view and access My profile --}}
+          <a class="nav-link ms-2" aria-current="page" href="/">My Profile</a>
+        </li>
+        <li class="nav-item">
+          {{#if loggedIn}}
+          <button id="logout" class="btn btn-link">Logout</button>
+          {{else}}
+          <a class="nav-link" href="/login">Login</a>
+          {{/if}}
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+</footer>
+{{!-- {{#if loggedIn}}
+<script src='/js/logout.js'></script>
+{{/if}} --}}
+
+</html>
