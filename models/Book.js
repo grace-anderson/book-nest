@@ -35,8 +35,8 @@ Book.init(
     },
     //checkout
     check_out: {
-      type: DataTypes.BOOLEAN
-      // how to set checkout to default of false?
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     check_out_expiry: {
       type: DataTypes.DATE
@@ -62,7 +62,7 @@ Book.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'book'
   }
 );
 

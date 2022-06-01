@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
@@ -41,7 +39,6 @@ User.init(
   },
   {
     hooks: {
-      /* eslint-disable */
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;

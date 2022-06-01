@@ -33,7 +33,7 @@ Book_Reading_List.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'book_reading_list'
   }
 );
 

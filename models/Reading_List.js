@@ -25,7 +25,7 @@ Reading_List.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'reading_list'
   }
 );
 
