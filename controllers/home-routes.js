@@ -39,7 +39,7 @@ router.get('/profile', async (req, res) => {
 });
 
 // Create (share) a new book
-router.get('/new-book', withAuth, async (req, res) => {
+router.get('/new-shared-book', withAuth, async (req, res) => {
   res.render('createBook', {
     pageDescription: 'Your Profile',
     loggedIn: req.session.loggedIn
