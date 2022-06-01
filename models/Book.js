@@ -25,6 +25,10 @@ Book.init(
         len: [1]
       }
     },
+    publication_year: {
+      type: DataTypes.NUMBER,
+      allowNull: true
+    },
     //checkout
     check_out: {
       type: DataTypes.BOOLEAN,
