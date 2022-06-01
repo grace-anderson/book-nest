@@ -1,0 +1,39 @@
+<div class='row ms-5 me-5 p-1'>
+  <h3 class='mt-3'>Share a book</h3>
+  <form id='new-book-form'>
+    <div class='form-group mt-3 m-1'>
+      <label for='title-input'><h5>Enter the book's title:</h5></label>
+      <input
+        type='text'
+        class='form-control'
+        id='title-input'
+        placeholder='Book title'
+        aria-describedby='bookTitle'
+      />
+    </div>
+    <div class='form-group mt-3 m-1'>
+      <label for='author-input'><h5>Enter the book's author:</h5></label>
+      <input
+        type='text'
+        class='form-control'
+        id='author-input'
+        placeholder='Book author'
+        aria-describedby='bookAuthor'
+      />
+    </div>
+    {{!-- placeholder text for genres, to work out how to manage input (e.g. drop down?) --}}
+    <div class='form-group mt-3 m-1'>
+      <label for='genre-input'><h5>Select one genre for the book</h5></label>
+      <input
+        type='text'
+        class='form-control'
+        id='genre-input'
+        placeholder="Book's  genre"
+        aria-describedby='bookGenre'
+      />
+    </div>
+    <button type='submit' class='btn btn-lg btn btn-dark mt-3 m-1'>Share your book</button>
+  </form>
+</div>
+<script src='/js/createBook.js'></script>
+
