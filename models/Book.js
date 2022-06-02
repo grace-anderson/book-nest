@@ -26,13 +26,13 @@ Book.init(
       }
     },
     publication_year: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     //checkout
     check_out: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
+      type: DataTypes.BOOLEAN
+      // defaultValue: 0
     },
     check_out_expiry: {
       type: DataTypes.DATE

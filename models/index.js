@@ -54,4 +54,4 @@ Book_Reading_List.belongsTo(Book, {
   foreignKey: 'book_id'
 });
 
-module.exports = { User, Book, Reading_List, Book_Reading_List };
+module.exports = { User, Book, Reading_List, Book_Reading_List, Genre };
