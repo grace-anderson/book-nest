@@ -36,6 +36,23 @@ router.get('/view-books', async (req, res) => {
   });
 });
 
+//find a book
+//look at updating to fetch array
+router.get('/find', async (req, res) => {
+  try {
+    const bookData = await Book.findOne({ where: { title: req.body.title } });
+
+    const book = bookData.get({ plain: true });
+
+    res.render('findBook', {
+      book
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Display user's profile with list of books
 router.get('/profile', async (req, res) => {
   // If user not logged in, redirect to login page
