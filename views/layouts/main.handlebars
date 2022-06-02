@@ -32,34 +32,58 @@
 </main>
 
 
-
-
-<script src="/js/main.js"></script>
-</body>
-<footer>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- <li class="nav-item">
-          <a class="nav-link ms-2" aria-current="page" href="/">Back</a>
-        </li>
-        <li class="nav-item">
-          {{!-- User must be logged in to view and access My profile --}}
-          <a class="nav-link ms-2" aria-current="page" href="/">My Profile</a>
-        </li>
-        <li class="nav-item">
-          {{#if loggedIn}}
-          <button id="logout" class="btn btn-link">Logout</button>
-          {{else}}
-          <a class="nav-link" href="/login">Login</a>
-          {{/if}}
-        </li> -->
-      </ul>
-    </div>
-  </nav>
-</footer>
-{{!-- {{#if loggedIn}}
-<script src='/js/logout.js'></script>
-{{/if}} --}}
+  <body>
+    <header>
+      <h1>Book Nest</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link ms-2" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ms-2" aria-current="page" href="/view-books">View
+              Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ms-2 me-1" href="/find">Find a book</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ms-2 me-1" href="/profile">Share a book</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      {{! add body elements here via handlebars }}
+      {{{body}}}
+    </main>
+  </body>
+  <footer>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link ms-2" aria-current="page" href="/">Back</a>
+          </li>
+          <li class="nav-item">
+            {{! User must be logged in to view and access My profile }}
+            <a class="nav-link ms-2" aria-current="page" href="/">My Profile</a>
+          </li>
+          <li class="nav-item">
+            {{#if loggedIn}}
+              <button id="logout" class="btn btn-link">Logout</button>
+            {{else}}
+              <a class="nav-link" href="/login">Login</a>
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </footer>
+  {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
 
 </html>

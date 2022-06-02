@@ -207,3 +207,14 @@ margin-left: 3px;
 font-size: 18px;
 color: #c90c0c;
 }
+.border-red {
+  border: 1px solid red;
+}
+
+.border-blue {
+  border: 1px solid blue;
+}
+
+.border-orange {
+  border: 1px solid orange;
+}
