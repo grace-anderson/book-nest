@@ -39,7 +39,7 @@
       </div>
     </nav>
     <main>
-      {{! add body elements here via handlebars }}
+      {{! TODO: add body elements here via handlebars }}
       {{{body}}}
     </main>
   </body>
@@ -51,9 +51,10 @@
             <a class="nav-link ms-2" aria-current="page" href="/">Back</a>
           </li>
           <li class="nav-item">
-            {{! User must be logged in to view and access My profile }}
+            {{! TODO: User must be logged in to view and access My profile }}
             <a class="nav-link ms-2" aria-current="page" href="/">My Profile</a>
           </li>
+          {{! TODO: login and logout }}
           <li class="nav-item">
             {{#if loggedIn}}
               <button id="logout" class="btn btn-link">Logout</button>
@@ -69,7 +70,6 @@
     <script src="/js/logout.js"></script>
   {{/if}}
   {{! bootstrap javascript }}
-  <!-- JavaScript Bundle with Popper -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

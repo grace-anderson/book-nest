@@ -1,5 +1,5 @@
 const { Book } = require('../models');
-//fields not added in seeds
+//TODO: add fields to Book model and to seeds
 //- check_out_expiry
 // -date_added
 

@@ -34,6 +34,7 @@ Book.init(
       type: DataTypes.BOOLEAN
       // defaultValue: 0
     },
+    // TODO: checkout expiry - may not be database, could be front end javascript
     // check_out_expiry: {
     //   type: DataTypes.DATE
     //   // how to set to 14 days from checkout (for eg)?
@@ -47,7 +48,7 @@ Book.init(
         key: 'id'
       }
     },
-    //date user shared book
+    //TODO: date user shared book
     // date_added: {
     //   type: DataTypes.DATE,
     //   allowNull: false,

@@ -37,7 +37,7 @@ router.get('/view-books', async (req, res) => {
 });
 
 //find a book
-//look at updating to fetch array
+//TODO: update to fetch array, then search array to retrieve match with user entry
 router.get('/find', async (req, res) => {
   try {
     const bookData = await Book.findOne({ where: { title: req.body.title } });
@@ -53,9 +53,9 @@ router.get('/find', async (req, res) => {
   }
 });
 
-// Display user's profile with list of books
+// TODO: Display user's profile with list of books
 router.get('/profile', async (req, res) => {
-  // If user not logged in, redirect to login page
+  // TODO: If user not logged in, redirect to login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
     return;
@@ -89,7 +89,7 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-// Create (share) a new book
+// TODO: Create (share) a new book
 router.get('/new-shared-book', withAuth, async (req, res) => {
   res.render('createBook', {
     pageDescription: 'Your Profile',
@@ -97,7 +97,7 @@ router.get('/new-shared-book', withAuth, async (req, res) => {
   });
 });
 
-// Edit shared book
+// TODO: Edit shared book
 router.get('/book-update/:id', withAuth, async (req, res) => {
   try {
     const bookData = await Book.findOne({
