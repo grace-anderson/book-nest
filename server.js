@@ -7,7 +7,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 
 // uncomment when api routes have been established (refer to line 47 as well)
-// const routes = require('./controllers');
+const routes = require('./controllers');
 
 // uncomment when helpers have been added (refer to line 21 as well)
 // const helpers = require('./utils/helpers');
@@ -44,11 +44,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // uncomment when routes have been established
-// app.use(routes);
+app.use(routes);
 
-app.get('/', (req, res) => {
-  res.render('login');
-});
+// app.get('/', (req, res) => {
+//   res.render('login');
+// });
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App now listening on port ${PORT}`));

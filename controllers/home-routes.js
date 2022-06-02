@@ -1,6 +1,7 @@
 const router = require('express').Router();
 // const { User, Book } = require('../models');
 const { Book } = require('../models');
+const withAuth = require('../utils/auth');
 
 // Display user's profile with list of books
 router.get('/profile', async (req, res) => {
@@ -47,7 +48,7 @@ router.get('/new-shared-book', withAuth, async (req, res) => {
 });
 
 // Edit shared book
-router.get('/book-update/:id', withAuth, creator, async (req, res) => {
+router.get('/book-update/:id', withAuth, async (req, res) => {
   try {
     const bookData = await Book.findOne({
       where: {
