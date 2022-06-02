@@ -11,9 +11,9 @@ const seedAll = async () => {
 
   await seedUsers();
 
-  await seedBooks();
-
   await seedGenres();
+
+  await seedBooks();
 
   await seedReadingLists();
 

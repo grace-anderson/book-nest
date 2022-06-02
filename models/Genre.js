@@ -24,7 +24,7 @@ Genre.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'book'
+    modelName: 'genre'
   }
 );
 
