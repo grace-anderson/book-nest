@@ -25,13 +25,9 @@ Book.init(
         len: [1]
       }
     },
-    //Are genres free text or do we provide default values (manage front end using drop down (for e.g.?)
-    genre: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+    publication_year: {
+      type: DataTypes.NUMBER,
+      allowNull: true
     },
     //checkout
     check_out: {
@@ -55,6 +51,14 @@ Book.init(
     date_added: {
       type: DataTypes.DATE
       // how to set to default of today?
+    },
+    genre_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'genre',
+        key: 'id'
+      }
     }
   },
   {
