@@ -1,12 +1,12 @@
 :root {
-  --pink: #FF497B;
-  --dark-blue: #3071F2;
+  --pink: #ff497b;
+  --dark-blue: #3071f2;
   --light-blue: #1e90ff;
-  --grey: #A7B3B5; 
-  --brown: #A1896C;
+  --grey: #a7b3b5;
+  --brown: #a1896c;
 }
 
-body {
+/* body {
 background: var(--grey );
 }
 .navbar-expand-lg .navbar-nav {
@@ -104,7 +104,7 @@ padding: 10px;
 
 /* main page */
 
-hr.style-four {
+/* hr.style-four {
 border: 0;
 height: 1px;
 background: #000;
@@ -159,12 +159,12 @@ background: var(--grey);
 }
 
 /* end of main page */
-
+/* 
 .my-books {
-}
+} */
 
 /* login bootstrap template */
-.my-books .book-title {
+/* .my-books .book-title {
 font-size: 20px;
 font-weight: bold;
 text-align: left;
@@ -189,23 +189,23 @@ height: calc(100% - 73px);
 .h-custom {
 height: 100%;
 }
-}
+} */
 
 .input-form label {
-font-size: 25px;
+  font-size: 25px;
   font-weight: bold;
   letter-spacing: 1px;
   margin-bottom: 5px;
 }
 
 .input-form .required {
-color: #c90c0c;
-margin-left: 3px;
+  color: #c90c0c;
+  margin-left: 3px;
 }
 
 .form-msg {
-font-size: 18px;
-color: #c90c0c;
+  font-size: 18px;
+  color: #c90c0c;
 }
 .border-red {
   border: 1px solid red;
