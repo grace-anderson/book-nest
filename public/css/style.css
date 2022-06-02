@@ -6,7 +6,9 @@
     --brown: #A1896C;
   }
 
-  
+  body {
+background: var(--grey );
+  }
   .navbar-expand-lg .navbar-nav {
     flex-direction: column;
     justify-content: center;
@@ -75,7 +77,7 @@
 
   .no-result,
   .error-msg {
-    color: #ff0000;
+    color: #c90c0c;
     font-weight: bold;
     text-align: center;
   }
@@ -94,19 +96,19 @@
 .find-book {
   width: 30%;
   margin: 1rem auto;
-  background: #000;
+  background: var(--grey);
   padding: 10px;
 }
 
 
 
-
+/* main page */
 
 hr.style-four {
   border: 0;
   height: 1px;
-  background: #333;
-  background-image: linear-gradient(to right, #333, #ccc, #333);
+  background: #000;
+  background-image: linear-gradient(to right, #000, #ccc, #000);
   margin: 60px 0;
 }
 
@@ -153,12 +155,15 @@ hr.style-four {
 }
 
 .pillarsOfContent {
-  background: #000;
+  background: var(--grey);
 }
+
+/* end of main page */
 
 .my-books {
 }
 
+/* login bootstrap template */
 .my-books .book-title {
   font-size: 20px;
   font-weight: bold;
@@ -168,4 +173,37 @@ hr.style-four {
 
 .my-books .btn.btn-primary {
   background: #387d38;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+.input-form label {
+  font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.input-form .required {
+  color: #c90c0c;
+  margin-left: 3px;
+}
+
+.form-msg {
+  font-size: 18px;
+  color: #c90c0c;
 }

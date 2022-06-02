@@ -26,24 +26,6 @@ PRIMARY KEY(`id`)
 -- foreign KEY ()
 )
 
--- when downloading book details of book and user will be stored in the database
-CREATE TABLE `bookdownload`(
-`id` INT NOT NULL AUTO_INCREMENT , 
-`title` VARCHAR(45) NOT NULL 
---  foreign key of books and user 
-)
-
-CREATE TABLE `adult`(
-`id` INT NOT NULL AUTO_INCREMENT , 
-`title` VARCHAR(45) NOT NULL 
---  foreign key of books and user 
-)
-CREATE TABLE `children`(
-`id` INT NOT NULL AUTO_INCREMENT , 
-`title` VARCHAR(45) NOT NULL 
---  foreign key of books and user 
-)
-
 
 
 

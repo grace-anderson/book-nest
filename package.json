@@ -31,12 +31,12 @@
     "hbs": "^4.2.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
-    "node": "^17.7.2",
     "sequelize": "^6.20.1"
   },
   "devDependencies": {
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2"
   }

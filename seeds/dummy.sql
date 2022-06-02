@@ -6,11 +6,11 @@ use usermanagment_db
 
 CREATE TABLE `user` ( 
     `id` INT NOT NULL AUTO_INCREMENT ,
- `first_name` VARCHAR(45) NOT NULL ,
-  `last_name` VARCHAR(45) NOT NULL ,
+ `username` VARCHAR(45) NOT NULL ,
    `email` VARCHAR(45) NOT NULL ,
-    `phone` VARCHAR(45) NOT NULL ,
-     `comments` TEXT NOT NULL ,
+   `password` VARCHAR(45) NOT NULL,
+    `phone` VARCHAR(45) NULL ,
+     `comments` TEXT NULL,
       `status` VARCHAR(10) NOT NULL DEFAULT 'active' ,
        PRIMARY KEY (`id`)
        ); 
@@ -94,7 +94,7 @@ CREATE TABLE `children`(
 
 
 INSERT INTO `user` 
-    ( `first_name`,  `last_name`,    `email`,                 `phone`,         `comments`, `status`) 
+    ( `username`,  `email`,                 `phone`,         `comments`, `status`) 
 VALUES
     ('Amanda',      'Nunes',        'anunes@ufc.com',        '012345 678910', '',          'active'),
     ('Alexander',   'Volkanovski',  'avolkanovski@ufc.com',  '012345 678910', '',          'active'),

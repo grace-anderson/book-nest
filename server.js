@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const exphbs = require('express-handlebars');
 const sequlize = require('./config/connection');
 const books = require('./controllers/books');
+const loginRegister = require('./controllers/login_register');
 
 // Sets up the Express App
 const app = express();
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(books);
+app.use(loginRegister);
 
 // Starts the server to begin listening
 app.listen(PORT, () => {
