@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Create a book
+// TODO: Create a book
 router.post('/new-book', withAuth, async (req, res) => {
   try {
     const bookData = await Book.create({
@@ -23,7 +23,7 @@ router.post('/new-book', withAuth, async (req, res) => {
   }
 });
 
-// Update book
+// TODO: Update book
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const bookData = await Book.update(
@@ -44,7 +44,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
-// Delete a book
+// TODO: Delete a book
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const bookData = await Book.destroy({
