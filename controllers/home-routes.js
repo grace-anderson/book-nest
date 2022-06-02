@@ -1,7 +1,40 @@
 const router = require('express').Router();
 // const { User, Book } = require('../models');
-const { Book } = require('../models');
+const {
+  // User,
+  Book,
+  // Reading_List,
+  // Book_Reading_List,
+  Genre
+} = require('../models');
 const withAuth = require('../utils/auth');
+
+router.get('/', (req, res) => {
+  res.render('homepage');
+});
+
+router.get('/view-books', async (req, res) => {
+  const bookData = await Book.findAll({
+    include: [
+      {
+        model: Genre,
+        attributes: ['genre_title']
+      }
+    ]
+  });
+
+  // console.log('\n---HOME ROUTES: BOOK DATA');
+  // console.log(bookData);
+
+  const books = bookData.map((book) => book.get({ plain: true }));
+
+  console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
+  console.log(books);
+
+  res.render('viewbooks', {
+    books
+  });
+});
 
 // Display user's profile with list of books
 router.get('/profile', async (req, res) => {
