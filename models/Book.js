@@ -34,10 +34,10 @@ Book.init(
       type: DataTypes.BOOLEAN
       // defaultValue: 0
     },
-    check_out_expiry: {
-      type: DataTypes.DATE
-      // how to set to 14 days from checkout (for eg)?
-    },
+    // check_out_expiry: {
+    //   type: DataTypes.DATE
+    //   // how to set to 14 days from checkout (for eg)?
+    // },
     //user that shared the book
     user_shared_id: {
       type: DataTypes.INTEGER,
@@ -48,10 +48,11 @@ Book.init(
       }
     },
     //date user shared book
-    date_added: {
-      type: DataTypes.DATE
-      // how to set to default of today?
-    },
+    // date_added: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false,
+    //   defaultValue: DataTypes.NOW
+    // },
     genre_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

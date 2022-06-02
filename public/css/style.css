@@ -5,3 +5,15 @@
   --grey: #a7b3b5;
   --brown: #a1896c;
 }
+
+.border-red {
+  border: 1px solid red;
+}
+
+.border-blue {
+  border: 1px solid blue;
+}
+
+.border-orange {
+  border: 1px solid orange;
+}
