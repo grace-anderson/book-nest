@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { User } = require('../../models/User');
+const { User } = require('../../models');
 
 router.post('/login', async (req, res) => {
   try {
@@ -9,18 +9,18 @@ router.post('/login', async (req, res) => {
     console.log(email);
     console.log(password);
 
-    // const returningUser = await User.findOne({
-    //   where: {
-    //     email: email
-    //   }
-    // });
+    const returningUser = await User.findOne({
+      where: {
+        email: email
+      }
+    });
 
-    const returningUser = {
-      id: 1,
-      username: 'sallymae',
-      email: req.body.email,
-      password: req.body.password
-    };
+    // const returningUser = {
+    //   id: 1,
+    //   username: 'sallymae',
+    //   email: req.body.email,
+    //   password: req.body.password
+    // };
 
     console.log('\n----RETURNING USER');
     console.log(returningUser);
@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = returningUser.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
 
       const { username } = returningUser;
       const welcomeMsg = `Welcome back, ${username}!`;
