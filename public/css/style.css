@@ -6,6 +6,23 @@
   --brown: #a1896c;
 }
 
+.custom-nav-background {
+  background-color: var(--brown);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap {
+  display: flex;
+}
+
+.wrap h1 {
+  align-self: flex-end;
+}
+
 /* body {
 background: var(--grey );
 }

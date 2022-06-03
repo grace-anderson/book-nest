@@ -36,7 +36,7 @@ Book.belongsTo(Genre, {
 
 //A reading list can have many books, join using Book_Reading_List
 Reading_List.hasMany(Book_Reading_List, {
-  foreignKey: 'book_reading_list_id',
+  foreignKey: 'reading_list_id',
   onDelete: 'CASCADE'
 });
 
@@ -46,7 +46,7 @@ Book_Reading_List.belongsTo(Reading_List, {
 
 //A book can be on many Reading_Lists, join using Book_Reading_list
 Book.hasMany(Book_Reading_List, {
-  foreignKey: 'book_reading_list_id',
+  foreignKey: 'book_id',
   onDelete: 'CASCADE'
 });
 
