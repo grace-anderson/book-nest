@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// WHEN USER LOGS IN
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -28,13 +29,6 @@ router.post('/login', async (req, res) => {
         email: email
       }
     });
-
-    // const returningUser = {
-    //   id: 1,
-    //   username: 'sallymae',
-    //   email: req.body.email,
-    //   password: req.body.password
-    // };
 
     console.log('\n----RETURNING USER');
     console.log(returningUser);

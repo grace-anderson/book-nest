@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const { User, Book } = require('../models');
 const {
   // User,
   Book,
@@ -7,12 +6,25 @@ const {
   // Book_Reading_List,
   Genre
 } = require('../models');
+
+// authentication import
 const withAuth = require('../utils/auth');
 
+// GET THE HOMEPAGE
 router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+// GET THE LOGIN PAGE
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/viewbooks');
+    return;
+  }
+  res.render('login');
+});
+
+// GET VIEW BOOKS PAGE
 router.get('/view-books', async (req, res) => {
   const bookData = await Book.findAll({
     include: [
