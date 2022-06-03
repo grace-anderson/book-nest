@@ -2,12 +2,11 @@ window.onload = function () {
   const registerForm = document.querySelector('.register-form');
 
   if (registerForm) {
-    registerForm.addEventListener('submit', function (event) {
+    registerForm.addEventListener('submit', async function (event) {
       event.preventDefault();
       const username = document.querySelector('#username').value.trim();
       const password = document.querySelector('#password').value.trim();
       const email = document.querySelector('#email').value.trim();
-      const phone = document.querySelector('#phone').value.trim();
       const errorMsgElement = document.querySelector('.error-msg');
       let errorMsg = '';
 
@@ -15,8 +14,6 @@ window.onload = function () {
         errorMsg = 'Please enter all the required fields.';
       } else if (!/^[^@ ]+@[^@ ]+\.[^@ \.]{2,}$/.test(email)) {
         errorMsg = 'Please enter a valid email address.';
-      } else if (phone !== '' && phone.length !== 10) {
-        errorMsg = 'Please enter a valid 10 digit phone number.';
       }
 
       if (errorMsg) {
@@ -29,6 +26,19 @@ window.onload = function () {
       if (username !== '' && password !== '' && email !== '') {
         // make API Call
         console.log('all good');
+
+        try {
+          const { data } = await axios.post('/api/users/register', {
+            username,
+            email,
+            password
+          });
+          console.log({ data });
+          document.location.replace('/');
+        } catch (error) {
+          console.log(error);
+          alert('Registration failed');
+        }
       }
     });
   }
