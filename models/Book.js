@@ -38,12 +38,11 @@ Book.init(
         key: 'id'
       }
     },
-    //TODO: date user shared book
-    // date_added: {
-    //   type: DataTypes.DATE,
-    //   allowNull: false,
-    //   defaultValue: DataTypes.NOW
-    // },
+    date_shared: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
     genre_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
