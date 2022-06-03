@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 // GET THE LOGIN PAGE
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/viewbooks');
+    res.redirect('/viewBooks');
     return;
   }
   res.render('login');
@@ -40,15 +40,15 @@ router.get('/view-books', async (req, res) => {
 
   const books = bookData.map((book) => book.get({ plain: true }));
 
-  console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
-  console.log(books);
+  // console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
+  // console.log(books);
 
-  res.render('viewbooks', {
+  res.render('viewBooks', {
     books
   });
 });
 
-//find a book
+// FIND A BOOK
 //TODO: update to fetch array, then search array to retrieve match with user entry
 router.get('/find', async (req, res) => {
   try {
@@ -98,6 +98,34 @@ router.get('/profile', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+// GET A SINGLE BOOK BY ITS ID
+router.get('/books/:id', async (req, res) => {
+  try {
+    const bookId = req.params.id;
+
+    const bookData = await Book.findByPk(bookId, {
+      include: [
+        {
+          model: Genre,
+          attributes: ['genre_title']
+        }
+      ]
+    });
+
+    const selectedBook = bookData.get({ plain: true });
+
+    console.log('\n---HOME ROUTES: SELECTED BOOK');
+    console.log(selectedBook);
+
+    // res.status(200).json(selectedBook);
+    res.render('book', {
+      selectedBook
+    });
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 

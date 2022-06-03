@@ -11,6 +11,11 @@ body {
   font-weight: 400;
 }
 
+.book-link {
+  text-decoration: none;
+  color: var(--light-blue);
+}
+
 .embolden {
   font-weight: 500;
 }

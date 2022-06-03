@@ -6,26 +6,27 @@
       {{! for each card, present it using this bootstrap card format }}
 
       <div class="col-12 col-md-4 col-lg-3 my-3">
-        <div class="card h-100 w-100 border-blue">
-          <div class="card-header embolden">
-            Title:
-            {{title}}
+        <a href="/books/{{id}}" class="book-link">
+          <div class="card h-100 w-100 border-blue">
+            <div class="card-header embolden">
+              {{title}}
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                Author:
+                {{author}}
+              </li>
+              <li class="list-group-item">
+                Publication Date:
+                {{publication_year}}
+              </li>
+              <li class="list-group-item">
+                Genre:
+                {{genre.genre_title}}
+              </li>
+            </ul>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              Author:
-              {{author}}
-            </li>
-            <li class="list-group-item">
-              Publication Date:
-              {{publication_year}}
-            </li>
-            <li class="list-group-item">
-              Genres:
-              {{genre.genre_title}}
-            </li>
-          </ul>
-        </div>
+        </a>
       </div>
 
     {{/each}}
