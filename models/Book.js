@@ -29,16 +29,6 @@ Book.init(
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    //checkout
-    check_out: {
-      type: DataTypes.BOOLEAN
-      // defaultValue: 0
-    },
-    // TODO: checkout expiry - may not be database, could be front end javascript
-    // check_out_expiry: {
-    //   type: DataTypes.DATE
-    //   // how to set to 14 days from checkout (for eg)?
-    // },
     //user that shared the book
     user_shared_id: {
       type: DataTypes.INTEGER,
