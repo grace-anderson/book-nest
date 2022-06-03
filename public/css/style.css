@@ -6,6 +6,19 @@
   --brown: #a1896c;
 }
 
+body {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 400;
+}
+
+.embolden {
+  font-weight: 500;
+}
+
+.really-embolden {
+  font-weight: 600;
+}
+
 .custom-nav-background {
   background-color: var(--brown);
 }
