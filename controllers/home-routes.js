@@ -14,15 +14,14 @@ router.get('/', (req, res) => {
 });
 
 // getting login route to the front end
-router.get('/showLogin', (req,res) => {
+router.get('/showLogin', (req, res) => {
   res.render('login');
 });
 
 // getting register route to the front end
-router.get('/showRegister', (req,res) => {
+router.get('/showRegister', (req, res) => {
   res.render('register');
 });
-
 
 router.get('/view-books', async (req, res) => {
   const bookData = await Book.findAll({
