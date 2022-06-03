@@ -30,7 +30,7 @@ Book_Reading_List.init(
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'book_reading_list'
