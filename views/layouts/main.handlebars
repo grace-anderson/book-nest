@@ -17,25 +17,53 @@
 
   <body>
     <header>
-      <h1>Book Nest</h1>
+      <div class="container">
+        <div class="row">
+          <div class="wrap">
+            <img
+              class="col-1"
+              src="/img/bird-house.png"
+              alt="Bird house image"
+            />
+            <h1 class="col-11 display-1 ps-3">Book Nest</h1>
+          </div>
+        </div>
+      </div>
     </header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link ms-2" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link ms-2" aria-current="page" href="/view-books">View
-              Books</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link ms-2 me-1" href="/find">Find a book</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link ms-2 me-1" href="/profile">Share a book</a>
-          </li>
-        </ul>
+
+    <nav class="navbar navbar-expand-lg navbar-dark custom-nav-background">
+      <div class="container-fluid ms-5">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link ms-2" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link ms-2"
+                aria-current="page"
+                href="/view-books"
+              >View Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ms-2 me-1" href="/find">Find a book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ms-2 me-1" href="/profile">Share a book</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <main>
@@ -44,8 +72,8 @@
     </main>
   </body>
   <footer>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-nav-background">
+      <div class="container-fluid ms-5">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link ms-2" aria-current="page" href="/">Back</a>
