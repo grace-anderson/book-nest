@@ -13,6 +13,17 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+// getting login route to the front end
+router.get('/showLogin', (req,res) => {
+  res.render('login');
+});
+
+// getting register route to the front end
+router.get('/showRegister', (req,res) => {
+  res.render('register');
+});
+
+
 router.get('/view-books', async (req, res) => {
   const bookData = await Book.findAll({
     include: [

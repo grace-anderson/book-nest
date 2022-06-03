@@ -1,94 +1,68 @@
+
 <section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid"
-          alt="Sample image"
-        />
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <h2>Register</h2>
-        <p class="form-msg">Fields marked with * are required</p>
-        <p class="error-msg"></p>
-        <form class="input-form register-form">
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <label for="username">Username:<span
-                class="required"
-              >*</span></label>
-            <input
-              type="text"
-              id="username"
-              class="form-control form-control-lg"
-              placeholder="Enter your Username"
-            />
-          </div>
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <h2>Register</h2>
+                <p class="form-msg">Fields marked with * are required</p>
+                <p class="error-msg"></p>
+                <form class="input-form register-form">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label for="username">Username:<span class="required">*</span></label>
+                        <input type="text" id="username" class="form-control form-control-lg"
+                            placeholder="Enter your Username" />
+                    </div>
 
-          <div class="form-outline mb-4">
-            <label for="email">Email:<span class="required">*</span></label>
-            <input
-              type="email"
-              id="email"
-              class="form-control form-control-lg"
-              placeholder="Enter your email address"
-            />
-          </div>
+                    <div class="form-outline mb-4">
+                        <label for="email">Email:<span class="required">*</span></label>
+                        <input type="email" id="email" class="form-control form-control-lg"
+                            placeholder="Enter your email address" />
+                    </div>
 
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <label for="password">Password:<span
-                class="required"
-              >*</span></label>
-            <input
-              type="password"
-              id="password"
-              class="form-control form-control-lg"
-              placeholder="Enter password"
-            />
-          </div>
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <label for="password">Password:<span class="required">*</span></label>
+                        <input type="password" id="password" class="form-control form-control-lg"
+                            placeholder="Enter password" />
+                    </div>
 
-          <div class="form-outline mb-3">
-            <label for="phone">Phone:</label>
-            <input
-              type="text"
-              id="phone"
-              class="form-control form-control-lg"
-              placeholder="Enter your phone"
-            />
-          </div>
+                    <div class="form-outline mb-3">
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" class="form-control form-control-lg"
+                            placeholder="Enter your phone" />
+                    </div>
 
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button
-              type="submit"
-              class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;"
-            >Register</button>
-            <button
-              type="button"
-              class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;float: right"
-              onclick="window.location='/showLogin'"
-            >Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
-              <a href="#!" class="link-danger">Register</a></p>
-          </div>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                            >Register</button>
+                        <button type="button" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;float: right"
+                            onclick="window.location='/showLogin'">Login</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!" 
+                        class="link-danger" onclick="window.location='/showRegister'">Register</a></p>
+                    </div>
 
-        </form>
-      </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary"
-  >
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright © 2020. All rights reserved.
-    </div>
-    <!-- Copyright -->
+    <div
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+        <!-- Copyright -->
+        <div class="text-white mb-3 mb-md-0">
+            Copyright © 2020. All rights reserved.
+        </div>
+        <!-- Copyright -->
 
-  </div>
+    </div>
 </section>
+
+
 
 <script src="/js/register.js"></script>
