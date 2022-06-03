@@ -4,6 +4,28 @@
   --light-blue: #1e90ff;
   --grey: #a7b3b5;
   --brown: #a1896c;
+  --errorChecking: #c90c0c;
+}
+
+/* login / register page  */
+
+.input-form label {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+/* error checking  */
+
+.input-form .required {
+  color: var(--errorChecking);
+  margin-left: 3px;
+}
+
+.form-msg {
+  font-size: 18px;
+  color: var(--errorChecking);
 }
 
 .custom-nav-background {

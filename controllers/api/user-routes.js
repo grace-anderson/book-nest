@@ -29,13 +29,6 @@ router.post('/login', async (req, res) => {
       }
     });
 
-    // const returningUser = {
-    //   id: 1,
-    //   username: 'sallymae',
-    //   email: req.body.email,
-    //   password: req.body.password
-    // };
-
     console.log('\n----RETURNING USER');
     console.log(returningUser);
 
@@ -55,7 +48,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = returningUser.id;
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
 
       const { username } = returningUser;
       const welcomeMsg = `Welcome back, ${username}!`;
@@ -67,6 +60,25 @@ router.post('/login', async (req, res) => {
     // console.log('\n------ERROR:');
     // console.log(error);
     res.status(500).json(error);
+  }
+});
+
+router.post('/register', async (req, res) => {
+  try {
+    const user = await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
+
+    if (!user) {
+      alert('Failed to register a user.');
+      return;
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
