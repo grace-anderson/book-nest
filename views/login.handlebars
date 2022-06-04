@@ -1,4 +1,46 @@
-<section class="vh-100">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Login</h2>
+      <p>If you have an existing account, please log in with your email address.</p>
+      <form id="login-form">
+        <label for="email-login">Email:</label>
+        <input type="text" id="email-login" />
+
+        <label for="password-login">Password:</label>
+        <input type="text" id="password-login" />
+
+        <button class="btn btn-primary" type="submit">Login</button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h2>Sign Up</h2>
+      <p>If you are a new user, please sign up using the form below.</p>
+      <form id="signup-form">
+        <label for="username-signup">Username:</label>
+        <input type="text" id="username-signup" />
+
+        <label for="email-signup">Email:</label>
+        <input type="text" id="email-signup" />
+
+        <label for="password-signup">Password:</label>
+        <input type="text" id="password-signup" />
+
+        <button class="btn btn-secondary" type="submit">Sign Up</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script src="/js/login.js"></script>
+
+{{! <section class="vh-100">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
@@ -62,4 +104,4 @@
   </div>
 </section>
 
-<script src="/js/login.js"></script>
+<script src="/js/login.js"></script> }}
