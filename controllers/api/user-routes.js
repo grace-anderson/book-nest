@@ -5,7 +5,11 @@ const { User, Reading_List, Book } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
-      include: [{ model: Reading_List }, { model: Book }]
+      include: [
+        // ! prettier-ignore
+        { model: Reading_List },
+        { model: Book }
+      ]
     });
 
     res.status(200).json(userData);
@@ -58,8 +62,8 @@ router.post('/login', async (req, res) => {
       });
     });
   } catch (error) {
-    // console.log(`\n------ERROR:`);
-    // console.log(error);
+    console.log('\n------ERROR:');
+    console.log(error);
     res.status(500).json(error);
   }
 });
