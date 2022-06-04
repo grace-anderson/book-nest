@@ -1,0 +1,25 @@
+{{! viewing card for a single book }}
+
+<div class="container">
+
+  <div class="card border-blue">
+    <div class="card-header embolden">
+      {{selectedBook.title}}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Author:
+        {{selectedBook.author}}
+      </li>
+      <li class="list-group-item">
+        Publication Date:
+        {{selectedBook.publication_year}}
+      </li>
+      <li class="list-group-item">
+        Genre:
+        {{selectedBook.genre.genre_title}}
+      </li>
+    </ul>
+  </div>
+
+</div>
