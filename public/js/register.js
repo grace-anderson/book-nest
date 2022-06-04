@@ -37,7 +37,11 @@ window.onload = function () {
           document.location.replace('/');
         } catch (error) {
           console.log(error);
-          alert('Registration failed');
+          if (error && error.response && error.response.data) {
+            alert(error.response.data);
+          } else {
+            alert('Registration failed');
+          }
         }
       }
     });

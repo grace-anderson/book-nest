@@ -30,7 +30,7 @@
               Books</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link ms-2 me-1" href="/find">Find a book</a>
+            <a class="nav-link ms-2 me-1" href="/showFindBook">Find a book</a>
           </li>
           <li class="nav-item">
             <a class="nav-link ms-2 me-1" href="/profile">Share a book</a>
@@ -57,7 +57,11 @@
           {{! TODO: login and logout }}
           <li class="nav-item">
             {{#if loggedIn}}
-              <button id="logout" class="btn btn-link">Logout</button>
+              <button
+                id="logout"
+                class="btn btn-link"
+                onclick="window.location='/showLogin'"
+              >Logout</button>
             {{else}}
               <a class="nav-link" href="/showLogin">Login</a>
             {{/if}}

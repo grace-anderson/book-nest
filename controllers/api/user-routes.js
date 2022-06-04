@@ -46,18 +46,38 @@ router.post('/login', async (req, res) => {
     });
   } catch (error) {
     // console.log('\n------ERROR:');
-    // console.log(error);
+    console.log(error);
     res.status(500).json(error);
   }
 });
 
 router.post('/register', async (req, res) => {
   try {
+    let [found] = await User.findAll({
+      where: {
+        email: req.body.email
+      }
+    });
+    if (found) {
+      return res.status(400).send('User with the provided email already exist');
+    }
+    [found] = await User.findAll({
+      where: {
+        username: req.body.username
+      }
+    });
+    if (found) {
+      return res
+        .status(400)
+        .send('User with the provided username already exist');
+    }
     const user = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password
     });
+
+    console.log({ body: req.body });
 
     if (!user) {
       alert('Failed to register a user.');
@@ -66,6 +86,7 @@ router.post('/register', async (req, res) => {
 
     res.status(200).json(user);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

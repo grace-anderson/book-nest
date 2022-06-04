@@ -1,9 +1,30 @@
-<div>
-  <form id="find-a-book">
-    <input type="input" />
-    <button>Find a Book</button>
-  </form>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<h2>Find book</h2>
+<form class="find-book-form">
+  <label>Book name:</label>
+  <input
+    type="search"
+    name="book_name"
+    class="book_name"
+    placeholder="Enter book name to search"
+  />
+  <button type="submit">Find book</button>
+</form>
+<div class="message no-result"></div>
+<div class="book-search-result hide">
+  <div><strong>Title: </strong><span class="title"></span></div>
+  <div><strong>Author: </strong><span class="author"></span></div>
+  <div><strong>Publication Year: </strong><span
+      class="publication_year"
+    ></span></div>
 </div>
-<div>
-  {{!-- <p>{{book.title}}</p> --}}
-</div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+></script>
+<script src="/js/findBook.js"></script>

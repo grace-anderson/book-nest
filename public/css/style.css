@@ -28,6 +28,14 @@
   color: var(--errorChecking);
 }
 
+.hide {
+  display: none;
+}
+
+.no-result {
+  color: #ff0000;
+}
+
 /* body {
 background: var(--grey );
 }

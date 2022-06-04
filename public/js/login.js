@@ -12,6 +12,7 @@ const logUserIn = async (event) => {
       });
       document.location.replace('/');
     } catch (error) {
+      console.log(error);
       alert('Login failed.');
     }
   }

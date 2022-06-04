@@ -10,7 +10,9 @@ const {
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-  res.render('homepage');
+  res.render('homepage', {
+    loggedIn: req.session.logged_in
+  });
 });
 
 // getting login route to the front end
@@ -46,17 +48,25 @@ router.get('/view-books', async (req, res) => {
   });
 });
 
+router.get('/showFindBook', (req, res) => {
+  res.render('findBook');
+});
+
 //find a book
 //TODO: update to fetch array, then search array to retrieve match with user entry
-router.get('/find', async (req, res) => {
+router.post('/find', async (req, res) => {
   try {
     const bookData = await Book.findOne({ where: { title: req.body.title } });
+    console.log({ bookData });
 
-    const book = bookData.get({ plain: true });
+    if (bookData) {
+      const book = bookData.get({ plain: true });
 
-    res.render('findBook', {
-      book
-    });
+      console.log({ book });
+      res.send(book);
+    } else {
+      res.status(200).send('No matching book found.');
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
