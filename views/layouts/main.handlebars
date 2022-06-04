@@ -23,17 +23,21 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="row ms-1">
-          <div class="wrap">
-            <img
-              class="col-1 mt-1 img-fluid"
-              src="/img/bird-house.png"
-              alt="Bird house image"
-            />
-            <h1 class="col-11 display-1 ps-3 embolden">Book Nest</h1>
-          </div>
+    <header class="white-background">
+      <div
+        class="d-inline-flex flex-row justify-content-center flex-wrap mt-3 ms-3"
+      >
+        <div
+          class="flex-sm-column col-2 col-md-2 flex-shrink-1 align-self-sm-center"
+        >
+          <img
+            class="img-fluid"
+            src="/img/bird-house.png"
+            alt="Bird house image"
+          />
+        </div>
+        <div class="flex-column col-10 col-md-10 align-self-end">
+          <h1 class="display-1 ps-3 embolden">Book Nest</h1>
         </div>
       </div>
 
@@ -103,8 +107,9 @@
       {{{body}}}
     </main>
 
+    {{! make this footer nice }}
     <footer>
-      <p>footer</p>
+      <p>footer goes here</p>
     </footer>
 
     {{#if loggedIn}}
