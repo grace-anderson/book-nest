@@ -1,10 +1,10 @@
 :root {
-  --pink: #ff497b;
-  --dark-blue: #3071f2;
-  --light-blue: #1e90ff;
+  --purple: #775ca1;
+  --dark-purple: #413454;
+  --green: #7ca184;
   --grey: #a7b3b5;
   --brown: #a1896c;
-  --errorChecking: #c90c0c;
+  --errorChecking: #ff497b;
 }
 
 /* login / register page  */
@@ -38,7 +38,7 @@ body {
 /* styling class for book cards as links */
 .book-link {
   text-decoration: none;
-  color: var(--light-blue);
+  color: var(--green);
 }
 
 /* custom bold */
@@ -55,6 +55,10 @@ body {
 
 .custom-nav-background {
   background-color: var(--brown);
+}
+
+.custom-nav-background-light {
+  background: none !important;
 }
 
 /* book nest image sizing */
@@ -75,12 +79,26 @@ img {
 /* links */
 a {
   text-decoration: none;
-  color: var(--dark-blue);
+  color: var(--green);
+  font-weight: bold;
 }
 
 a:hover {
-  color: var(--pink) !important;
-  font-size: 1.1rem;
+  color: var(--purple) !important;
+  font-weight: bold;
+}
+
+/* buttons */
+.btn-custom {
+  background-color: var(--green);
+  color: white;
+  border-color: white;
+}
+
+.btn-custom:hover {
+  background-color: var(--purple);
+  color: white !important;
+  border: var(--dark-purple);
 }
 
 /* override container width */
