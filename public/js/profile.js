@@ -1,3 +1,5 @@
+// CURRENTLY NOT IN USE
+
 let books = document.querySelectorAll('.card');
 
 // Listen for clicks on book card

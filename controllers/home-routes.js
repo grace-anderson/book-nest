@@ -16,7 +16,9 @@ const {
 
 // GET THE HOMEPAGE
 router.get('/', (req, res) => {
-  res.render('homepage');
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 // GET THE LOGIN PAGE
@@ -151,7 +153,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
 // TODO: Create (share) a new book
 router.get('/share-book', withAuth, async (req, res) => {
-  res.render('createBook', {
+  res.render('shareBook', {
     loggedIn: req.session.loggedIn
   });
 });

@@ -1,4 +1,4 @@
-const createBook = async (event) => {
+const shareBook = async (event) => {
   event.preventDefault();
 
   const title = document.querySelector('#title-input').value.trim();
@@ -37,4 +37,4 @@ const createBook = async (event) => {
 
 document
   .querySelector('#share-book-form')
-  .addEventListener('submit', createBook);
+  .addEventListener('submit', shareBook);
