@@ -13,19 +13,26 @@ const createBook = async (event) => {
 
   console.log(title, author, publicationYear, genreValue);
 
-  // const response = await fetch('/api/books', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ title, author, publication_year, genre }),
-  //   headers: { 'Content-Type': 'application/json' }
-  // });
+  if (!title || !author || !publicationYear || !genreValue) {
+    alert('Please fill in all fields to share your book.');
+    return;
+  }
 
-  // if (response.ok) {
-  //   document.location.replace('/profile');
-  // } else {
-  //   alert(
-  //     'Failed to share your book to Book Nest. Did you add your title, author and genre'
-  //   );
-  // }
+  if (title && author && publicationYear && genreValue) {
+    const response = await fetch('/api/books', {
+      method: 'POST',
+      body: JSON.stringify({ title, author, publicationYear, genreValue }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert(
+        'Failed to share your book to Book Nest. Did you add your title, author and genre'
+      );
+    }
+  }
 };
 
 document
