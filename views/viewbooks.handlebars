@@ -5,34 +5,44 @@
 
       {{! for each card, present it using this bootstrap card format }}
       <div class="col-12 col-md-4 col-lg-3 my-3">
-        <a href="/books/{{id}}" class="book-link">
+        <a href="/books/{{book.id}}" class="book-link">
           <div class="card h-100 w-100 custom-card-border">
             <div class="card-header">
               <h5>
-                {{title}}
+                {{book.title}}
                 <i class="bi bi-book"></i>
               </h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 Author:
-                {{author}}
+                <span class="normal-weight">
+                  {{book.author}}
+                </span>
               </li>
               <li class="list-group-item">
                 Publication Date:
-                {{publication_year}}
+                <span class="normal-weight">
+                  {{book.publication_year}}
+                </span>
               </li>
               <li class="list-group-item">
                 Genre:
-                {{genre.genre_title}}
+                <span class="normal-weight">
+                  {{book.genre.genre_title}}
+                </span>
               </li>
               <li class="list-group-item">
                 Date shared to Book Nest:
-                {{format_date date_shared}}
+                <span class="normal-weight">
+                  {{format_date book.date_shared}}
+                </span>
               </li>
               <li class="list-group-item">
                 Shared by:
-                {{book.user.username}}
+                <span class="normal-weight">
+                  {{book.user.username}}
+                </span>
               </li>
             </ul>
           </div>
