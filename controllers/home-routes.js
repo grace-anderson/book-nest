@@ -8,8 +8,7 @@ const {
   Book,
   // Reading_List,
   // Book_Reading_List,
-  Genre,
-  User
+  Genre
 } = require('../models');
 
 // ====== BELOW:
