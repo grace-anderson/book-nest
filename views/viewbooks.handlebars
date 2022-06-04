@@ -1,32 +1,43 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
 <div class="container">
-  <div class="row border-orange">
+  <div class="row mx-5">
 
     {{#each books as |book|}}
 
       {{! for each card, present it using this bootstrap card format }}
-
       <div class="col-12 col-md-4 col-lg-3 my-3">
-        <div class="card h-100 border-blue" style="width: 18rem;">
-          <div class="card-header">
-            Title:
-            {{title}}
+        <a href="/books/{{id}}" class="book-link">
+          <div class="card h-100 w-100 custom-card-border">
+            <div class="card-header">
+              <h5>
+                {{title}}
+                <i class="bi bi-book"></i>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                Author:
+                {{author}}
+              </li>
+              <li class="list-group-item">
+                Publication Date:
+                {{publication_year}}
+              </li>
+              <li class="list-group-item">
+                Genre:
+                {{genre.genre_title}}
+              </li>
+              <li class="list-group-item">
+                Date shared to Book Nest:
+                {{format_date date_shared}}
+              </li>
+              <li class="list-group-item">
+                Shared by:
+                {{book.user.username}}
+              </li>
+            </ul>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              Author:
-              {{author}}
-            </li>
-            <li class="list-group-item">
-              Publication Date:
-              {{publication_date}}
-            </li>
-            <li class="list-group-item">
-              Genres:
-              {{genre.genre_title}}
-            </li>
-          </ul>
-        </div>
+        </a>
       </div>
 
     {{/each}}

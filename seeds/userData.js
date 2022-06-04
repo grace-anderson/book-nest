@@ -3,9 +3,9 @@ const { User } = require('../models');
 const userData = [
   //1
   {
-    username: 'Amanda',
-    email: 'anunes@ufc.com',
-    password: 'password12345'
+    username: 'Sally',
+    email: 'sally@email.com',
+    password: 'abc123'
   },
   //2
   {
@@ -33,6 +33,12 @@ const userData = [
   }
 ];
 
-const seedUsers = () => User.bulkCreate(userData);
+// to make sure the hashed passwords carry over
+const seedUsers = async () => {
+  await User.bulkCreate(userData, {
+    individualHooks: true,
+    returning: true
+  });
+};
 
 module.exports = seedUsers;
