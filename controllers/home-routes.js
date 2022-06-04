@@ -44,12 +44,15 @@ router.get('/view-books', async (req, res) => {
   console.log(books);
 
   res.render('viewbooks', {
-    books
+    books,
+    loggedIn: req.session.logged_in
   });
 });
 
 router.get('/showFindBook', (req, res) => {
-  res.render('findBook');
+  res.render('findBook', {
+    loggedIn: req.session.logged_in
+  });
 });
 
 //find a book

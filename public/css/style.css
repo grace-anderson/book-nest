@@ -36,6 +36,28 @@
   color: #ff0000;
 }
 
+.custom-nav-background {
+  background-color: var(--brown);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap {
+  display: flex;
+}
+
+.wrap h1 {
+  align-self: flex-end;
+}
+
+#logout {
+  color: #ffffff8c;
+  text-decoration: none;
+}
+
 /* body {
 background: var(--grey );
 }

@@ -20,7 +20,6 @@
         <p class="form-msg">Fields marked with * are required</p>
         <p class="error-msg"></p>
 
-        {{! form }}
         <form class="input-form register-form">
           <!-- Email input -->
           <div class="form-outline mb-4">
@@ -71,11 +70,7 @@
               onclick="window.location='/showLogin'"
             >Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
-              <a
-                href="#!"
-                class="link-danger"
-                onclick="window.location='/showRegister'"
-              >Register</a>
+              <a href="/showRegister" class="link-danger">Register</a>
             </p>
           </div>
 

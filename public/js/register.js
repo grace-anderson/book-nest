@@ -7,6 +7,7 @@ window.onload = function () {
       const username = document.querySelector('#username').value.trim();
       const password = document.querySelector('#password').value.trim();
       const email = document.querySelector('#email').value.trim();
+
       const errorMsgElement = document.querySelector('.error-msg');
       let errorMsg = '';
 
