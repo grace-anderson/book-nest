@@ -30,7 +30,7 @@ router.get('/login', (req, res) => {
 
 // GET VIEW BOOKS PAGE
 // getting login route to the front end
-router.get('/showLogin', (req, res) => {
+router.get('/login', (req, res) => {
   res.render('login');
 });
 
