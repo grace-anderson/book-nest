@@ -87,7 +87,7 @@ router.get('/books/:id', async (req, res) => {
 });
 
 // SEARCH FOR A BOOK (BY ITS TITLE)
-router.get('/find', async (req, res) => {
+router.get('/find-book', async (req, res) => {
   try {
     const books = await Book.findAll({
       where: {
