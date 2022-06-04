@@ -1,3 +1,4 @@
+// HANDLER FOR LOGGING THE USER IN
 const logUserIn = async (event) => {
   event.preventDefault();
 
@@ -22,6 +23,7 @@ const logUserIn = async (event) => {
   }
 };
 
+// HANDLER FOR SIGNING A NEW USER UP
 const signUserUp = async (event) => {
   event.preventDefault();
 
@@ -44,11 +46,13 @@ const signUserUp = async (event) => {
   }
 };
 
+// GET THE ELEMENTS
 document.getElementById('login-form').addEventListener('submit', logUserIn);
 
 document.getElementById('signup-form').addEventListener('submit', signUserUp);
 
-// ==== old version
+// ==== BELOW:
+// OLD VERSION THAT DOESN'T WORK
 
 // const logUserIn = async (event) => {
 //   event.preventDefault();

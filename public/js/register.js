@@ -1,3 +1,5 @@
+// CURRENTLY NOT IN USE
+
 window.onload = function () {
   const registerForm = document.querySelector('.register-form');
 

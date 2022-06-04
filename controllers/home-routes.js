@@ -1,7 +1,8 @@
+// IMPORT MODULES AND HELPERS
 const router = require('express').Router();
 const { Op } = require('sequelize');
 const withAuth = require('../utils/auth');
-
+// IMPORT MODELS
 const {
   // User,
   Book,
@@ -9,6 +10,9 @@ const {
   // Book_Reading_List,
   Genre
 } = require('../models');
+
+// ====== BELOW:
+// ROUTES THAT WORK
 
 // GET THE HOMEPAGE
 router.get('/', (req, res) => {
@@ -24,21 +28,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-/*
-
-// GET VIEW BOOKS PAGE
-// getting login route to the front end
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-// getting register route to the front end
-router.get('/showRegister', (req, res) => {
-  res.render('register');
-});
-
-*/
-
+// RETRIEVE AND DISPLAY ALL BOOKS
 router.get('/view-books', async (req, res) => {
   const bookData = await Book.findAll({
     include: [
@@ -62,7 +52,35 @@ router.get('/view-books', async (req, res) => {
   });
 });
 
-//find a book
+// RETRIEVE A SINGLE BOOK BY ITS ID
+router.get('/books/:id', async (req, res) => {
+  try {
+    const bookId = req.params.id;
+
+    const bookData = await Book.findByPk(bookId, {
+      include: [
+        {
+          model: Genre,
+          attributes: ['genre_title']
+        }
+      ]
+    });
+
+    const selectedBook = bookData.get({ plain: true });
+
+    console.log('\n---HOME ROUTES: SELECTED BOOK');
+    console.log(selectedBook);
+
+    // res.status(200).json(selectedBook);
+    res.render('bookCard', {
+      selectedBook
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// SEARCH FOR A BOOK (BY ITS TITLE)
 router.get('/find', async (req, res) => {
   try {
     const books = await Book.findAll({
@@ -86,6 +104,9 @@ router.get('/find', async (req, res) => {
     });
   }
 });
+
+// ===== BELOW:
+// ROUTES IN PROGRESS
 
 // TODO: Display user's profile with list of books
 router.get('/profile', withAuth, async (req, res) => {
@@ -124,34 +145,6 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-// GET A SINGLE BOOK BY ITS ID
-router.get('/books/:id', async (req, res) => {
-  try {
-    const bookId = req.params.id;
-
-    const bookData = await Book.findByPk(bookId, {
-      include: [
-        {
-          model: Genre,
-          attributes: ['genre_title']
-        }
-      ]
-    });
-
-    const selectedBook = bookData.get({ plain: true });
-
-    console.log('\n---HOME ROUTES: SELECTED BOOK');
-    console.log(selectedBook);
-
-    // res.status(200).json(selectedBook);
-    res.render('bookCard', {
-      selectedBook
-    });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
 // TODO: Create (share) a new book
 router.get('/new-shared-book', withAuth, async (req, res) => {
   res.render('createBook', {
@@ -180,6 +173,20 @@ router.get('/book-update/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// ==== BELOW:
+// ROUTES NOT IN USE OR NOT WORKING
+
+// GET VIEW BOOKS PAGE
+// getting login route to the front end
+// router.get('/login', (req, res) => {
+//   res.render('login');
+// });
+
+// getting register route to the front end
+// router.get('/showRegister', (req, res) => {
+//   res.render('register');
+// });
 
 //create book page
 // router.get('/book/:id', async (req, res) => {

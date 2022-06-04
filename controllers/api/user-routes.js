@@ -1,7 +1,8 @@
+// IMPORT MODULES
 const router = require('express').Router();
 const { User, Reading_List, Book } = require('../../models');
 
-// get all users (testing)
+// GET ALL USERS (FOR BACKEND TESTING)
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -68,17 +69,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
-
-// signup a new user
+// SIGN A NEW USER UP
 router.post('/', async (req, res) => {
   try {
     // console.log(`\n---REQ.BODY SIGNUP?`)
@@ -90,6 +81,7 @@ router.post('/', async (req, res) => {
       // make a new user
       const newUser = await User.create(req.body);
 
+      // create new reading list and attach to user
       const newReadingList = await Reading_List.create({
         reader_id: newUser.id
       });
@@ -121,6 +113,23 @@ router.post('/', async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// ==== BELOW:
+// ROUTES IN PROGRESS
+
+// LOG THE USER OUT
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+// ===== BELOW:
+// ROUTES NOT IN USE OR NOT WORKING
 
 // router.post('/register', async (req, res) => {
 //   try {
