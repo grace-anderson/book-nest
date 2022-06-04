@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
     console.log(email);
     console.log(password);
 
-    const returningUser = await User.scope('withPassword').findOne({
+    const returningUser = await User.findOne({
       where: {
         email: email
       }
@@ -74,6 +74,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// signup a new user
 router.post('/', async (req, res) => {
   try {
     // console.log(`\n---REQ.BODY SIGNUP?`)
@@ -82,16 +83,28 @@ router.post('/', async (req, res) => {
     const { username, email, password } = req.body;
 
     if (username && email && password) {
+      // make a new user
       const newUser = await User.create(req.body);
+
+      const newReadingList = await Reading_List.create({
+        reader_id: newUser.id
+      });
+
+      console.log('new reading list');
+      console.log(newReadingList);
 
       req.session.save(() => {
         req.session.user_id = newUser.id;
-        req.session.loggedIn = true;
+        req.session.logged_in = true;
 
         // console.log(`\n---REQ.SESSION NEW USER`);
         // console.log(newUser);
 
-        res.status(200).json(newUser);
+        res.status(200).json({
+          newUser,
+          id: newUser.id,
+          newReadingList
+        });
       });
     } else {
       alert(
@@ -99,8 +112,8 @@ router.post('/', async (req, res) => {
       );
     }
   } catch (error) {
-    // console.log(`\n---ERROR:`);
-    // console.log(error);
+    console.log('\n---ERROR:');
+    console.log(error);
     res.status(500).json(error);
   }
 });
