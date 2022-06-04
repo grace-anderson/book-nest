@@ -1,5 +1,32 @@
-<div class="border-red">
-
-  test
-
+<div class="container">
+  <div class="row ms-1 pt-3 pb-3">
+    <div class="col">
+      <h1>Welcome to Book Nest</h1>
+      <p>Book Nest is where readers find new ebooks to read, book owners share
+        their ebooks, and authors publish their ebooks. And its all free!
+        <a href="/view-books">Check out all our ebooks here</a>
+        {{! update link to javascript }}
+      </p>
+    </div>
+    <div class="col ps-3">
+      <div>
+        {{! update click on button to javascript }}
+        <a
+          type="button"
+          class="btn btn-outline-primary mt-2 mb-1"
+          href="/showLogin"
+        >Login to your Book Nest</a>
+      </div>
+      <div>
+        {{! update click on button to javascript }}
+        <a
+          type="button"
+          class="btn btn-outline-primary mt-2 mb-1"
+          href="/find"
+        >Find a book</a>
+        {{! <button type="button" class="btn btn-outline-primary mt-2">Find a book</button> }}
+      </div>
+    </div>
+  </div>
 </div>
+<script src="/js/homePage.js"></script>

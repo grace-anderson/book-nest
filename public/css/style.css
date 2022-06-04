@@ -45,6 +45,19 @@ img {
   align-self: flex-end;
 }
 
+/* override container width */
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
 /* body {
 background: var(--grey );
 }

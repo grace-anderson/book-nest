@@ -1,9 +1,17 @@
 <div>
-  <form id="find-a-book">
-    <input type="input" />
+  <form action="/find" method="get">
+    <input type="input" name="title" />
     <button>Find a Book</button>
   </form>
 </div>
 <div>
-  {{!-- <p>{{book.title}}</p> --}}
+  {{#each books as |book|}}
+    <p>{{book.title}}</p>
+
+  {{/each}}
 </div>
+
+{{#if error}}
+  <div class="text-danger">{{error}}</div>
+
+{{/if}}

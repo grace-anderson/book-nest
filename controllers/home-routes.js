@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Op } = require('sequelize');
 // const { User, Book } = require('../models');
 const {
   // User,
@@ -47,19 +48,27 @@ router.get('/view-books', async (req, res) => {
 });
 
 //find a book
-//TODO: update to fetch array, then search array to retrieve match with user entry
 router.get('/find', async (req, res) => {
   try {
-    const bookData = await Book.findOne({ where: { title: req.body.title } });
+    const books = await Book.findAll({
+      where: {
+        title: {
+          [Op.like]: '%' + req.query.title + '%'
+        }
+      }
+    });
 
-    const book = bookData.get({ plain: true });
+    const payload = books.map((book) => book.get({ plain: true }));
 
     res.render('findBook', {
-      book
+      books: payload
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.render('findBook', {
+      //fix - don't send back err
+      error: err
+    });
   }
 });
 
@@ -127,5 +136,19 @@ router.get('/book-update/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//create book page
+// router.get('/book/:id', async (req, res) => {
+//   try {
+// //identify the retrieved, clicked book
+// //open a page with that one book's details
+// Book.findByPk({
+//   where: {
+//     id: req.params.id
+//   }
+// })
+
+//   } catch {}
+// });
 
 module.exports = router;
