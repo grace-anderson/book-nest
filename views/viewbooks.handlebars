@@ -4,7 +4,6 @@
     {{#each books as |book|}}
 
       {{! for each card, present it using this bootstrap card format }}
-
       <div class="col-12 col-md-4 col-lg-3 my-3">
         <a href="/books/{{id}}" class="book-link">
           <div class="card h-100 w-100 border-blue">
@@ -23,6 +22,15 @@
               <li class="list-group-item">
                 Genre:
                 {{genre.genre_title}}
+              </li>
+              <li class="list-group-item">
+                Date shared to Book Nest:
+                {{format_date date_shared}}
+              </li>
+              <li class="list-group-item">
+                Shared by: TODO username not displaying
+                {{book.user_shared_id}}
+                {{book.user.username}}
               </li>
             </ul>
           </div>
