@@ -14,7 +14,7 @@ const createBook = async (event) => {
   console.log(title, author, publicationYear, genreValue);
 
   if (!title || !author || !publicationYear || !genreValue) {
-    alert('Please fill in all fields to share your book.');
+    alert('Please make sure all fields are filled in.');
     return;
   }
 

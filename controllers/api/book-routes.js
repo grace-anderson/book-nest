@@ -10,7 +10,7 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const loggedInUser = req.session.user_id;
 
-    const { title, author, publication_year, genre } = req.body;
+    const { title, author, publicationYear, genreValue } = req.body;
 
     console.log('\n---REQ.BODY:');
     console.log(req.body);
@@ -18,18 +18,21 @@ router.post('/', withAuth, async (req, res) => {
     const bookData = await Book.create({
       title,
       author,
-      publication_year,
-      genre_id: genre,
+      publication_year: publicationYear,
+      genre_id: genreValue,
       user_shared_id: loggedInUser
     });
 
-    if (!bookData) {
-      res.status(400).json({
-        message:
-          'Failed to share book. Remember to add title, author and genre.'
-      });
-      return;
-    }
+    // if (!bookData) {
+    //   res.status(400).json({
+    //     message:
+    //       'Failed to share book. Remember to add title, author and genre.'
+    //   });
+    //   return;
+    // }
+
+    console.log('\n---BOOK ROUTES: POST BOOK');
+    console.log(bookData);
 
     res.status(200).json(bookData);
   } catch (err) {
