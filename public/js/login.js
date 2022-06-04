@@ -8,6 +8,11 @@ const logUserIn = async (event) => {
   // console.log('\n----LOGIN ROUTE: EMAIL');
   // console.log(email);
 
+  if (!email || !password) {
+    alert('Please fill in both email and password fields.');
+    return;
+  }
+
   if (email && password) {
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -35,7 +40,7 @@ const signUserUp = async (event) => {
   // let validEmail;
 
   if (!username || !email || !password) {
-    alert('Please make sure username, email, and password fields are filled.');
+    alert('Please fill in the username, email, and password fields.');
   }
 
   // tried to add validation checks for user and email to be unique but it's not working 100%

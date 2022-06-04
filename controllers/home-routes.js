@@ -150,9 +150,8 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 // TODO: Create (share) a new book
-router.get('/new-shared-book', withAuth, async (req, res) => {
+router.get('/share-book', withAuth, async (req, res) => {
   res.render('createBook', {
-    pageDescription: 'Your Profile',
     loggedIn: req.session.loggedIn
   });
 });
