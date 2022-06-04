@@ -24,7 +24,7 @@ const hbs = exphbs.create();
 // const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.COOKIE_SECRET, // change to environment variable
   cookie: {},
   resave: false,
   saveUninitialized: true,

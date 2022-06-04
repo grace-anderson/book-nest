@@ -3,7 +3,7 @@ const { User } = require('../models');
 const userData = [
   //1
   {
-    username: 'sally',
+    username: 'Sally',
     email: 'sally@email.com',
     password: 'abc123'
   },
@@ -33,6 +33,7 @@ const userData = [
   }
 ];
 
+// to make sure the hashed passwords carry over
 const seedUsers = async () => {
   await User.bulkCreate(userData, {
     individualHooks: true,

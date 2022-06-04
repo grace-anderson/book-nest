@@ -4,7 +4,7 @@ const logUserIn = async (event) => {
   const email = document.getElementById('email-login').value.trim();
   const password = document.getElementById('password-login').value.trim();
 
-  // console.log(`\n----LOGIN ROUTE: EMAIL`);
+  // console.log('\n----LOGIN ROUTE: EMAIL');
   // console.log(email);
 
   if (email && password) {
@@ -22,7 +22,7 @@ const logUserIn = async (event) => {
   }
 };
 
-const signUserUp = async (event) => {
+const registerUser = async (event) => {
   event.preventDefault();
 
   const username = document.getElementById('username-signup').value.trim();
@@ -46,7 +46,11 @@ const signUserUp = async (event) => {
 
 document.getElementById('login-form').addEventListener('submit', logUserIn);
 
-document.getElementById('signup-form').addEventListener('submit', signUserUp);
+document
+  .getElementById('register-form')
+  .addEventListener('submit', registerUser);
+
+// ==== old version
 
 // const logUserIn = async (event) => {
 //   event.preventDefault();

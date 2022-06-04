@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Op } = require('sequelize');
+const withAuth = require('../utils/auth');
 
 const {
   // User,
@@ -9,9 +10,6 @@ const {
   Genre
 } = require('../models');
 
-// authentication import
-const withAuth = require('../utils/auth');
-
 // GET THE HOMEPAGE
 router.get('/', (req, res) => {
   res.render('homepage');
@@ -20,7 +18,7 @@ router.get('/', (req, res) => {
 // GET THE LOGIN PAGE
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/viewBooks');
+    res.redirect('/view-books');
     return;
   }
   res.render('login');
@@ -90,23 +88,24 @@ router.get('/find', async (req, res) => {
 });
 
 // TODO: Display user's profile with list of books
-router.get('/profile', async (req, res) => {
-  // TODO: If user not logged in, redirect to login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-    return;
-  }
+router.get('/profile', withAuth, async (req, res) => {
+  // // TODO: If user not logged in, redirect to login page
+  // if (!req.session.loggedIn) {
+  //   res.redirect('/login');
+  //   return;
+  // }
 
   try {
-    books = [];
-    if (req.session.loggedIn) {
-      const bookData = await Book.findAll({
-        where: {
-          user_shared_id: req.session.loggedInId
-        }
-      });
-      books = bookData.map((book) => book.get({ plain: true }));
-    }
+    // if (req.session.loggedIn) {
+    console.log('\n---REQ.SESSION');
+    console.log(req.session);
+
+    const bookData = await Book.findAll({
+      where: {
+        user_shared_id: req.session.user_id
+      }
+    });
+    const books = bookData.map((book) => book.get({ plain: true }));
 
     // TODO format date
     // for (let i = 0; i < books.length; i++) {
@@ -145,7 +144,7 @@ router.get('/books/:id', async (req, res) => {
     console.log(selectedBook);
 
     // res.status(200).json(selectedBook);
-    res.render('book', {
+    res.render('bookCard', {
       selectedBook
     });
   } catch (error) {
