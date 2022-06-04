@@ -54,7 +54,8 @@ router.get('/view-books', async (req, res) => {
   // console.log(books);
 
   res.render('viewBooks', {
-    books
+    books,
+    loggedIn: req.session.loggedIn
   });
 });
 
@@ -91,6 +92,9 @@ router.get('/profile', async (req, res) => {
   try {
     const sessionUserId = req.session.user_id;
 
+    console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
+    console.log(req.session.user_id);
+
     const bookData = await Book.findAll({
       include: [
         {
@@ -113,7 +117,8 @@ router.get('/profile', async (req, res) => {
     console.log(sharedBooks);
 
     res.render('profile', {
-      sharedBooks
+      sharedBooks,
+      loggedIn: req.session.loggedIn
     });
   } catch (error) {
     console.log('\n---HOME ROUTES: SHARED BY ERR');
@@ -136,7 +141,8 @@ router.get('/find-book', async (req, res) => {
     const payload = books.map((book) => book.get({ plain: true }));
 
     res.render('findBook', {
-      books: payload
+      books: payload,
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     console.log(err);
