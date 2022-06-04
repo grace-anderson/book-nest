@@ -7,9 +7,14 @@
   --errorChecking: #ff497b;
 }
 
+/* background image */
 body {
   background-image: url("../img/bird-house-green.png");
   background-size: cover;
+}
+
+.white-background {
+  background-color: white;
 }
 
 /* login / register page  */
@@ -76,15 +81,6 @@ img {
   height: auto;
 }
 
-/* position header h1 */
-.wrap {
-  display: flex;
-}
-
-.wrap h1 {
-  align-self: flex-end;
-}
-
 /* links */
 a {
   text-decoration: none;
@@ -110,6 +106,35 @@ a:hover {
   border: var(--dark-purple);
 }
 
+.input-form label {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.input-form .required {
+  color: var(--errorChecking);
+  margin-left: 3px;
+}
+
+.form-msg {
+  font-size: 18px;
+  color: var(--errorChecking);
+}
+
+.border-red {
+  border: 1px solid red;
+}
+
+.border-blue {
+  border: 1px solid blue;
+}
+
+.border-orange {
+  border: 1px solid orange;
+}
+
 /* override container width */
 @media (min-width: 768px) {
   .container {
@@ -121,217 +146,4 @@ a:hover {
   .container {
     max-width: 100%;
   }
-}
-
-/* body {
-background: var(--grey );
-}
-.navbar-expand-lg .navbar-nav {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.back-link {
-text-align: center;
-font-size: 20px;
-}
-
-section {
-  padding: 10px 0;
-}
-
-section h4 {
-  text-align: center;
-}
-.container {
-  text-align: center;
-  width: 400px;
-  margin: auto;
-}
-
-.choose-options-books {
-border: 1px solid #ccc;
-padding: 10px;
-width: 60%;
-margin: auto;
-text-align: left;
-padding-left: 15%;
-}
-
-.books-list, .list-options {
-  list-style: none;
-}
-
-.align-left {
-  text-align: left;
-}
-
-.search-btn {
-  padding: 10px 20px;
-  border: none;;
-  border: 1px solid #ccc;
-}
-
-
-.search-result {
-  width: 80%;
-  margin: 1rem auto;
-}
-
-.search-result-table {
-  border: 1px solid #000;
-  width: inherit;
-  margin: inherit;
-}
-
-.search-result-table td,
-.search-result-table th,
-.search-result-table tr {
-  border: 1px solid #000;
-  padding: 10px;
-}
-
-.no-result,
-.error-msg {
-  color: #c90c0c;
-  font-weight: bold;
-  text-align: center;
-}
-
-.success-msg {
-  color: #6ca26c;
-  text-align: left;
-  font-weight: bold;
-}
-
-.hide {
-  display: none;
-}
-
-
-.find-book {
-width: 30%;
-margin: 1rem auto;
-background: var(--grey);
-padding: 10px;
-}
-
-
-
-/* main page */
-
-/* hr.style-four {
-border: 0;
-height: 1px;
-background: #000;
-background-image: linear-gradient(to right, #000, #ccc, #000);
-margin: 60px 0;
-}
-
-.pillars > div {
-border-radius: 10px;
-text-align: center;
-}
-
-.pillars > div .button {
-display: none !important;
-}
-
-.pillars > div:hover .button {
-display: block !important;
-}
-
-.pillars > div:hover {
-border: 1px solid #70a3c9;
-}
-
-.adopt p {
-width: 80%;
-font-size: 20px;
-font-weight: bold;
-cursor: pointer;
-}
-
-.adopt p:hover {
-cursor: pointer;
-font-size: 23px;
-}
-
-.aboutus,
-.howTo,
-.win {
-display: none;
-}
-
-
-.aboutus.active,
-.howTo.active,
-.win.active {
-display: block;
-}
-
-.pillarsOfContent {
-background: var(--grey);
-}
-
-/* end of main page */
-/* 
-.my-books {
-} */
-
-/* login bootstrap template */
-/* .my-books .book-title {
-font-size: 20px;
-font-weight: bold;
-text-align: left;
-margin-top: 1rem;
-}
-
-.my-books .btn.btn-primary {
-background: #387d38;
-}
-
-.divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
-}
-.h-custom {
-height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
-}
-} */
-
-.input-form label {
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-.input-form .required {
-  color: #c90c0c;
-  margin-left: 3px;
-}
-
-.form-msg {
-  font-size: 18px;
-  color: #c90c0c;
-}
-.border-red {
-  border: 1px solid red;
-}
-
-.border-blue {
-  border: 1px solid blue;
-}
-
-.border-orange {
-  border: 1px solid orange;
 }
