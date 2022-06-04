@@ -28,21 +28,35 @@
   color: var(--errorChecking);
 }
 
+/* nav */
 .custom-nav-background {
   background-color: var(--brown);
 }
 
+/* book nest image sizing */
 img {
   max-width: 100%;
   height: auto;
 }
 
+/* position header h1 */
 .wrap {
   display: flex;
 }
 
 .wrap h1 {
   align-self: flex-end;
+}
+
+/* links */
+a {
+  text-decoration: none;
+  color: var(--dark-blue);
+}
+
+a:hover {
+  color: var(--pink) !important;
+  font-size: 1.1rem;
 }
 
 /* override container width */
