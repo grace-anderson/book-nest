@@ -7,6 +7,11 @@
   --errorChecking: #ff497b;
 }
 
+body {
+  background-image: url("../img/bird-house-green.png");
+  background-size: cover;
+}
+
 /* login / register page  */
 
 .input-form label {
@@ -59,6 +64,10 @@ body {
 
 .custom-nav-background-light {
   background: none !important;
+}
+
+.custom-nav-link {
+  color: white !important;
 }
 
 /* book nest image sizing */
