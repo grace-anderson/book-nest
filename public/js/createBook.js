@@ -5,9 +5,9 @@ const createBook = async (event) => {
   const author = document.querySelector('#author-input').value;
   const genre = document.querySelector('#genre-input').value;
 
-  const response = await fetch('/api/book/new-book', {
+  const response = await fetch('/api/books', {
     method: 'POST',
-    body: JSON.stringify({ title, author, genre }),
+    body: JSON.stringify({ title, author, publication_year, genre }),
     headers: { 'Content-Type': 'application/json' }
   });
 

@@ -1,22 +1,23 @@
 const router = require('express').Router();
 const { Book } = require('../../models');
 
-// removing authorisation for testing purposes
-// const withAuth = require('../../utils/auth');
+// un-removing authorisation for testing purposes
+const withAuth = require('../../utils/auth');
 
-// TODO: Create a book
+// TODO: Create (share) a book
 // posting to 'api/books' (needs auth)
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
-    const { title, author, publication_year, genre_id, user_shared_id } =
-      req.body;
+    const loggedInUser = req.session.user_id;
+
+    const { title, author, publication_year, genre_id } = req.body;
 
     const bookData = await Book.create({
       title,
       author,
       publication_year,
       genre_id,
-      user_shared_id
+      user_shared_id: loggedInUser
     });
 
     if (!bookData) {
@@ -29,6 +30,7 @@ router.post('/', async (req, res) => {
 
     res.status(200).json(bookData);
   } catch (err) {
+    console.log('\n---BOOK ROUTES: POST BOOK ERR');
     console.log(err);
     res.status(400).json(err);
   }
