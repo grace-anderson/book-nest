@@ -8,7 +8,7 @@ const bookData = [
     author: 'JK Rowling',
     publication_year: 2014,
     user_shared_id: 5,
-    genre_id: 1
+    genre_id: 2
   },
   {
     title: 'To Paradise',
