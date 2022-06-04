@@ -24,14 +24,14 @@ router.post('/login', async (req, res) => {
     console.log(email);
     console.log(password);
 
-    const returningUser = await User.findOne({
+    const returningUser = await User.scope('withPassword').findOne({
       where: {
         email: email
       }
     });
 
-    console.log('\n----RETURNING USER');
-    console.log(returningUser);
+    // console.log(`\n----RETURNING USER`);
+    // console.log(returningUser);
 
     if (!returningUser) {
       return res.status(400).json({
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = returningUser.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
 
       const { username } = returningUser;
       const welcomeMsg = `Welcome back, ${username}!`;
@@ -58,29 +58,70 @@ router.post('/login', async (req, res) => {
       });
     });
   } catch (error) {
-    // console.log('\n------ERROR:');
+    // console.log(`\n------ERROR:`);
     // console.log(error);
     res.status(500).json(error);
   }
 });
 
-router.post('/register', async (req, res) => {
-  try {
-    const user = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
     });
-
-    if (!user) {
-      alert('Failed to register a user.');
-      return;
-    }
-
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(400).json(err);
+  } else {
+    res.status(404).end();
   }
 });
+
+router.post('/', async (req, res) => {
+  try {
+    // console.log(`\n---REQ.BODY SIGNUP?`)
+    // console.log(req.body);
+
+    const { username, email, password } = req.body;
+
+    if (username && email && password) {
+      const newUser = await User.create(req.body);
+
+      req.session.save(() => {
+        req.session.user_id = newUser.id;
+        req.session.loggedIn = true;
+
+        // console.log(`\n---REQ.SESSION NEW USER`);
+        // console.log(newUser);
+
+        res.status(200).json(newUser);
+      });
+    } else {
+      alert(
+        'Signup failed. Please enter a valid username, email, and password.'
+      );
+    }
+  } catch (error) {
+    // console.log(`\n---ERROR:`);
+    // console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+// router.post('/register', async (req, res) => {
+//   try {
+//     const user = await User.create({
+//       username: req.body.username,
+//       email: req.body.email,
+//       password: req.body.password
+//     });
+
+//     if (!user) {
+//       alert('Failed to register a user.');
+//       return;
+//     }
+
+//     res.status(200).json(user);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;
