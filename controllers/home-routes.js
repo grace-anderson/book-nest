@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 const withAuth = require('../utils/auth');
 // IMPORT MODELS
 const {
-  // User,
+  User,
   Book,
   // Reading_List,
   // Book_Reading_List,
@@ -49,7 +49,7 @@ router.get('/view-books', async (req, res) => {
 
   const books = bookData.map((book) => book.get({ plain: true }));
 
-  // console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
+  console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
   // console.log(books);
 
   res.render('viewBooks', {

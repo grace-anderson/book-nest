@@ -1,14 +1,17 @@
 <div class="container">
-  <div class="row border-orange">
+  <div class="row mx-5">
 
     {{#each books as |book|}}
 
       {{! for each card, present it using this bootstrap card format }}
       <div class="col-12 col-md-4 col-lg-3 my-3">
         <a href="/books/{{id}}" class="book-link">
-          <div class="card h-100 w-100 border-blue">
-            <div class="card-header embolden">
-              {{title}}
+          <div class="card h-100 w-100 custom-card-border">
+            <div class="card-header">
+              <h5>
+                {{title}}
+                <i class="bi bi-book"></i>
+              </h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
@@ -28,8 +31,7 @@
                 {{format_date date_shared}}
               </li>
               <li class="list-group-item">
-                Shared by: TODO username not displaying
-                {{book.user_shared_id}}
+                Shared by:
                 {{book.user.username}}
               </li>
             </ul>
