@@ -28,7 +28,31 @@
   color: var(--errorChecking);
 }
 
+/* custom styling */
+
+body {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 400;
+}
+
+/* styling class for book cards as links */
+.book-link {
+  text-decoration: none;
+  color: var(--light-blue);
+}
+
+/* custom bold */
+.embolden {
+  font-weight: 500;
+}
+
+/* custom REALLY bold */
+.really-embolden {
+  font-weight: 600;
+}
+
 /* nav */
+
 .custom-nav-background {
   background-color: var(--brown);
 }

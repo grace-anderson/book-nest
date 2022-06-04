@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// WHEN USER LOGS IN
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
