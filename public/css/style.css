@@ -51,6 +51,10 @@ body {
   color: var(--green);
 }
 
+.custom-card-border {
+  border: 1px solid var(--dark-purple);
+}
+
 /* custom bold */
 .embolden {
   font-weight: 500;
@@ -79,6 +83,11 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* book icon */
+i {
+  color: var(--purple);
 }
 
 /* links */
@@ -117,23 +126,6 @@ a:hover {
   color: white !important;
   border-color: var(--brown);
 }
-
-/* .input-form label {
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-.input-form .required {
-  color: var(--errorChecking);
-  margin-left: 3px;
-}
-
-.form-msg {
-  font-size: 18px;
-  color: var(--errorChecking);
-} */
 
 .border-red {
   border: 1px solid red;
