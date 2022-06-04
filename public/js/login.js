@@ -31,6 +31,41 @@ const signUserUp = async (event) => {
   const email = document.getElementById('email-signup').value.trim();
   const password = document.getElementById('password-signup').value.trim();
 
+  // let validUsername;
+  // let validEmail;
+
+  if (!username || !email || !password) {
+    alert('Please make sure username, email, and password fields are filled.');
+  }
+
+  // tried to add validation checks for user and email to be unique but it's not working 100%
+
+  // const usernameCheck = await fetch('/api/users/signup-check', {
+  //   method: 'POST',
+  //   body: JSON.stringify({ username }),
+  //   headers: { 'Content-Type': 'application/json' }
+  // });
+
+  // const emailCheck = await fetch('/api/users/signup-check', {
+  //   method: 'POST',
+  //   body: JSON.stringify({ email }),
+  //   headers: { 'Content-Type': 'application/json' }
+  // });
+
+  // if (usernameCheck.ok) {
+  //   return (validUsername = username);
+  // } else {
+  //   alert('Username is already taken');
+  // }
+
+  // if (emailCheck.ok) {
+  //   return (validEmail = email);
+  // } else {
+  //   alert('Email is already taken');
+  // }
+
+  // console.log(validUsername, validEmail, password);
+
   if (username && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
@@ -41,7 +76,11 @@ const signUserUp = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Sign up failed.');
+      alert(
+        'Sign up failed because the username or email already exists. Please try again.'
+      );
+      // after the alert is closed, refresh login page
+      document.location.replace('/login');
     }
   }
 };
