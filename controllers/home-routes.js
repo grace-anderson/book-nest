@@ -8,7 +8,8 @@ const {
   Book,
   // Reading_List,
   // Book_Reading_List,
-  Genre
+  Genre,
+  User
 } = require('../models');
 
 // ====== BELOW:
@@ -35,6 +36,10 @@ router.get('/view-books', async (req, res) => {
       {
         model: Genre,
         attributes: ['genre_title']
+      },
+      {
+        model: User,
+        attributes: ['username']
       }
     ]
   });
@@ -146,9 +151,8 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 // TODO: Create (share) a new book
-router.get('/new-shared-book', withAuth, async (req, res) => {
+router.get('/share-book', withAuth, async (req, res) => {
   res.render('createBook', {
-    pageDescription: 'Your Profile',
     loggedIn: req.session.loggedIn
   });
 });

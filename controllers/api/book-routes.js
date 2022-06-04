@@ -10,13 +10,16 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const loggedInUser = req.session.user_id;
 
-    const { title, author, publication_year, genre_id } = req.body;
+    const { title, author, publication_year, genre } = req.body;
+
+    console.log('\n---REQ.BODY:');
+    console.log(req.body);
 
     const bookData = await Book.create({
       title,
       author,
       publication_year,
-      genre_id,
+      genre_id: genre,
       user_shared_id: loggedInUser
     });
 
