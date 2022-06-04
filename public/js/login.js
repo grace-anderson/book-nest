@@ -15,14 +15,14 @@ const logUserIn = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/profile');
     } else {
       alert('Login failed.');
     }
   }
 };
 
-const registerUser = async (event) => {
+const signUserUp = async (event) => {
   event.preventDefault();
 
   const username = document.getElementById('username-signup').value.trim();
@@ -30,7 +30,7 @@ const registerUser = async (event) => {
   const password = document.getElementById('password-signup').value.trim();
 
   if (username && email && password) {
-    const response = await fetch('api/users', {
+    const response = await fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' }
@@ -46,9 +46,7 @@ const registerUser = async (event) => {
 
 document.getElementById('login-form').addEventListener('submit', logUserIn);
 
-document
-  .getElementById('register-form')
-  .addEventListener('submit', registerUser);
+document.getElementById('signup-form').addEventListener('submit', signUserUp);
 
 // ==== old version
 

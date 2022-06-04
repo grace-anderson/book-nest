@@ -1,28 +1,23 @@
 <div class="container">
-  {{#if loggedIn}}
-    <h2 class="mt-5 mb-3">Your Books</h2>
-    <p class="instruction">Share a new book, or click on a shared book to edit
-      or delete it</p>
-    {{#each this.books}}
-      <div class="row">
-        <div class="card col-8 col-sm-10 m-2 pointerCursor" data-id="{{id}}">
-          <div class="card-body">
-            <span class="float-start">{{title}} </span>
-            <span class="float-end">{{date_added}}</span>
-          </div>
-        </div>
-      </div>
-    {{/each}}
-
-    <div class="row mt-3 mb-1 align-items-center">
-      <div class="col-auto">
-        <button
-          class="btn btn-lg btn btn-dark"
-          id="new-book-button"
-          onclick="location.href='/new-shared-book'"
-        >Share a new book</button>
+  <h2 class="mt-5 mb-3">Your Shared Books</h2>
+  <p>These are the books you have shared.</p>
+  {{! add shared books here }}
+  {{!-- {{#each this.books}} --}}
+  <div class="row">
+    <div class="card col-8 col-sm-10 m-2 pointerCursor" data-id="ID">
+      <div class="card-body">
+        <span class="float-start">TITLE</span>
+        <span class="float-end">DATE ADDED</span>
       </div>
     </div>
-  {{/if}}
+  </div>
+  {{!-- {{/each}} --}}
+
+  <div class="row mt-3 mb-1 align-items-center">
+    <div class="col-auto">
+      <button class="btn btn-lg btn btn-dark" id="new-book-button">Share book to
+        Book Nest</button>
+    </div>
+  </div>
 </div>
 <script src="/js/profile.js"></script>
