@@ -1,41 +1,72 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>Login</h2>
-      <p>If you have an existing account, please log in with your email address.</p>
-      <form id="login-form">
-        <label for="email-login">Email:</label>
-        <input type="text" id="email-login" />
-
-        <label for="password-login">Password:</label>
-        <input type="text" id="password-login" />
-
-        <button class="btn btn-primary" type="submit">Login</button>
-
-      </form>
-
-    </div>
+<div class="d-inline-flex flex-row flex-wrap mt-5 ms-5">
+  {{! <div class="flex-row justify-content-center flex-wrap"> }}
+  <div class="flex-column col-auto mt-5 me-3">
+    <h2>Login</h2>
+    <p>If you have an existing account, please log in with your email address.</p>
+    <form id="login-form">
+      <div class="row">
+        <div class="col-3">
+          <label for="email-login">Email:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="email-login" />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="password-login">Password:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="password-login" />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-4">
+          <button class="btn btn-custom w-100" type="submit">Login</button>
+        </div>
+      </div>
+    </form>
   </div>
+  {{! </div> }}
 
-  <div class="row">
-    <div class="col">
-      <h2>Sign Up</h2>
-      <p>If you are a new user, please sign up using the form below.</p>
-      <form id="signup-form">
-        <label for="username-signup">Username:</label>
-        <input type="text" id="username-signup" />
+  {{! <div class="row"> }}
+  <div class="flex-column col-auto mt-5 me-3">
+    <h2>Sign Up</h2>
+    <p>If you are a new user, please sign up using the form below.</p>
+    <form id="signup-form">
+      <div class="row">
+        <div class="col-3">
+          <label for="username-signup">Username:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="username-signup" />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="email-signup">Email:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="email-signup" />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="password-signup">Password:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="password-signup" />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-4">
+          <button class="btn btn-custom w-100" type="submit">Sign Up</button>
+        </div>
+      </div>
+    </form>
 
-        <label for="email-signup">Email:</label>
-        <input type="text" id="email-signup" />
-
-        <label for="password-signup">Password:</label>
-        <input type="text" id="password-signup" />
-
-        <button class="btn btn-secondary" type="submit">Sign Up</button>
-      </form>
-
-    </div>
   </div>
+  {{! </div> }}
 </div>
 
 <script src="/js/login.js"></script>

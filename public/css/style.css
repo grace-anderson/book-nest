@@ -106,7 +106,19 @@ a:hover {
   border: var(--dark-purple);
 }
 
-.input-form label {
+.btn:active {
+  background-color: var(--dark-purple);
+  color: white !important;
+  border-color: var(--brown);
+}
+
+.btn:focus {
+  background-color: var(--dark-purple);
+  color: white !important;
+  border-color: var(--brown);
+}
+
+/* .input-form label {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -121,7 +133,7 @@ a:hover {
 .form-msg {
   font-size: 18px;
   color: var(--errorChecking);
-}
+} */
 
 .border-red {
   border: 1px solid red;
