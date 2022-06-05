@@ -12,7 +12,7 @@ const addToReadingList = async (event) => {
   });
 
   if (response.ok) {
-    document.location.replace(`/book/${bookId}`);
+    document.location.replace(`/books/${bookId}`);
   } else {
     alert('something went wrong');
   }
