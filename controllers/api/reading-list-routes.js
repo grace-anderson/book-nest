@@ -53,7 +53,7 @@ router.post('/add', withAuth, async (req, res) => {
 
     // console.log(bookReadingList);
 
-    // send the book
+    // send details of book that is to be added to reading list
     res.status(200).json({
       book
     });
