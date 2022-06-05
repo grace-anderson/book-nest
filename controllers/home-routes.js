@@ -16,7 +16,9 @@ const {
 
 // GET THE HOMEPAGE
 router.get('/', (req, res) => {
-  res.render('homepage');
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 // GET THE LOGIN PAGE
@@ -52,11 +54,12 @@ router.get('/view-books', async (req, res) => {
   // console.log(books);
 
   res.render('viewBooks', {
-    books
+    books,
+    loggedIn: req.session.loggedIn
   });
 });
 
-// RETRIEVE A SINGLE BOOK BY ITS ID
+// RETRIEVE AND DISPLAY A SINGLE BOOK BY ITS ID
 router.get('/books/:id', async (req, res) => {
   try {
     const bookId = req.params.id;
@@ -84,8 +87,48 @@ router.get('/books/:id', async (req, res) => {
   }
 });
 
+// RETRIEVE AND DISPLAY BOOKS SHARED BY USER
+router.get('/profile', async (req, res) => {
+  try {
+    const sessionUserId = req.session.user_id;
+
+    console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
+    console.log(req.session.user_id);
+
+    const bookData = await Book.findAll({
+      include: [
+        {
+          model: Genre,
+          attributes: ['genre_title']
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ],
+      where: {
+        user_shared_id: sessionUserId
+      }
+    });
+
+    const sharedBooks = bookData.map((book) => book.get({ plain: true }));
+
+    console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
+    console.log(sharedBooks);
+
+    res.render('profile', {
+      sharedBooks,
+      loggedIn: req.session.loggedIn
+    });
+  } catch (error) {
+    console.log('\n---HOME ROUTES: SHARED BY ERR');
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
 // SEARCH FOR A BOOK (BY ITS TITLE)
-router.get('/find', async (req, res) => {
+router.get('/find-book', async (req, res) => {
   try {
     const books = await Book.findAll({
       where: {
@@ -98,7 +141,8 @@ router.get('/find', async (req, res) => {
     const payload = books.map((book) => book.get({ plain: true }));
 
     res.render('findBook', {
-      books: payload
+      books: payload,
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     console.log(err);
@@ -113,45 +157,45 @@ router.get('/find', async (req, res) => {
 // ROUTES IN PROGRESS
 
 // TODO: Display user's profile with list of books
-router.get('/profile', withAuth, async (req, res) => {
-  // // TODO: If user not logged in, redirect to login page
-  // if (!req.session.loggedIn) {
-  //   res.redirect('/login');
-  //   return;
-  // }
+// router.get('/profile', withAuth, async (req, res) => {
+//   // // TODO: If user not logged in, redirect to login page
+//   // if (!req.session.loggedIn) {
+//   //   res.redirect('/login');
+//   //   return;
+//   // }
 
-  try {
-    // if (req.session.loggedIn) {
-    console.log('\n---REQ.SESSION');
-    console.log(req.session);
+//   try {
+//     // if (req.session.loggedIn) {
+//     console.log('\n---HOME ROUTES: REQ.SESSION');
+//     console.log(req.session);
 
-    const bookData = await Book.findAll({
-      where: {
-        user_shared_id: req.session.user_id
-      }
-    });
-    const books = bookData.map((book) => book.get({ plain: true }));
+//     const bookData = await Book.findAll({
+//       where: {
+//         user_shared_id: req.session.user_id
+//       }
+//     });
+//     const books = bookData.map((book) => book.get({ plain: true }));
 
-    // TODO format date
-    // for (let i = 0; i < books.length; i++) {
-    //   books[i].sharedDate = books[i].date_added.toLocaleDateString();
-    //   format_date(books[i].sharedDate);
-    // }
+//     // TODO format date
+//     // for (let i = 0; i < books.length; i++) {
+//     //   books[i].sharedDate = books[i].date_added.toLocaleDateString();
+//     //   format_date(books[i].sharedDate);
+//     // }
 
-    res.render('profile', {
-      books,
-      loggedIn: req.session.loggedIn,
-      pageDescription: 'Your Profile'
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     res.render('profile', {
+//       books,
+//       loggedIn: req.session.loggedIn,
+//       pageDescription: 'Your Profile'
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // TODO: Create (share) a new book
 router.get('/share-book', withAuth, async (req, res) => {
-  res.render('createBook', {
+  res.render('shareBook', {
     loggedIn: req.session.loggedIn
   });
 });

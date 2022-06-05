@@ -55,6 +55,11 @@ body {
   border: 1px solid var(--dark-purple);
 }
 
+/* normal font weight as a class */
+.normal-weight {
+  font-weight: 400;
+}
+
 /* custom bold */
 .embolden {
   font-weight: 500;
