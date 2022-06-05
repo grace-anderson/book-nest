@@ -10,12 +10,18 @@
 
 /* background image */
 body {
-  background-image: url("../img/bird-house-green.png");
-  background-size: cover;
+  background: url("../img/bird-house-green.png") no-repeat;
+  background-position: bottom;
+  background-size: contain;
 }
 
 .white-background {
   background-color: white;
+}
+
+.transparent-white {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
 }
 
 .green-text {

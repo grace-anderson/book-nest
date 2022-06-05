@@ -1,19 +1,18 @@
-<div class="container d-flex justify-content-center">
-  <div class="row mt-5 mx-5">
-    <div class="col-12">
+<div class="container transparent-white">
+  <div class="row d-flex justify-content-center mt-5 py-2">
+    <div class="col-12 col-md-8 col-lg-5">
       <h3>Find a book</h3>
       <p>Search for a word or words in a book's title</p>
       <form action="/find-book" method="get">
         <input class="mt-2 w-100" type="input" name="title" />
         <button class="btn btn-custom btn-block my-3 w-100">Find a Book</button>
       </form>
-      <h3>Books matching your search</h3>
+      <h3>Books that match your search</h3>
       <p>Click on a book to see its details</p>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row mx-5 justify-content-md-center">
+
+  <div class="row mx-5 mt-3 justify-content-md-center">
 
     {{#each books as |book|}}
       {{! for each card, present it using this bootstrap card format }}
@@ -31,6 +30,12 @@
                 Author:
                 <span class="normal-weight">
                   {{book.author}}
+                </span>
+              </li>
+              <li class="list-group-item">
+                Genre:
+                <span class="normal-weight">
+                  {{book.genre.genre_title}}
                 </span>
               </li>
             </ul>

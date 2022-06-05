@@ -2,7 +2,7 @@
 {{! this is coming from home routes: show book by id }}
 
 <div class="container">
-  <div class="row mt-4 d-flex justify-content-center">
+  <div class="row my-4 d-flex justify-content-center">
     <div class="col-12 col-md-10 col-lg-6 my-1">
       <div
         class="card h-100 w-100 custom-card-border"
@@ -40,7 +40,6 @@
               {{selectedBook.synopsis}}
             </p>
           </li>
-
           <li class="list-group-item tiny-text">
             <span class="normal-weight">Added to Book Nest on</span>
             {{format_date selectedBook.date_shared}}<span
@@ -48,18 +47,6 @@
             >, courtesy of </span>
             {{selectedBook.user.username}}
           </li>
-          {{!-- <li class="list-group-item">
-            Date shared to Book Nest:
-            <span class="normal-weight">
-              {{format_date selectedBook.date_shared}}
-            </span>
-          </li>
-          <li class="list-group-item">
-            Shared by:
-            <span class="normal-weight">
-              {{selectedBook.user.username}}
-            </span>
-          </li> --}}
         </ul>
         {{#if loggedIn}}
           <div class="mx-3">

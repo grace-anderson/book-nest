@@ -49,64 +49,66 @@
       <nav class="navbar navbar-expand-lg navbar-dark custom-nav-background">
 
         <div class="container-fluid">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a
-                  class="nav-link custom-nav-link ms-2"
-                  aria-current="page"
-                  href="/"
-                >Home</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link custom-nav-link ms-2"
-                  aria-current="page"
-                  href="/view-books"
-                >View Our Books</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link custom-nav-link ms-2 me-1"
-                  href="/find-book"
-                >Find A Book</a>
-              </li>
-
-              {{#if loggedIn}}
-                <li class="nav-item">
-                  <a
-                    class="nav-link custom-nav-link ms-2 me-1"
-                    href="/profile"
-                  >My Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link custom-nav-link ms-2 me-1"
-                    href="/"
-                    id="logout"
-                  >Logout</a>
-                </li>
-              {{else}}
+          <div class="row">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarText"
+              aria-controls="navbarText"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a
                     class="nav-link custom-nav-link ms-2"
                     aria-current="page"
-                    href="/login"
-                  >Login</a>
+                    href="/"
+                  >Home</a>
                 </li>
-              {{/if}}
-            </ul>
+                <li class="nav-item">
+                  <a
+                    class="nav-link custom-nav-link ms-2"
+                    aria-current="page"
+                    href="/view-books"
+                  >View Our Books</a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link custom-nav-link ms-2 me-1"
+                    href="/find-book"
+                  >Find A Book</a>
+                </li>
+
+                {{#if loggedIn}}
+                  <li class="nav-item">
+                    <a
+                      class="nav-link custom-nav-link ms-2 me-1"
+                      href="/profile"
+                    >My Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link custom-nav-link ms-2 me-1"
+                      href="/"
+                      id="logout"
+                    >Logout</a>
+                  </li>
+                {{else}}
+                  <li class="nav-item">
+                    <a
+                      class="nav-link custom-nav-link ms-2"
+                      aria-current="page"
+                      href="/login"
+                    >Login</a>
+                  </li>
+                {{/if}}
+              </ul>
+            </div>
           </div>
         </div>
       </nav>

@@ -187,6 +187,7 @@ router.get('/find-book', async (req, res) => {
   try {
     // find the book
     const books = await Book.findAll({
+      include: [{ model: Genre, attributes: ['genre_title'] }],
       where: {
         title: {
           [Op.like]: '%' + req.query.title + '%'
