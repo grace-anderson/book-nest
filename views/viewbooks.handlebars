@@ -9,8 +9,8 @@
           <div class="card h-100 w-100 custom-card-border">
             <div class="card-header">
               <h5>
+                <i class="bi bi-book icon-purple"></i>
                 {{book.title}}
-                <i class="bi bi-book"></i>
               </h5>
             </div>
             <ul class="list-group list-group-flush">
@@ -18,30 +18,6 @@
                 Author:
                 <span class="normal-weight">
                   {{book.author}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Publication Date:
-                <span class="normal-weight">
-                  {{book.publication_year}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Genre:
-                <span class="normal-weight">
-                  {{book.genre.genre_title}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Date shared to Book Nest:
-                <span class="normal-weight">
-                  {{format_date book.date_shared}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Shared by:
-                <span class="normal-weight">
-                  {{book.user.username}}
                 </span>
               </li>
             </ul>

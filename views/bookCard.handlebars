@@ -1,32 +1,55 @@
 {{! viewing card for a single book }}
 {{! this is coming from home routes: show book by id }}
 
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <div id="selected-book" class="card" data-id="{{selectedBook.id}}">
-        <div class="card-header embolden">
-          {{selectedBook.title}}
+<div class="container d-flex justify-content-center">
+  <div class="row mt-5">
+    <div class="col-6 my-5">
+      <div
+        class="card h-100 w-100 custom-card-border"
+        id="selected-book"
+        data-id="{{selectedBook.id}}"
+      >
+        <div class="card-header book-link">
+          <h4 class="really-embolden">
+            <i class="bi bi-book-fill icon-green"></i>
+            {{selectedBook.title}}
+          </h4>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush embolden li-large">
           <li class="list-group-item">
             Author:
-            {{selectedBook.author}}
+            <span class="normal-weight">
+              {{selectedBook.author}}
+            </span>
           </li>
           <li class="list-group-item">
             Publication Date:
-            {{selectedBook.publication_year}}
+            <span class="normal-weight">
+              {{selectedBook.publication_year}}
+            </span>
           </li>
           <li class="list-group-item">
             Genre:
-            {{selectedBook.genre.genre_title}}
+            <span class="normal-weight">
+              {{selectedBook.genre.genre_title}}
+            </span>
+          </li>
+          <li class="list-group-item">
+            Date shared to Book Nest:
+            <span class="normal-weight">
+              {{format_date selectedBook.date_shared}}
+            </span>
+          </li>
+          <li class="list-group-item">
+            Shared by:
+            <span class="normal-weight">
+              {{selectedBook.user.username}}
+            </span>
           </li>
         </ul>
-
         <button id="add-to-reading-list">add to reading list</button>
 
         <button id="remove-from-reading-list">remove from reading list</button>
-
       </div>
     </div>
   </div>
