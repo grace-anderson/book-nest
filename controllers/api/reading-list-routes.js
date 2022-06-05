@@ -35,28 +35,44 @@ router.post('/add', withAuth, async (req, res) => {
       }
     });
 
-    // convert Sequelize object into plain object
-    // readingListData.get({ plain: true });
-
-    // grab the reading list ID out of the plain obj
+    // grab the reading list ID out of the returned data
     const readingListId = readingListData.id;
 
     // console.log('\n---RL ROUTE: GET READING LIST');
     // console.log(userId, readingListId, bookId);
     // console.log(book);
 
+    // first see if a book list exists using a match between bookId and userId
+
+    const doesBookListExist = await Book_Reading_List.findOne({
+      where: {
+        book_id: bookId,
+        reading_list_id: readingListId
+      }
+    });
+
+    console.log('\n---RL ROUTES: DOES BOOKLIST EXIST');
+    console.log(doesBookListExist);
+
+    if (!doesBookListExist) {
+      await Book_Reading_List.create({
+        book_id: bookId,
+        reading_list_id: readingListId
+      });
+
+      // console.log(bookReadingList);
+
+      // send details of book that is to be added to reading list
+      res.status(200).json({
+        book
+      });
+    } else {
+      res.status(400).json({
+        message: 'Book already added to Reading List'
+      });
+    }
+
     // make the attachment to the book-reading-list join table
-    await Book_Reading_List.create({
-      book_id: bookId,
-      reading_list_id: readingListId
-    });
-
-    // console.log(bookReadingList);
-
-    // send details of book that is to be added to reading list
-    res.status(200).json({
-      book
-    });
   } catch (error) {
     console.log('\n---RL ROUTE: POST TO RL');
     console.log(error);

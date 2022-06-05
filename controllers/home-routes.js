@@ -92,6 +92,13 @@ router.get('/books/:id', async (req, res) => {
   }
 });
 
+// GET THE SHARE BOOK PAGE with the form
+router.get('/share-book', withAuth, async (req, res) => {
+  res.render('shareBook', {
+    loggedIn: req.session.loggedIn
+  });
+});
+
 // RETRIEVE AND DISPLAY BOOKS SHARED BY USER
 router.get('/profile', async (req, res) => {
   try {
