@@ -1,5 +1,3 @@
-// CURRENTLY NOT IN USE
-
 // LOG USER OUT HANDLER
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
