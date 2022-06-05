@@ -1,10 +1,22 @@
 const router = require('express').Router();
 const { Reading_List, Book_Reading_List, Book } = require('../../models');
+const withAuth = require('../../utils/auth');
+
+// get all book reading lists (for testing purposes)
+router.get('/', async (req, res) => {
+  try {
+    const bookReadingListData = await Book_Reading_List.findAll();
+
+    res.status(200).json(bookReadingListData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 // path: /api/reading-list
 
 // WHEN USER ADDS A BOOK TO THEIR READING LIST
-router.post('/add', async (req, res) => {
+router.post('/add', withAuth, async (req, res) => {
   try {
     // bookId comes from front end
     const { bookId } = req.body;
@@ -24,7 +36,7 @@ router.post('/add', async (req, res) => {
     });
 
     // convert Sequelize object into plain object
-    readingListData.get({ plain: true });
+    // readingListData.get({ plain: true });
 
     // grab the reading list ID out of the plain obj
     const readingListId = readingListData.id;
@@ -47,6 +59,45 @@ router.post('/add', async (req, res) => {
     });
   } catch (error) {
     console.log('\n---RL ROUTE: POST TO RL');
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+// WHEN A USER REMOVES A BOOK FROM THEIR READING LIST
+router.delete('/remove', withAuth, async (req, res) => {
+  try {
+    const { bookId } = req.body;
+    const userId = req.session.user_id;
+
+    // first find the correct book-reading-list ID using bookId and userId
+    const bookListData = await Book_Reading_List.findOne({
+      where: {
+        book_id: bookId,
+        reading_list_id: userId
+      }
+    });
+
+    // store the id of the booklist to be removed in a new var
+    const bookListToBeRemoved = bookListData.id;
+
+    // console.log('\n---RL ROUTES: DELETE, FIND BOOK READING LIST');
+    // console.log(bookListData);
+    // console.log(bookListToBeRemoved);
+
+    // remove the booklist column, which removes the book off the user's reading list
+    await Book_Reading_List.destroy({
+      where: {
+        id: bookListToBeRemoved.id
+      }
+    });
+
+    res.status(200).json({
+      bookListToBeRemoved,
+      message: 'Successfully removed book from reading list'
+    });
+  } catch (error) {
+    console.log('\n---RL ROUTE: DELETE FROM RL');
     console.log(error);
     res.status(500).json(error);
   }

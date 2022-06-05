@@ -45,7 +45,7 @@ const removeFromReadingList = async (event) => {
   });
 
   if (response.ok) {
-    document.location.replace(`/books/${bookId}`);
+    document.location.replace('/profile');
   } else {
     alert('Something went wrong! Book could not be removed from reading list.');
   }
