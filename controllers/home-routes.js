@@ -96,11 +96,13 @@ router.get('/profile', async (req, res) => {
     // console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
     // console.log(req.session.user_id);
 
+    // get the reading list data out of db
     const readingListBookData = await Book_Reading_List.findAll({
       include: [
         {
           model: Book,
-          // include all of book's nested associations in the book reading list data (ie. genre > genre_title; user > all user values too)
+          // include all book's nested associations in the book-reading-list data (ie. genre > genre_title; user > all user values)
+          // https://stackoverflow.com/questions/33941943/nested-include-in-sequelize
           include: { all: true, nested: true }
         },
         {
@@ -112,13 +114,15 @@ router.get('/profile', async (req, res) => {
       ]
     });
 
+    // map to plain text
     const readingListBooks = readingListBookData.map((readingListBooks) =>
       readingListBooks.get({ plain: true })
     );
 
-    console.log('\n---HOME ROUTES: READING LIST DATA');
-    console.log(readingListBooks);
+    // console.log('\n---HOME ROUTES: READING LIST DATA');
+    // console.log(readingListBooks);
 
+    // get the list of books shared by the user
     const sharedBookData = await Book.findAll({
       include: [
         {
@@ -135,6 +139,7 @@ router.get('/profile', async (req, res) => {
       }
     });
 
+    // map to plain text
     const sharedBooks = sharedBookData.map((book) => book.get({ plain: true }));
 
     // console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
@@ -181,6 +186,30 @@ router.get('/find-book', async (req, res) => {
 // ===== BELOW:
 // ROUTES IN PROGRESS
 
+// TODO: Edit shared book
+router.get('/book-update/:id', withAuth, async (req, res) => {
+  try {
+    const bookData = await Book.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    const book = bookData.get({ plain: true });
+
+    res.render('updateBook', {
+      book,
+      loggedIn: req.session.loggedIn,
+      pageDescription: 'Your Profile'
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// ==== BELOW:
+// ROUTES NOT IN USE OR NOT WORKING
+
 // TODO: Display user's profile with list of books
 // router.get('/profile', withAuth, async (req, res) => {
 //   // // TODO: If user not logged in, redirect to login page
@@ -219,35 +248,11 @@ router.get('/find-book', async (req, res) => {
 // });
 
 // TODO: Create (share) a new book
-router.get('/share-book', withAuth, async (req, res) => {
-  res.render('shareBook', {
-    loggedIn: req.session.loggedIn
-  });
-});
-
-// TODO: Edit shared book
-router.get('/book-update/:id', withAuth, async (req, res) => {
-  try {
-    const bookData = await Book.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
-    const book = bookData.get({ plain: true });
-
-    res.render('updateBook', {
-      book,
-      loggedIn: req.session.loggedIn,
-      pageDescription: 'Your Profile'
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// ==== BELOW:
-// ROUTES NOT IN USE OR NOT WORKING
+// router.get('/share-book', withAuth, async (req, res) => {
+//   res.render('shareBook', {
+//     loggedIn: req.session.loggedIn
+//   });
+// });
 
 // GET VIEW BOOKS PAGE
 // getting login route to the front end
