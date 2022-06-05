@@ -19,6 +19,18 @@
         Genre:
         {{selectedBook.genre.genre_title}}
       </li>
+      <li class="list-group-item">
+        Date shared to Book Nest:
+        <span class="normal-weight">
+          {{format_date selectedBook.date_shared}}
+        </span>
+      </li>
+      <li class="list-group-item">
+        Shared by:
+        <span class="normal-weight">
+          {{selectedBook.user.username}}
+        </span>
+      </li>
     </ul>
   </div>
 
