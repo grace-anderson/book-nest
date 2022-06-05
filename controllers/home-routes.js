@@ -107,7 +107,7 @@ router.get('/profile', async (req, res) => {
         }
       ],
       where: {
-        id: sessionUserId
+        user_shared_id: sessionUserId
       }
     });
 
