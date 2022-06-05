@@ -1,61 +1,73 @@
 <div class="container">
-
   <div class="row mx-5">
-    <div class="col-12">
-      <h2>Books on your Reading List</h2>
+    <div class="col-12 my-2">
+      <h2 class="green-text really-embolden">Welcome back, {{username}}!</h2>
+      <p>What would you like to do today?</p>
     </div>
   </div>
 
   <div class="row mx-5">
-    {{#each readingListBooks as |rlbook|}}
+    <div class="col-12">
+      <h3>My Reading List</h3>
+    </div>
+  </div>
+  <div class="row mx-5">
+    {{#if readingListBooks}}
+      {{#each readingListBooks as |rlbook|}}
 
-      {{! for each card, present it using this bootstrap card format }}
-      <div class="col-12 col-md-4 col-lg-3 my-3">
-        <a href="/books/{{rlbook.book.id}}" class="book-link">
-          <div class="card h-100 w-100 custom-card-border">
-            <div class="card-header">
-              <h5>
-                {{rlbook.book.title}}
-                <i class="bi bi-book"></i>
-              </h5>
+        {{! for each card, present it using this bootstrap card format }}
+        <div class="col-12 col-md-4 col-lg-3 my-3">
+          <a href="/books/{{rlbook.book.id}}" class="book-link">
+            <div class="card h-100 w-100 custom-card-border">
+              <div class="card-header">
+                <h5>
+                  <i class="bi bi-book-fill icon-green"></i>
+                  {{rlbook.book.title}}
+                </h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Author:
+                  <span class="normal-weight">
+                    {{rlbook.book.author}}
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  Publication Date:
+                  <span class="normal-weight">
+                    {{rlbook.book.publication_year}}
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  Genre:
+                  <span class="normal-weight">
+                    {{rlbook.book.genre.genre_title}}
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  Date shared to Book Nest:
+                  <span class="normal-weight">
+                    {{format_date rlbook.book.date_shared}}
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  Shared by:
+                  <span class="normal-weight">
+                    {{rlbook.book.user.username}}
+                  </span>
+                </li>
+              </ul>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Author:
-                <span class="normal-weight">
-                  {{rlbook.book.author}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Publication Date:
-                <span class="normal-weight">
-                  {{rlbook.book.publication_year}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Genre:
-                <span class="normal-weight">
-                  {{rlbook.book.genre.genre_title}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Date shared to Book Nest:
-                <span class="normal-weight">
-                  {{format_date rlbook.book.date_shared}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Shared by:
-                <span class="normal-weight">
-                  {{rlbook.book.user.username}}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </a>
+          </a>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="col-12">
+        <p class="mt-2">Nothing on my reading list for now.</p>
+        <p class="mt-4"><a href="/view-books" class="btn btn-custom">Check out
+            some books?</a></p>
       </div>
-
-    {{/each}}
+    {{/if}}
   </div>
 </div>
 
@@ -63,10 +75,9 @@
 
   <div class="row mx-5">
     <div class="col-12">
-      <h2 class="my-3">
-        Your Shared Books
-      </h2>
-      <p>Look at all the books you have added to our library!</p>
+      <h3 class="my-3">
+        My Shared Books
+      </h3>
     </div>
   </div>
 
@@ -74,6 +85,9 @@
 
   <div class="row mx-5">
     {{#if sharedBooks}}
+      <div class="col-12">
+        <p>Look at all these books you have added to our library!</p>
+      </div>
       {{#each sharedBooks as |book|}}
 
         {{! for each card, present it using this bootstrap card format }}
@@ -82,8 +96,8 @@
             <div class="card h-100 w-100 custom-card-border">
               <div class="card-header">
                 <h5>
+                  <i class="bi bi-book icon-purple"></i>
                   {{book.title}}
-                  <i class="bi bi-book"></i>
                 </h5>
               </div>
               <ul class="list-group list-group-flush">
@@ -124,23 +138,19 @@
 
       {{/each}}
     {{else}}
-      <div class="col">
-        <p>oops nothing here</p>
+      <div class="col-12">
+        <p>(I haven't shared any books yet.)</p>
       </div>
     {{/if}}
-
-  </div>
-
-  <div class="row mt-3 mb-1 align-items-center">
-    <div class="col-auto">
-      <a
-        type="button"
-        class="btn btn-custom btn-outline-primary btn-block mt-3 mb-1 w-100"
-        href="/share-book"
-      >Share a new book to Book Nest</a>
+    <div class="row mt-3 mb-1 align-items-center">
+      <div class="col-auto">
+        <a
+          type="button"
+          class="btn btn-custom btn-outline-primary btn-block mt-2 mb-5 w-100"
+          href="/share-book"
+        >Share a book to Book Nest</a>
+      </div>
     </div>
   </div>
-</div>
 
-{{! below currently not in use }}
-{{! <script src="/js/profile.js"></script> }}
+</div>

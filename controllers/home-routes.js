@@ -11,9 +11,6 @@ const {
   Reading_List
 } = require('../models');
 
-// ====== BELOW:
-// ROUTES THAT WORK
-
 // GET THE HOMEPAGE
 router.get('/', (req, res) => {
   res.render('homepage', {
@@ -32,31 +29,39 @@ router.get('/login', (req, res) => {
 
 // RETRIEVE AND DISPLAY ALL BOOKS
 router.get('/view-books', async (req, res) => {
-  const bookData = await Book.findAll({
-    include: [
-      {
-        model: Genre,
-        attributes: ['genre_title']
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  });
+  try {
+    // get all book data
+    const bookData = await Book.findAll({
+      include: [
+        {
+          model: Genre,
+          attributes: ['genre_title']
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    });
 
-  // console.log('\n---HOME ROUTES: BOOK DATA');
-  // console.log(bookData);
+    // console.log('\n---HOME ROUTES: BOOK DATA');
+    // console.log(bookData);
 
-  const books = bookData.map((book) => book.get({ plain: true }));
+    // map to plain text
+    const books = bookData.map((book) => book.get({ plain: true }));
 
-  console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
-  // console.log(books);
+    // console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
+    // console.log(books);
 
-  res.render('viewBooks', {
-    books,
-    loggedIn: req.session.loggedIn
-  });
+    res.render('viewBooks', {
+      books,
+      loggedIn: req.session.loggedIn
+    });
+  } catch (error) {
+    console.log('\n---HOME ROUTES: VIEW BOOKS ERR');
+    console.log(error);
+    res.status(400).json(error);
+  }
 });
 
 // RETRIEVE AND DISPLAY A SINGLE BOOK BY ITS ID
@@ -64,6 +69,7 @@ router.get('/books/:id', async (req, res) => {
   try {
     const bookId = req.params.id;
 
+    // find the book using the req id
     const bookData = await Book.findByPk(bookId, {
       include: [
         {
@@ -77,25 +83,39 @@ router.get('/books/:id', async (req, res) => {
       ]
     });
 
+    // map to plain text
     const selectedBook = bookData.get({ plain: true });
 
-    console.log('\n---HOME ROUTES: SELECTED BOOK');
-    console.log(selectedBook);
+    // console.log('\n---HOME ROUTES: SELECTED BOOK');
+    // console.log(selectedBook);
 
-    // res.status(200).json(selectedBook);
     res.render('bookCard', {
       selectedBook,
       loggedIn: req.session.loggedIn
     });
   } catch (error) {
-    res.status(500).json(error);
+    console.log('\n---BOOK ROUTES: VIEW SINGLE BOOK ERR');
+    console.log(error);
+    res.status(400).json(error);
   }
 });
 
+// GET THE SHARE BOOK PAGE with the share book form
+router.get('/share-book', withAuth, async (req, res) => {
+  res.render('shareBook', {
+    loggedIn: req.session.loggedIn
+  });
+});
+
 // RETRIEVE AND DISPLAY BOOKS SHARED BY USER
-router.get('/profile', async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
   try {
     const sessionUserId = req.session.user_id;
+
+    // getting the username out
+    const userData = await User.findByPk(sessionUserId);
+    const user = userData.get({ plain: true });
+    const { username } = user;
 
     // console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
     // console.log(req.session.user_id);
@@ -150,12 +170,13 @@ router.get('/profile', async (req, res) => {
     // console.log(sharedBooks);
 
     res.render('profile', {
+      username,
       sharedBooks,
       readingListBooks,
       loggedIn: req.session.loggedIn
     });
   } catch (error) {
-    console.log('\n---HOME ROUTES: SHARED BY ERR');
+    console.log('\n---HOME ROUTES: SHARED-BY-USER ERR');
     console.log(error);
     res.status(500).json(error);
   }
@@ -164,6 +185,7 @@ router.get('/profile', async (req, res) => {
 // SEARCH FOR A BOOK (BY ITS TITLE)
 router.get('/find-book', async (req, res) => {
   try {
+    // find the book
     const books = await Book.findAll({
       where: {
         title: {
@@ -178,8 +200,10 @@ router.get('/find-book', async (req, res) => {
       books: payload,
       loggedIn: req.session.loggedIn
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log('\n---BOOK ROUTES: FIND BOOK ERR');
+    console.log(error);
+    // res.status(400).json(error);
     res.render('findBook', {
       //fix - don't send back err
       error: err
@@ -188,60 +212,20 @@ router.get('/find-book', async (req, res) => {
 });
 
 // ===== BELOW:
-// ROUTES IN PROGRESS
+// ROUTES TO DEVELOP:
 
 // TODO: Edit shared book
-router.get('/book-update/:id', withAuth, async (req, res) => {
-  try {
-    const bookData = await Book.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
-    const book = bookData.get({ plain: true });
-
-    res.render('updateBook', {
-      book,
-      loggedIn: req.session.loggedIn,
-      pageDescription: 'Your Profile'
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// ==== BELOW:
-// ROUTES NOT IN USE OR NOT WORKING
-
-// TODO: Display user's profile with list of books
-// router.get('/profile', withAuth, async (req, res) => {
-//   // // TODO: If user not logged in, redirect to login page
-//   // if (!req.session.loggedIn) {
-//   //   res.redirect('/login');
-//   //   return;
-//   // }
-
+// router.get('/book-update/:id', withAuth, async (req, res) => {
 //   try {
-//     // if (req.session.loggedIn) {
-//     console.log('\n---HOME ROUTES: REQ.SESSION');
-//     console.log(req.session);
-
-//     const bookData = await Book.findAll({
+//     const bookData = await Book.findOne({
 //       where: {
-//         user_shared_id: req.session.user_id
+//         id: req.params.id
 //       }
 //     });
-//     const books = bookData.map((book) => book.get({ plain: true }));
+//     const book = bookData.get({ plain: true });
 
-//     // TODO format date
-//     // for (let i = 0; i < books.length; i++) {
-//     //   books[i].sharedDate = books[i].date_added.toLocaleDateString();
-//     //   format_date(books[i].sharedDate);
-//     // }
-
-//     res.render('profile', {
-//       books,
+//     res.render('updateBook', {
+//       book,
 //       loggedIn: req.session.loggedIn,
 //       pageDescription: 'Your Profile'
 //     });
@@ -249,38 +233,6 @@ router.get('/book-update/:id', withAuth, async (req, res) => {
 //     console.log(err);
 //     res.status(500).json(err);
 //   }
-// });
-
-// TODO: Create (share) a new book
-// router.get('/share-book', withAuth, async (req, res) => {
-//   res.render('shareBook', {
-//     loggedIn: req.session.loggedIn
-//   });
-// });
-
-// GET VIEW BOOKS PAGE
-// getting login route to the front end
-// router.get('/login', (req, res) => {
-//   res.render('login');
-// });
-
-// getting register route to the front end
-// router.get('/showRegister', (req, res) => {
-//   res.render('register');
-// });
-
-//create book page
-// router.get('/book/:id', async (req, res) => {
-//   try {
-// //identify the retrieved, clicked book
-// //open a page with that one book's details
-// Book.findByPk({
-//   where: {
-//     id: req.params.id
-//   }
-// })
-
-//   } catch {}
 // });
 
 module.exports = router;

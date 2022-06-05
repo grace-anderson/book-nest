@@ -2,7 +2,9 @@
 const router = require('express').Router();
 const { User, Reading_List, Book } = require('../../models');
 
-// GET ALL USERS (FOR BACKEND TESTING)
+// path: /api/users
+
+// get all users (for testing purposes)
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -25,10 +27,7 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log('\n---USER_ROUTE LOGIN: EMAIL/PASSWORD');
-    console.log(email);
-    console.log(password);
-
+    // if if there is an existing user
     const returningUser = await User.findOne({
       where: {
         email: email
@@ -38,20 +37,24 @@ router.post('/login', async (req, res) => {
     // console.log(`\n----RETURNING USER`);
     // console.log(returningUser);
 
+    // send error if user doesn't exist
     if (!returningUser) {
       return res.status(400).json({
         message: 'Incorrect email. Please try again.'
       });
     }
 
+    // check the input password with the hashed password
     const userPassword = await returningUser.checkPassword(password);
 
+    // send error if password is wrong
     if (!userPassword) {
       return res.status(400).json({
         message: 'Incorrect password. Please try again.'
       });
     }
 
+    // save the session
     req.session.save(() => {
       req.session.user_id = returningUser.id;
       req.session.loggedIn = true;
@@ -63,7 +66,7 @@ router.post('/login', async (req, res) => {
       });
     });
   } catch (error) {
-    console.log('\n------ERROR:');
+    console.log('\n---USER ROUTE: LOGIN ERR');
     console.log(error);
     res.status(500).json(error);
   }
@@ -72,13 +75,10 @@ router.post('/login', async (req, res) => {
 // SIGN A NEW USER UP
 router.post('/', async (req, res) => {
   try {
-    // console.log(`\n---REQ.BODY SIGNUP?`)
-    // console.log(req.body);
-
     const { username, email, password } = req.body;
 
-    console.log('\n---USER ROUTES: REQ.BODY');
-    console.log(username, email, password);
+    // console.log('\n---USER ROUTES: REQ.BODY');
+    // console.log(username, email, password);
 
     // BELOW: trying to add validation checks and return useful message in the browser, but not working 100%
 
@@ -121,16 +121,12 @@ router.post('/', async (req, res) => {
         reader_id: newUser.id
       });
 
-      console.log('new reading list');
-      console.log(newReadingList);
-
+      // save the session
       req.session.save(() => {
         req.session.user_id = newUser.id;
         req.session.loggedIn = true;
 
-        // console.log(`\n---REQ.SESSION NEW USER`);
-        // console.log(newUser);
-
+        // send back the new user
         res.status(200).json({
           newUser,
           id: newUser.id,
@@ -139,11 +135,11 @@ router.post('/', async (req, res) => {
       });
     } else {
       res.status(400).json({
-        message: 'Something went wrong'
+        message: 'Could not sign user up.'
       });
     }
   } catch (error) {
-    console.log('\n---ERROR:');
+    console.log('\n---USER ROUTE: SIGNUP ERR');
     console.log(error);
     res.status(500).json(error);
   }
@@ -220,25 +216,6 @@ router.post('/logout', (req, res) => {
 //     console.log('\n---ERROR:');
 //     console.log(error);
 //     res.status(500).json(error);
-//   }
-// });
-
-// router.post('/register', async (req, res) => {
-//   try {
-//     const user = await User.create({
-//       username: req.body.username,
-//       email: req.body.email,
-//       password: req.body.password
-//     });
-
-//     if (!user) {
-//       alert('Failed to register a user.');
-//       return;
-//     }
-
-//     res.status(200).json(user);
-//   } catch (err) {
-//     res.status(400).json(err);
 //   }
 // });
 

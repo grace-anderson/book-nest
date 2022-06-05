@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// path: /api/books
+
 // SHARING (CREATING) A BOOK
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -20,22 +22,14 @@ router.post('/', withAuth, async (req, res) => {
       user_shared_id: loggedInUser
     });
 
-    // if (!bookData) {
-    //   res.status(400).json({
-    //     message:
-    //       'Failed to share book. Remember to add title, author and genre.'
-    //   });
-    //   return;
-    // }
-
     // console.log('\n---BOOK ROUTES: POST BOOK');
     // console.log(bookData);
 
     res.status(200).json(bookData);
-  } catch (err) {
-    // console.log('\n---BOOK ROUTES: POST BOOK ERR');
-    // console.log(err);
-    res.status(400).json(err);
+  } catch (error) {
+    console.log('\n---BOOK ROUTES: POST BOOK ERR');
+    console.log(error);
+    res.status(400).json(error);
   }
 });
 
