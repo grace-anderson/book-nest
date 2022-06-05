@@ -202,10 +202,9 @@ router.get('/find-book', async (req, res) => {
     const errMsg =
       'Sorry, we were not able to find a book with that title. Please try again!';
 
-    if (!payload) {
-      res.render('findBook', {
+    if (!payload.length) {
+      return res.render('findBook', {
         //fix - don't send back err
-        error,
         message: errMsg
       });
       // return res.status(400).json({
