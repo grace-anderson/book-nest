@@ -42,9 +42,8 @@ router.post('/add', withAuth, async (req, res) => {
     // console.log(userId, readingListId, bookId);
     // console.log(book);
 
-    // first see if a book list exists using a match between bookId and userId
-
-    const doesBookListExist = await Book_Reading_List.findOne({
+    // first see if the book exists on the user's reading list
+    const isBookOnReadingList = await Book_Reading_List.findOne({
       where: {
         book_id: bookId,
         reading_list_id: readingListId
@@ -52,9 +51,10 @@ router.post('/add', withAuth, async (req, res) => {
     });
 
     console.log('\n---RL ROUTES: DOES BOOKLIST EXIST');
-    console.log(doesBookListExist);
+    console.log(isBookOnReadingList);
 
-    if (!doesBookListExist) {
+    // if a bookList does NOT exist (ie. a book is NOT on a user's reading list), then go ahead and create a new match
+    if (!isBookOnReadingList) {
       await Book_Reading_List.create({
         book_id: bookId,
         reading_list_id: readingListId
@@ -62,13 +62,13 @@ router.post('/add', withAuth, async (req, res) => {
 
       // console.log(bookReadingList);
 
-      // send details of book that is to be added to reading list
+      // send details of the book that is to be added to the reading list
       res.status(200).json({
         book
       });
     } else {
       res.status(400).json({
-        message: 'Book already added to Reading List'
+        message: 'Book has already been added to reading list'
       });
     }
 
@@ -86,32 +86,39 @@ router.delete('/remove', withAuth, async (req, res) => {
     const { bookId } = req.body;
     const userId = req.session.user_id;
 
-    // first find the correct book-reading-list ID using bookId and userId
-    const bookListData = await Book_Reading_List.findOne({
+    // first see if the book is already on the user's reading list
+    const isBookOnReadingList = await Book_Reading_List.findOne({
       where: {
         book_id: bookId,
         reading_list_id: userId
       }
     });
 
-    // store the id of the booklist to be removed in a new var
-    const bookListToBeRemoved = bookListData.id;
+    console.log('\n---RL DELETE: IS BOOK ON READING LIST');
+    console.log(isBookOnReadingList);
 
-    // console.log('\n---RL ROUTES: DELETE, FIND BOOK READING LIST');
-    // console.log(bookListData);
-    // console.log(bookListToBeRemoved);
+    // if the book IS on the user's reading list:
+    if (isBookOnReadingList) {
+      // grab the id of the booklist that we want to destroy
+      const bookToBeRemoved = isBookOnReadingList.id;
 
-    // remove the booklist column, which removes the book off the user's reading list
-    await Book_Reading_List.destroy({
-      where: {
-        id: bookListToBeRemoved.id
-      }
-    });
+      // destroy the link between book and reading list
+      await Book_Reading_List.destroy({
+        where: {
+          id: bookToBeRemoved
+        }
+      });
 
-    res.status(200).json({
-      bookListToBeRemoved,
-      message: 'Successfully removed book from reading list'
-    });
+      // send the data of the destroyed book and reading list link, and also a back-end message that it was successful
+      res.status(200).json({
+        bookToBeRemoved,
+        message: 'Successfully removed book from reading list'
+      });
+    } else {
+      res.status(400).json({
+        message: 'Book was never added to the reading list'
+      });
+    }
   } catch (error) {
     console.log('\n---RL ROUTE: DELETE FROM RL');
     console.log(error);
