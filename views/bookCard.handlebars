@@ -1,9 +1,9 @@
 {{! viewing card for a single book }}
 {{! this is coming from home routes: show book by id }}
 
-<div class="container d-flex justify-content-center">
-  <div class="row mt-4">
-    <div class="col-12 my-1">
+<div class="container">
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-12 col-md-10 col-lg-6 my-1">
       <div
         class="card h-100 w-100 custom-card-border"
         id="selected-book"
@@ -17,13 +17,13 @@
         </div>
         <ul class="list-group list-group-flush embolden li-large">
           <li class="list-group-item">
-            Author:
+            Written by:
             <span class="normal-weight">
               {{selectedBook.author}}
             </span>
           </li>
           <li class="list-group-item">
-            Publication Date:
+            Published in:
             <span class="normal-weight">
               {{selectedBook.publication_year}}
             </span>
@@ -34,7 +34,21 @@
               {{selectedBook.genre.genre_title}}
             </span>
           </li>
-          <li class="list-group-item">
+          <li class="list-group-item pb-4">
+            Synopsis:
+            <p class="normal-weight italicised preserve-whitespace">
+              {{selectedBook.synopsis}}
+            </p>
+          </li>
+
+          <li class="list-group-item tiny-text">
+            <span class="normal-weight">Added to Book Nest on</span>
+            {{format_date selectedBook.date_shared}}<span
+              class="normal-weight"
+            >, courtesy of </span>
+            {{selectedBook.user.username}}
+          </li>
+          {{!-- <li class="list-group-item">
             Date shared to Book Nest:
             <span class="normal-weight">
               {{format_date selectedBook.date_shared}}
@@ -45,7 +59,7 @@
             <span class="normal-weight">
               {{selectedBook.user.username}}
             </span>
-          </li>
+          </li> --}}
         </ul>
         {{#if loggedIn}}
           <div class="mx-3">

@@ -86,8 +86,8 @@ router.get('/books/:id', async (req, res) => {
     // map to plain text
     const selectedBook = bookData.get({ plain: true });
 
-    // console.log('\n---HOME ROUTES: SELECTED BOOK');
-    // console.log(selectedBook);
+    console.log('\n---HOME ROUTES: SELECTED BOOK');
+    console.log(selectedBook);
 
     res.render('bookCard', {
       selectedBook,
