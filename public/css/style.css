@@ -17,6 +17,14 @@ body {
   background-color: white;
 }
 
+.green-text {
+  color: var(--green);
+}
+
+.purple-text {
+  color: var(--purple);
+}
+
 /* login / register page  */
 
 .input-form label {
@@ -141,6 +149,7 @@ a:hover {
   font-size: 1.1rem;
 }
 
+/* utility classes to help with layout */
 .border-red {
   border: 1px solid red;
 }
@@ -152,6 +161,8 @@ a:hover {
 .border-orange {
   border: 1px solid orange;
 }
+
+/* media queries */
 
 /* override container width */
 @media (min-width: 768px) {

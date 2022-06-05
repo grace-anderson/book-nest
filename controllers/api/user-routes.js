@@ -219,23 +219,4 @@ router.post('/logout', (req, res) => {
 //   }
 // });
 
-// router.post('/register', async (req, res) => {
-//   try {
-//     const user = await User.create({
-//       username: req.body.username,
-//       email: req.body.email,
-//       password: req.body.password
-//     });
-
-//     if (!user) {
-//       alert('Failed to register a user.');
-//       return;
-//     }
-
-//     res.status(200).json(user);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
 module.exports = router;

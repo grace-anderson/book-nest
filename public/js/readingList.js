@@ -52,5 +52,4 @@ const removeFromReadingList = async (event) => {
 
 // EVENT LISTENERS
 addButton.addEventListener('click', addToReadingList);
-
 removeButton.addEventListener('click', removeFromReadingList);
