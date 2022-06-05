@@ -1,17 +1,26 @@
-<div>
-  <form action="/find-book" method="get">
-    <input type="input" name="title" />
-    <button>Find a Book</button>
-  </form>
+<div class="container d-flex justify-content-center">
+  <div class="row my-5 mx-3">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+      <h3>Find a book</h3>
+      <p>Search for a word or words in a book's title</p>
+      <form action="/find-book" method="get">
+        <input class="mt-2 w-100" type="input" name="title" />
+        <button class="btn btn-custom btn-block my-3 w-100">Find a Book</button>
+      </form>
+    </div>
+    <div class="col-12">
+      <h3>Books matching your search</h3>
+      <p>Click on a book to see its details</p>
+      <div>
+        {{#each books as |book|}}
+          <p>{{book.title}}</p>
+
+        {{/each}}
+      </div>
+
+      {{#if error}}
+        <div class="form-msg">{{error}}</div>
+      {{/if}}
+    </div>
+  </div>
 </div>
-<div>
-  {{#each books as |book|}}
-    <p>{{book.title}}</p>
-
-  {{/each}}
-</div>
-
-{{#if error}}
-  <div class="text-danger">{{error}}</div>
-
-{{/if}}
