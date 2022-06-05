@@ -9,7 +9,7 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const loggedInUser = req.session.user_id;
 
-    const { title, author, publicationYear, genreValue } = req.body;
+    const { title, author, publicationYear, genreValue, synopsis } = req.body;
 
     // console.log('\n---REQ.BODY:');
     // console.log(req.body);
@@ -19,6 +19,7 @@ router.post('/', withAuth, async (req, res) => {
       author,
       publication_year: publicationYear,
       genre_id: genreValue,
+      synopsis,
       user_shared_id: loggedInUser
     });
 

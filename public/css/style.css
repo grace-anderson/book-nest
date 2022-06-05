@@ -4,17 +4,24 @@
   --green: #7ca184;
   --grey: #a7b3b5;
   --brown: #a1896c;
+  --brown-light: #f1ece4;
   --errorChecking: #ff497b;
 }
 
 /* background image */
 body {
-  background-image: url("../img/bird-house-green.png");
-  background-size: cover;
+  background: url("../img/bird-house-green.png") no-repeat;
+  background-position: bottom;
+  background-size: contain;
 }
 
 .white-background {
   background-color: white;
+}
+
+.transparent-white {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
 }
 
 .green-text {
@@ -23,6 +30,10 @@ body {
 
 .purple-text {
   color: var(--purple);
+}
+
+.tiny-text {
+  font-size: 0.9rem;
 }
 
 /* login / register page  */
@@ -78,6 +89,14 @@ body {
   font-weight: 600;
 }
 
+.italicised {
+  font-style: italic;
+}
+
+.preserve-whitespace {
+  white-space: pre-line;
+}
+
 /* nav */
 
 .custom-nav-background {
@@ -112,36 +131,39 @@ a {
   text-decoration: none;
   color: var(--green);
   font-weight: bold;
+  border-radius: 0.5rem;
 }
 
 a:hover {
   color: var(--purple) !important;
   font-weight: bold;
+  background-color: var(--brown-light);
+  border-radius: 0.5rem;
 }
 
 /* buttons */
 .btn-custom {
   background-color: var(--green);
   color: white;
-  border-color: white;
+  border: 1px solid white;
 }
 
 .btn-custom:hover {
   background-color: var(--purple);
   color: white !important;
-  border: var(--dark-purple);
+  border: 1px solid var(--dark-purple);
 }
 
 .btn:active {
   background-color: var(--dark-purple);
   color: white !important;
-  border-color: var(--brown);
+  border: 1px solid var(--brown);
 }
 
 .btn:focus {
   background-color: var(--dark-purple);
   color: white !important;
-  border-color: var(--brown);
+  border: 1px solid var(--brown);
 }
 
 /* list items */

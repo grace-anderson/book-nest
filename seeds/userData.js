@@ -3,33 +3,33 @@ const { User } = require('../models');
 const userData = [
   //1
   {
-    username: 'Sally',
+    username: 'Sally C',
     email: 'sally@email.com',
     password: 'abc123'
   },
   //2
   {
-    username: 'Khabib',
-    email: 'knurmagomedov@ufc.com',
-    password: 'password12345'
+    username: 'Alicia Tumbi',
+    email: 'alicia@email.com',
+    password: 'abc123'
   },
   //3
   {
-    username: 'Israel',
-    email: 'iadesanya@ufc.com',
-    password: 'password12345'
+    username: 'Gertrude the Great',
+    email: 'gertrude@email.com',
+    password: 'abc123'
   },
   //4
   {
-    username: 'Valentina',
-    email: 'vshevchenko@ufc.com',
-    password: 'password12345'
+    username: 'Bobby the Spider',
+    email: 'bobby@email.com',
+    password: 'abc123'
   },
   //5
   {
-    username: 'Tyron',
-    email: 'twoodley@ufc.com',
-    password: 'password12345'
+    username: 'Leonardo Turtle',
+    email: 'leonardo@email.com',
+    password: 'abc123'
   }
 ];
 

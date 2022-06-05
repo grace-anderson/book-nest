@@ -27,7 +27,11 @@ Book.init(
     },
     publication_year: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
+    },
+    synopsis: {
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     //user that shared the book
     user_shared_id: {

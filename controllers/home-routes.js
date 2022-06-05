@@ -86,8 +86,8 @@ router.get('/books/:id', async (req, res) => {
     // map to plain text
     const selectedBook = bookData.get({ plain: true });
 
-    // console.log('\n---HOME ROUTES: SELECTED BOOK');
-    // console.log(selectedBook);
+    console.log('\n---HOME ROUTES: SELECTED BOOK');
+    console.log(selectedBook);
 
     res.render('bookCard', {
       selectedBook,
@@ -187,6 +187,7 @@ router.get('/find-book', async (req, res) => {
   try {
     // find the book
     const books = await Book.findAll({
+      include: [{ model: Genre, attributes: ['genre_title'] }],
       where: {
         title: {
           [Op.like]: '%' + req.query.title + '%'

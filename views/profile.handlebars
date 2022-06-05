@@ -1,13 +1,14 @@
 <div class="container">
-  <div class="row mx-5">
-    <div class="col-12 my-2">
-      <h2 class="green-text really-embolden">Welcome back, {{username}}!</h2>
+  <div class="row mx-5 my-2">
+    <div class="col-12 my-3">
+      <h2 class="mb-3 green-text really-embolden">Welcome back,
+        {{username}}!</h2>
       <p>What would you like to do today?</p>
     </div>
   </div>
 
   <div class="row mx-5">
-    <div class="col-12">
+    <div class="col-12 col-md-10 col-lg-auto transparent-white">
       <h3>My Reading List</h3>
     </div>
   </div>
@@ -44,17 +45,11 @@
                     {{rlbook.book.genre.genre_title}}
                   </span>
                 </li>
-                <li class="list-group-item">
-                  Date shared to Book Nest:
-                  <span class="normal-weight">
-                    {{format_date rlbook.book.date_shared}}
-                  </span>
-                </li>
-                <li class="list-group-item">
-                  Shared by:
-                  <span class="normal-weight">
-                    {{rlbook.book.user.username}}
-                  </span>
+                <li class="list-group-item tiny-text">
+                  <span class="normal-weight">Added by</span>
+                  {{rlbook.book.user.username}}
+                  <span class="normal-weight"> on </span>
+                  {{format_date rlbook.book.date_shared}}
                 </li>
               </ul>
             </div>
@@ -119,17 +114,11 @@
                     {{book.genre.genre_title}}
                   </span>
                 </li>
-                <li class="list-group-item">
-                  Date shared to Book Nest:
-                  <span class="normal-weight">
-                    {{format_date book.date_shared}}
-                  </span>
-                </li>
-                <li class="list-group-item">
-                  Shared by:
-                  <span class="normal-weight">
-                    {{book.user.username}}
-                  </span>
+                <li class="list-group-item tiny-text">
+                  <span class="normal-weight">Added by</span>
+                  {{book.user.username}}
+                  <span class="normal-weight"> on </span>
+                  {{format_date book.date_shared}}
                 </li>
               </ul>
             </div>
@@ -138,7 +127,7 @@
 
       {{/each}}
     {{else}}
-      <div class="col-12">
+      <div class="col-12 transparent-white">
         <p>(I haven't shared any books yet.)</p>
       </div>
     {{/if}}

@@ -16,6 +16,10 @@ const shareBook = async (event) => {
   const genreSelect = document.querySelector('#genre-input');
   const genreValue = genreSelect.options[genreSelect.selectedIndex].value;
 
+  // get synopsis text
+  const synopsis = document.querySelector('#synopsis-input').value.trim();
+
+  // make sure the publication year is a number
   parseInt(publicationYear);
 
   if (!publicationYear) {
@@ -26,16 +30,22 @@ const shareBook = async (event) => {
   }
 
   // error msg if any field is blank
-  if (!title || !author || !publicationYear || !genreValue) {
+  if (!title || !author || !publicationYear || !genreValue || !synopsis) {
     alert('Please make sure to fill in all form fields.');
     return;
   }
 
   // send post request if all fields are good
-  if (title && author && publicationYear && genreValue) {
+  if (title && author && publicationYear && genreValue && synopsis) {
     const response = await fetch('/api/books', {
       method: 'POST',
-      body: JSON.stringify({ title, author, publicationYear, genreValue }),
+      body: JSON.stringify({
+        title,
+        author,
+        publicationYear,
+        genreValue,
+        synopsis
+      }),
       headers: { 'Content-Type': 'application/json' }
     });
 
