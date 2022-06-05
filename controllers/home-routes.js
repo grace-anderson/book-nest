@@ -6,9 +6,9 @@ const withAuth = require('../utils/auth');
 const {
   User,
   Book,
-  // Reading_List,
-  // Book_Reading_List,
-  Genre
+  Genre,
+  Book_Reading_List,
+  Reading_List
 } = require('../models');
 
 // ====== BELOW:
@@ -93,10 +93,29 @@ router.get('/profile', async (req, res) => {
   try {
     const sessionUserId = req.session.user_id;
 
-    console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
-    console.log(req.session.user_id);
+    // console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
+    // console.log(req.session.user_id);
 
-    const bookData = await Book.findAll({
+    const readingListBookData = await Book_Reading_List.findAll({
+      include: [
+        { model: Book },
+        {
+          model: Reading_List,
+          where: {
+            reader_id: sessionUserId
+          }
+        }
+      ]
+    });
+
+    const readingListBooks = readingListBookData.map((readingListBooks) =>
+      readingListBooks.get({ plain: true })
+    );
+
+    console.log('\n---HOME ROUTES: READING LIST DATA');
+    console.log(readingListBooks);
+
+    const sharedBookData = await Book.findAll({
       include: [
         {
           model: Genre,
@@ -112,13 +131,14 @@ router.get('/profile', async (req, res) => {
       }
     });
 
-    const sharedBooks = bookData.map((book) => book.get({ plain: true }));
+    const sharedBooks = sharedBookData.map((book) => book.get({ plain: true }));
 
-    console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
-    console.log(sharedBooks);
+    // console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
+    // console.log(sharedBooks);
 
     res.render('profile', {
       sharedBooks,
+      readingListBooks,
       loggedIn: req.session.loggedIn
     });
   } catch (error) {
