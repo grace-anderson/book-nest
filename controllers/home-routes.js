@@ -98,7 +98,11 @@ router.get('/profile', async (req, res) => {
 
     const readingListBookData = await Book_Reading_List.findAll({
       include: [
-        { model: Book },
+        {
+          model: Book,
+          // include all of book's nested associations in the book reading list data (ie. genre > genre_title; user > all user values too)
+          include: { all: true, nested: true }
+        },
         {
           model: Reading_List,
           where: {
