@@ -3,7 +3,7 @@ const { Reading_List, Book_Reading_List, Book } = require('../../models');
 
 // path: /api/reading-list
 
-// post to the reading list of the user
+// WHEN USER ADDS A BOOK TO THEIR READING LIST
 router.post('/add', async (req, res) => {
   try {
     // bookId comes from front end
@@ -29,19 +29,19 @@ router.post('/add', async (req, res) => {
     // grab the reading list ID out of the plain obj
     const readingListId = readingListData.id;
 
-    console.log('\n---RL ROUTE: GET READING LIST');
-    console.log(userId, readingListId, bookId);
-    console.log(book);
+    // console.log('\n---RL ROUTE: GET READING LIST');
+    // console.log(userId, readingListId, bookId);
+    // console.log(book);
 
-    // make the attachment?
-    const bookReadingList = await Book_Reading_List.create({
+    // make the attachment to the book-reading-list join table
+    await Book_Reading_List.create({
       book_id: bookId,
       reading_list_id: readingListId
     });
 
-    console.log(bookReadingList);
+    // console.log(bookReadingList);
 
-    // send the book?
+    // send the book
     res.status(200).json({
       book
     });
