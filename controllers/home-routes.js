@@ -80,7 +80,8 @@ router.get('/books/:id', async (req, res) => {
 
     // res.status(200).json(selectedBook);
     res.render('bookCard', {
-      selectedBook
+      selectedBook,
+      loggedIn: req.session.loggedIn
     });
   } catch (error) {
     res.status(500).json(error);

@@ -1,25 +1,35 @@
 {{! viewing card for a single book }}
+{{! this is coming from home routes: show book by id }}
 
 <div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div id="selected-book" class="card" data-id="{{selectedBook.id}}">
+        <div class="card-header embolden">
+          {{selectedBook.title}}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Author:
+            {{selectedBook.author}}
+          </li>
+          <li class="list-group-item">
+            Publication Date:
+            {{selectedBook.publication_year}}
+          </li>
+          <li class="list-group-item">
+            Genre:
+            {{selectedBook.genre.genre_title}}
+          </li>
+        </ul>
 
-  <div class="card border-blue">
-    <div class="card-header embolden">
-      {{selectedBook.title}}
+        <button id="add-to-reading-list">add to reading list</button>
+
+        <button id="remove-from-reading-list">remove from reading list</button>
+
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        Author:
-        {{selectedBook.author}}
-      </li>
-      <li class="list-group-item">
-        Publication Date:
-        {{selectedBook.publication_year}}
-      </li>
-      <li class="list-group-item">
-        Genre:
-        {{selectedBook.genre.genre_title}}
-      </li>
-    </ul>
   </div>
-
 </div>
+
+<script src="/js/readingList.js"></script>
