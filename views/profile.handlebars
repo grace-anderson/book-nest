@@ -15,8 +15,8 @@
           <div class="card h-100 w-100 custom-card-border">
             <div class="card-header">
               <h5>
+                <i class="bi bi-book-fill icon-green"></i>
                 {{rlbook.book.title}}
-                <i class="bi bi-book"></i>
               </h5>
             </div>
             <ul class="list-group list-group-flush">
@@ -82,8 +82,8 @@
             <div class="card h-100 w-100 custom-card-border">
               <div class="card-header">
                 <h5>
+                  <i class="bi bi-book icon-purple"></i>
                   {{book.title}}
-                  <i class="bi bi-book"></i>
                 </h5>
               </div>
               <ul class="list-group list-group-flush">
@@ -124,8 +124,8 @@
 
       {{/each}}
     {{else}}
-      <div class="col">
-        <p>oops nothing here</p>
+      <div class="col-12">
+        <p>(You haven't shared any books yet.)</p>
       </div>
     {{/if}}
 

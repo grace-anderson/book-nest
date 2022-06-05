@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Reading_List, Book_Reading_List, Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// path: /api/reading-list
+
 // get all book reading lists (for testing purposes)
 router.get('/', async (req, res) => {
   try {
@@ -12,8 +14,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// path: /api/reading-list
 
 // WHEN USER ADDS A BOOK TO THEIR READING LIST
 router.post('/add', withAuth, async (req, res) => {
@@ -50,8 +50,8 @@ router.post('/add', withAuth, async (req, res) => {
       }
     });
 
-    console.log('\n---RL ROUTES: DOES BOOKLIST EXIST');
-    console.log(isBookOnReadingList);
+    // console.log('\n---RL ROUTES: DOES BOOKLIST EXIST');
+    // console.log(isBookOnReadingList);
 
     // if a bookList does NOT exist (ie. a book is NOT on a user's reading list), then go ahead and create a new match
     if (!isBookOnReadingList) {
@@ -74,7 +74,7 @@ router.post('/add', withAuth, async (req, res) => {
 
     // make the attachment to the book-reading-list join table
   } catch (error) {
-    console.log('\n---RL ROUTE: POST TO RL');
+    console.log('\n---RL ROUTE: POST TO RL ERR');
     console.log(error);
     res.status(500).json(error);
   }
@@ -94,8 +94,8 @@ router.delete('/remove', withAuth, async (req, res) => {
       }
     });
 
-    console.log('\n---RL DELETE: IS BOOK ON READING LIST');
-    console.log(isBookOnReadingList);
+    // console.log('\n---RL DELETE: IS BOOK ON READING LIST');
+    // console.log(isBookOnReadingList);
 
     // if the book IS on the user's reading list:
     if (isBookOnReadingList) {
@@ -120,7 +120,7 @@ router.delete('/remove', withAuth, async (req, res) => {
       });
     }
   } catch (error) {
-    console.log('\n---RL ROUTE: DELETE FROM RL');
+    console.log('\n---RL ROUTE: DELETE FROM RL ERR');
     console.log(error);
     res.status(500).json(error);
   }

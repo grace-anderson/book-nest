@@ -1,3 +1,6 @@
+// GET DOM ELEMENTS
+const logoutButton = document.getElementById('logout');
+
 // LOG USER OUT HANDLER
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
@@ -6,11 +9,12 @@ const logout = async () => {
   });
 
   if (response.ok) {
+    alert('Thank you for using Book Nest. See you soon!');
     document.location.replace('/');
   } else {
     alert('Logout failed.');
   }
 };
 
-// GRAB THE ELEMENT
-document.getElementById('logout').addEventListener('click', logout);
+// EVENT LISTENERS
+logoutButton.addEventListener('click', logout);

@@ -1,3 +1,7 @@
+// GRAB DOM ELEMENTS
+const loginForm = document.getElementById('login-form');
+const signUpForm = document.getElementById('signup-form');
+
 // HANDLER FOR LOGGING THE USER IN
 const logUserIn = async (event) => {
   event.preventDefault();
@@ -8,8 +12,15 @@ const logUserIn = async (event) => {
   // console.log('\n----LOGIN ROUTE: EMAIL');
   // console.log(email);
 
-  if (!email || !password) {
-    alert('Please fill in both email and password fields.');
+  // email validation here
+  const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+  if (!regexEmail.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  if (!password) {
+    alert('Please enter your password.');
     return;
   }
 
@@ -23,7 +34,7 @@ const logUserIn = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert('Login failed.');
+      alert('Login failed.\nPlease check that your password is correct.');
     }
   }
 };
@@ -41,6 +52,13 @@ const signUserUp = async (event) => {
 
   if (!username || !email || !password) {
     alert('Please fill in the username, email, and password fields.');
+  }
+
+  // email validation here
+  const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+  if (!regexEmail.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
   }
 
   // tried to add validation checks for user and email to be unique but it's not working 100%
@@ -82,7 +100,7 @@ const signUserUp = async (event) => {
       document.location.replace('/');
     } else {
       alert(
-        'Sign up failed because the username or email already exists. Please try again.'
+        'Sign up failed.\nA user already exists with that username or email. Please try again.'
       );
       // after the alert is closed, refresh login page
       document.location.replace('/login');
@@ -91,9 +109,9 @@ const signUserUp = async (event) => {
 };
 
 // GET THE ELEMENTS
-document.getElementById('login-form').addEventListener('submit', logUserIn);
+loginForm.addEventListener('submit', logUserIn);
 
-document.getElementById('signup-form').addEventListener('submit', signUserUp);
+signUpForm.addEventListener('submit', signUserUp);
 
 // ==== BELOW:
 // OLD VERSION THAT DOESN'T WORK
