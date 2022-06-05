@@ -196,6 +196,9 @@ router.get('/find-book', async (req, res) => {
 
     const payload = books.map((book) => book.get({ plain: true }));
 
+    console.log('\n---HOME: PAYLOAD');
+    console.log(payload);
+
     const errMsg =
       'Sorry, we were not able to find a book with that title. Please try again!';
 
