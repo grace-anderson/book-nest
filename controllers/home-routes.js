@@ -196,22 +196,6 @@ router.get('/find-book', async (req, res) => {
 
     const payload = books.map((book) => book.get({ plain: true }));
 
-    console.log('\n---HOME: PAYLOAD');
-    console.log(payload);
-
-    const errMsg =
-      'Sorry, we were not able to find a book with that title. Please try again!';
-
-    if (!payload.length) {
-      return res.render('findBook', {
-        //fix - don't send back err
-        message: errMsg
-      });
-      // return res.status(400).json({
-      //   message: 'Could not find book with that title.'
-      // });
-    }
-
     res.render('findBook', {
       books: payload,
       loggedIn: req.session.loggedIn
@@ -219,7 +203,11 @@ router.get('/find-book', async (req, res) => {
   } catch (error) {
     console.log('\n---BOOK ROUTES: FIND BOOK ERR');
     console.log(error);
-    res.status(500).json(error);
+    // res.status(400).json(error);
+    res.render('findBook', {
+      //fix - don't send back err
+      error: err
+    });
   }
 });
 

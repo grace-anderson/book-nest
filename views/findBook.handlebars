@@ -15,12 +15,6 @@
 <div class="container">
   <div class="row mx-5 justify-content-md-center">
 
-    <div class="col-12 col-md-4 col-lg-3 mb-3">
-      <div class="card custom-card-border">
-        {{message}}
-      </div>
-    </div>
-
     {{#each books as |book|}}
       {{! for each card, present it using this bootstrap card format }}
       <div class="col-12 col-md-4 col-lg-3 mb-3">
@@ -44,9 +38,11 @@
         </a>
       </div>
     {{/each}}
-
   </div>
 </div>
+{{#if error}}
+  <div class="text-danger">{{error}}</div>
+{{/if}}
 
 {{!-- <div class="col-12">
       <h3>Books matching your search</h3>
