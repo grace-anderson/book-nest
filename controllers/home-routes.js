@@ -6,9 +6,9 @@ const withAuth = require('../utils/auth');
 const {
   User,
   Book,
-  // Reading_List,
-  // Book_Reading_List,
-  Genre
+  Genre,
+  Book_Reading_List,
+  Reading_List
 } = require('../models');
 
 // ====== BELOW:
@@ -84,7 +84,8 @@ router.get('/books/:id', async (req, res) => {
 
     // res.status(200).json(selectedBook);
     res.render('bookCard', {
-      selectedBook
+      selectedBook,
+      loggedIn: req.session.loggedIn
     });
   } catch (error) {
     res.status(500).json(error);
@@ -96,10 +97,37 @@ router.get('/profile', async (req, res) => {
   try {
     const sessionUserId = req.session.user_id;
 
-    console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
-    console.log(req.session.user_id);
+    // console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
+    // console.log(req.session.user_id);
 
-    const bookData = await Book.findAll({
+    // get the reading list data out of db
+    const readingListBookData = await Book_Reading_List.findAll({
+      include: [
+        {
+          model: Book,
+          // include all book's nested associations in the book-reading-list data (ie. genre > genre_title; user > all user values)
+          // https://stackoverflow.com/questions/33941943/nested-include-in-sequelize
+          include: { all: true, nested: true }
+        },
+        {
+          model: Reading_List,
+          where: {
+            reader_id: sessionUserId
+          }
+        }
+      ]
+    });
+
+    // map to plain text
+    const readingListBooks = readingListBookData.map((readingListBooks) =>
+      readingListBooks.get({ plain: true })
+    );
+
+    // console.log('\n---HOME ROUTES: READING LIST DATA');
+    // console.log(readingListBooks);
+
+    // get the list of books shared by the user
+    const sharedBookData = await Book.findAll({
       include: [
         {
           model: Genre,
@@ -115,13 +143,15 @@ router.get('/profile', async (req, res) => {
       }
     });
 
-    const sharedBooks = bookData.map((book) => book.get({ plain: true }));
+    // map to plain text
+    const sharedBooks = sharedBookData.map((book) => book.get({ plain: true }));
 
-    console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
-    console.log(sharedBooks);
+    // console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
+    // console.log(sharedBooks);
 
     res.render('profile', {
       sharedBooks,
+      readingListBooks,
       loggedIn: req.session.loggedIn
     });
   } catch (error) {
@@ -159,6 +189,30 @@ router.get('/find-book', async (req, res) => {
 
 // ===== BELOW:
 // ROUTES IN PROGRESS
+
+// TODO: Edit shared book
+router.get('/book-update/:id', withAuth, async (req, res) => {
+  try {
+    const bookData = await Book.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    const book = bookData.get({ plain: true });
+
+    res.render('updateBook', {
+      book,
+      loggedIn: req.session.loggedIn,
+      pageDescription: 'Your Profile'
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// ==== BELOW:
+// ROUTES NOT IN USE OR NOT WORKING
 
 // TODO: Display user's profile with list of books
 // router.get('/profile', withAuth, async (req, res) => {
@@ -198,35 +252,11 @@ router.get('/find-book', async (req, res) => {
 // });
 
 // TODO: Create (share) a new book
-router.get('/share-book', withAuth, async (req, res) => {
-  res.render('shareBook', {
-    loggedIn: req.session.loggedIn
-  });
-});
-
-// TODO: Edit shared book
-router.get('/book-update/:id', withAuth, async (req, res) => {
-  try {
-    const bookData = await Book.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
-    const book = bookData.get({ plain: true });
-
-    res.render('updateBook', {
-      book,
-      loggedIn: req.session.loggedIn,
-      pageDescription: 'Your Profile'
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// ==== BELOW:
-// ROUTES NOT IN USE OR NOT WORKING
+// router.get('/share-book', withAuth, async (req, res) => {
+//   res.render('shareBook', {
+//     loggedIn: req.session.loggedIn
+//   });
+// });
 
 // GET VIEW BOOKS PAGE
 // getting login route to the front end
