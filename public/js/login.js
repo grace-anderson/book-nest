@@ -34,7 +34,9 @@ const logUserIn = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert('Login failed.\nPlease check that your password is correct.');
+      alert(
+        'Login failed.\nPlease check that your email and password are correct.'
+      );
     }
   }
 };
