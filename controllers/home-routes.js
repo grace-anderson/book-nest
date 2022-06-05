@@ -69,6 +69,10 @@ router.get('/books/:id', async (req, res) => {
         {
           model: Genre,
           attributes: ['genre_title']
+        },
+        {
+          model: User,
+          attributes: ['username']
         }
       ]
     });
