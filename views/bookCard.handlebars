@@ -1,37 +1,49 @@
 {{! viewing card for a single book }}
 
-<div class="container">
-
-  <div class="card border-blue">
-    <div class="card-header embolden">
-      {{selectedBook.title}}
+<div class="container d-flex justify-content-center">
+  {{! <div class="row mt-5"> }}
+  <div class="col-6 my-5">
+    <div class="card h-100 w-100 custom-card-border">
+      <div class="card-header book-link">
+        <h4 class="really-embolden">
+          <i class="bi bi-book-fill icon-green"></i>
+          {{selectedBook.title}}
+        </h4>
+      </div>
+      <ul class="list-group list-group-flush embolden li-large">
+        <li class="list-group-item">
+          Author:
+          <span class="normal-weight">
+            {{selectedBook.author}}
+          </span>
+        </li>
+        <li class="list-group-item">
+          Publication Date:
+          <span class="normal-weight">
+            {{selectedBook.publication_year}}
+          </span>
+        </li>
+        <li class="list-group-item">
+          Genre:
+          <span class="normal-weight">
+            {{selectedBook.genre.genre_title}}
+          </span>
+        </li>
+        <li class="list-group-item">
+          Date shared to Book Nest:
+          <span class="normal-weight">
+            {{format_date selectedBook.date_shared}}
+          </span>
+        </li>
+        <li class="list-group-item">
+          Shared by:
+          <span class="normal-weight">
+            {{selectedBook.user.username}}
+          </span>
+        </li>
+      </ul>
+      {{! </div> }}
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        Author:
-        {{selectedBook.author}}
-      </li>
-      <li class="list-group-item">
-        Publication Date:
-        {{selectedBook.publication_year}}
-      </li>
-      <li class="list-group-item">
-        Genre:
-        {{selectedBook.genre.genre_title}}
-      </li>
-      <li class="list-group-item">
-        Date shared to Book Nest:
-        <span class="normal-weight">
-          {{format_date selectedBook.date_shared}}
-        </span>
-      </li>
-      <li class="list-group-item">
-        Shared by:
-        <span class="normal-weight">
-          {{selectedBook.user.username}}
-        </span>
-      </li>
-    </ul>
   </div>
 
 </div>

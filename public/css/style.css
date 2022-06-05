@@ -91,8 +91,12 @@ img {
 }
 
 /* book icon */
-i {
+.icon-purple {
   color: var(--purple);
+}
+
+.icon-green {
+  color: var(--green);
 }
 
 /* links */
@@ -130,6 +134,11 @@ a:hover {
   background-color: var(--dark-purple);
   color: white !important;
   border-color: var(--brown);
+}
+
+/* list items */
+.li-large {
+  font-size: 1.1rem;
 }
 
 .border-red {
