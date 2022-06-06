@@ -185,6 +185,8 @@ router.get('/profile', withAuth, async (req, res) => {
 // SEARCH FOR A BOOK (BY ITS TITLE)
 router.get('/find-book', async (req, res) => {
   try {
+    let flag = false;
+
     // find the book
     const books = await Book.findAll({
       include: [{ model: Genre, attributes: ['genre_title'] }],
@@ -197,8 +199,25 @@ router.get('/find-book', async (req, res) => {
 
     const payload = books.map((book) => book.get({ plain: true }));
 
+    console.log('\n---HOME ROUTES: PAYLOAD (before flag)');
+    console.log(payload);
+
+    if (payload.length && flag === false) {
+      flag = true;
+    }
+
+    console.log('\n---HOME ROUTES: FLAG');
+    console.log(flag);
+
+    // have a variable that's a boolean
+    // use the ^ as the conditional rendering
+
+    // console.log('\n---HOME ROUTES: PAYLOAD');
+    // console.log(payload);
+
     res.render('findBook', {
       books: payload,
+      flag: flag,
       loggedIn: req.session.loggedIn
     });
   } catch (error) {

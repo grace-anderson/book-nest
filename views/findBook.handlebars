@@ -7,8 +7,13 @@
         <input class="mt-2 w-100" type="input" name="title" />
         <button class="btn btn-custom btn-block my-3 w-100">Find a Book</button>
       </form>
-      <h3>Books that match your search</h3>
-      <p>Click on a book to see its details</p>
+
+      {{#if flag}}
+        <h3>Books that match your search</h3>
+        <p>Click on a book to see its details</p>
+      {{else}}
+        <p>no results found </p>
+      {{/if}}
     </div>
   </div>
 
