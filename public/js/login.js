@@ -47,10 +47,7 @@ const signUserUp = async (event) => {
 
   const username = document.getElementById('username-signup').value.trim();
   const email = document.getElementById('email-signup').value.trim();
-  const password = document.getElementById('password-signup').value.trim();
-
-  // let validUsername;
-  // let validEmail;
+  let password = document.getElementById('password-signup').value.trim();
 
   if (!username || !email || !password) {
     alert('Please fill in the username, email, and password fields.');
@@ -63,34 +60,6 @@ const signUserUp = async (event) => {
     return;
   }
 
-  // tried to add validation checks for user and email to be unique but it's not working 100%
-
-  // const usernameCheck = await fetch('/api/users/signup-check', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ username }),
-  //   headers: { 'Content-Type': 'application/json' }
-  // });
-
-  // const emailCheck = await fetch('/api/users/signup-check', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ email }),
-  //   headers: { 'Content-Type': 'application/json' }
-  // });
-
-  // if (usernameCheck.ok) {
-  //   return (validUsername = username);
-  // } else {
-  //   alert('Username is already taken');
-  // }
-
-  // if (emailCheck.ok) {
-  //   return (validEmail = email);
-  // } else {
-  //   alert('Email is already taken');
-  // }
-
-  // console.log(validUsername, validEmail, password);
-
   if (username && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
@@ -101,9 +70,20 @@ const signUserUp = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert(
-        'Sign up failed.\nA user already exists with that username or email. Please try again.'
-      );
+      // get validation errors from back end
+      const errors = await response.json();
+
+      // do an alert depending on what the messages are
+      if (errors.email && errors.username) {
+        alert(`Sign up failed:\n${errors.email}\n${errors.username}`);
+      } else if (errors.email) {
+        alert(`Sign up failed:\n${errors.email}`);
+      } else if (errors.username) {
+        alert(`Sign up failed:\n${errors.username}`);
+      } else {
+        alert('Oops, something went wrong! Sign up failed.');
+      }
+
       // after the alert is closed, refresh login page
       document.location.replace('/login');
     }

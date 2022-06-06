@@ -87,9 +87,6 @@ router.delete('/remove', withAuth, async (req, res) => {
       }
     });
 
-    // console.log('\n---RL DELETE: IS BOOK ON READING LIST');
-    // console.log(isBookOnReadingList);
-
     // if the book IS on the user's reading list:
     if (isBookOnReadingList) {
       // grab the id of the booklist that we want to destroy

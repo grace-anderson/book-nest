@@ -185,74 +185,63 @@ router.get('/profile', withAuth, async (req, res) => {
 // SEARCH FOR A BOOK (BY ITS TITLE)
 router.get('/find-book', async (req, res) => {
   try {
-    let flag = false;
+    /* HOW THIS PAGE DISPLAYS ITS SEARCH MESSAGES:
+      ---
+      There are message blocks that should appear under the search button depending on the condition of the page:
+        1) When you first open the page, there should be no message
+        2) When you search and find a book, some flavour text along with the found books should appear
+        3) When you search and DON'T find a book, some flavour text (error message) should appear
+      ---
+      There are two flags used to help determine the correct condition:
+        1) req.query.title (which is the search input)
+        2) payload (ie returned book results)
+      ---
+      Conditions for each message type:
+        1) NO MESSAGE (blank):
+            > NO query.title & NO payload
+        2) FOUND BOOKS message:
+            > YES query.title & YES payload
+        3) NO FOUND BOOKS message:
+            > YES query.title & NO payload
+    */
+
+    // set search input as variable
+    let searchInput = req.query.title;
+
+    // set up flags
+    let payloadFlag = false;
+    let queryTitleFlag = searchInput;
 
     // find the book
     const books = await Book.findAll({
       include: [{ model: Genre, attributes: ['genre_title'] }],
       where: {
         title: {
-          [Op.like]: '%' + req.query.title + '%'
+          [Op.like]: '%' + searchInput + '%' // wildcard search
         }
       }
     });
 
+    // get the returned books and map to plain text
     const payload = books.map((book) => book.get({ plain: true }));
 
-    console.log('\n---HOME ROUTES: PAYLOAD (before flag)');
-    console.log(payload);
-
-    if (payload.length && flag === false) {
-      flag = true;
+    // if there are books then set payload flag to true
+    if (payload.length) {
+      payloadFlag = true;
     }
 
-    console.log('\n---HOME ROUTES: FLAG');
-    console.log(flag);
-
-    // have a variable that's a boolean
-    // use the ^ as the conditional rendering
-
-    // console.log('\n---HOME ROUTES: PAYLOAD');
-    // console.log(payload);
-
+    // pass on values to findBook handlebars
     res.render('findBook', {
       books: payload,
-      flag: flag,
+      payloadFlag: payloadFlag, // set the flag value
+      queryTitleFlag: queryTitleFlag, // set the query title flag value
       loggedIn: req.session.loggedIn
     });
   } catch (error) {
     console.log('\n---BOOK ROUTES: FIND BOOK ERR');
     console.log(error);
-    // res.status(400).json(error);
-    res.render('findBook', {
-      //fix - don't send back err
-      error: err
-    });
+    res.status(400).json(error);
   }
 });
-
-// ===== BELOW:
-// ROUTES TO DEVELOP:
-
-// TODO: Edit shared book
-// router.get('/book-update/:id', withAuth, async (req, res) => {
-//   try {
-//     const bookData = await Book.findOne({
-//       where: {
-//         id: req.params.id
-//       }
-//     });
-//     const book = bookData.get({ plain: true });
-
-//     res.render('updateBook', {
-//       book,
-//       loggedIn: req.session.loggedIn,
-//       pageDescription: 'Your Profile'
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;

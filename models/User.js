@@ -19,14 +19,46 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      validate: {
+        // custom validator for unique usernames
+        // https://stackoverflow.com/questions/63856212/how-to-display-sequelize-validation-error-messages-in-express-api
+        isUnique: (value, next) => {
+          User.findAll({
+            where: { username: value },
+            attributes: ['id']
+          })
+            .then((user) => {
+              if (user.length !== 0) {
+                next(new Error('Username is already in use.'));
+              }
+              next();
+            })
+            .catch((onError) => console.log(onError));
+        }
+      }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
-        isEmail: true
+        isEmail: {
+          args: true,
+          msg: 'Invalid email format.'
+        },
+        // custom validator for unique emails (reference link above)
+        isUnique: (value, next) => {
+          User.findAll({
+            where: { email: value },
+            attributes: ['id']
+          })
+            .then((user) => {
+              if (user.length !== 0) {
+                next(new Error('Email address is already in use.'));
+              }
+              next();
+            })
+            .catch((onError) => console.log(onError));
+        }
       }
     },
     password: {

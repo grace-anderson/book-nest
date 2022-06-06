@@ -8,17 +8,21 @@
         <button class="btn btn-custom btn-block my-3 w-100">Find a Book</button>
       </form>
 
-      {{#if flag}}
-        <h3>Books that match your search</h3>
-        <p>Click on a book to see its details</p>
+      {{! load specific messages depending on if first viewing page or doing a search }}
+      {{#if queryTitleFlag}}
+        {{#if payloadFlag}}
+          <h4>Books that match your search:</h4>
+          <p>Click on a book to see its details.</p>
+        {{else}}
+          <h5>Sorry, no results found!</h5>
+        {{/if}}
       {{else}}
-        <p>no results found </p>
+        {{! leave as empty space }}
       {{/if}}
     </div>
   </div>
 
   <div class="row mx-5 mt-3 justify-content-md-center">
-
     {{#each books as |book|}}
       {{! for each card, present it using this bootstrap card format }}
       <div class="col-12 col-md-4 col-lg-3 mb-3">
@@ -50,21 +54,3 @@
     {{/each}}
   </div>
 </div>
-{{#if error}}
-  <div class="text-danger">{{error}}</div>
-{{/if}}
-
-{{!-- <div class="col-12">
-      <h3>Books matching your search</h3>
-      <p>Click on a book to see its details</p>
-      <div>
-        {{#each books as |book|}}
-          <p>{{book.title}}</p>
-
-        {{/each}}
-      </div>
-
-      {{#if error}}
-        <div class="form-msg">{{error}}</div>
-      {{/if}}
-    </div> --}}
