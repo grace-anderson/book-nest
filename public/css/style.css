@@ -93,8 +93,13 @@ body {
   font-style: italic;
 }
 
+/* preserve line breaks in text area */
 .preserve-whitespace {
   white-space: pre-line;
+}
+
+.display-inline {
+  display: inline-block;
 }
 
 /* nav */
