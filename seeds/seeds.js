@@ -9,6 +9,7 @@ const seedBookReadingLists = require('./bookReadingListData');
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
+  // seeding must be done in this order
   await seedUsers();
 
   await seedGenres();
