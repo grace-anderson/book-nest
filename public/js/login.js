@@ -6,10 +6,11 @@ const signUpForm = document.getElementById('signup-form');
 const logUserIn = async (event) => {
   event.preventDefault();
 
+  // grab inputs from user
   const email = document.getElementById('email-login').value.trim();
   const password = document.getElementById('password-login').value.trim();
 
-  // email validation here
+  // email validation
   const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
   if (!regexEmail.test(email)) {
     alert('Please enter a valid email address.');
@@ -21,6 +22,7 @@ const logUserIn = async (event) => {
     return;
   }
 
+  // do fetch call if previous validations do not fail
   if (email && password) {
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -32,11 +34,16 @@ const logUserIn = async (event) => {
       document.location.replace('/profile');
     } else {
       // get the error message from back end
+      // reference:
+      // https://stackoverflow.com/questions/63856212/how-to-display-sequelize-validation-error-messages-in-express-api
       const errors = await response.json();
       const errMsg = errors.message;
 
       // show an alert with the error message
       alert(`Login failed.\n${errMsg}`);
+
+      // IF you want the page to refresh after a validation check fails, uncomment the following line:
+      // document.location.replace('/login');
     }
   }
 };
@@ -72,6 +79,8 @@ const signUserUp = async (event) => {
       document.location.replace('/');
     } else {
       // get validation errors from back end
+      // reference:
+      // https://stackoverflow.com/questions/63856212/how-to-display-sequelize-validation-error-messages-in-express-api
       const errors = await response.json();
 
       // show an alert depending on what the messages are
@@ -84,7 +93,7 @@ const signUserUp = async (event) => {
       } else {
         alert('Oops, something went wrong! Sign up failed.');
       }
-      // after the alert is closed, refresh login page
+      // IF you want the page to refresh after a validation check fails, uncomment the following line:
       // document.location.replace('/login');
     }
   }

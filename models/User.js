@@ -21,7 +21,7 @@ User.init(
       allowNull: false,
       validate: {
         // custom validator for unique usernames
-        // https://stackoverflow.com/questions/63856212/how-to-display-sequelize-validation-error-messages-in-express-api
+        // https://stackoverflow.com/questions/16356856/sequelize-js-custom-validator-check-for-unique-username-password
         isUnique: (value, next) => {
           User.findAll({
             where: { username: value },

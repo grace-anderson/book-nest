@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-// for readability
+// define the routes
 const userRoutes = require('./user-routes');
 const bookRoutes = require('./book-routes');
 const readingListRoutes = require('./reading-list-routes');
