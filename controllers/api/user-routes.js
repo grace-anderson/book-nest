@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
     // send error if user doesn't exist
     if (!returningUser) {
       return res.status(400).json({
-        message: 'Incorrect email. Please try again.'
+        message: 'Email address could not be found. Please try again.'
       });
     }
 

@@ -206,7 +206,7 @@ router.get('/find-book', async (req, res) => {
     */
 
     // set search input as variable
-    let searchInput = req.query.title;
+    const searchInput = req.query.title;
 
     // set up flags
     let payloadFlag = false;

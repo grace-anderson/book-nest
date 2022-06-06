@@ -9,9 +9,6 @@ const logUserIn = async (event) => {
   const email = document.getElementById('email-login').value.trim();
   const password = document.getElementById('password-login').value.trim();
 
-  // console.log('\n----LOGIN ROUTE: EMAIL');
-  // console.log(email);
-
   // email validation here
   const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
   if (!regexEmail.test(email)) {
@@ -34,9 +31,12 @@ const logUserIn = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert(
-        'Login failed.\nPlease check that your email and password are correct.'
-      );
+      // get the error message from back end
+      const errors = await response.json();
+      const errMsg = errors.message;
+
+      // show an alert with the error message
+      alert(`Login failed.\n${errMsg}`);
     }
   }
 };
@@ -45,6 +45,7 @@ const logUserIn = async (event) => {
 const signUserUp = async (event) => {
   event.preventDefault();
 
+  // get form values
   const username = document.getElementById('username-signup').value.trim();
   const email = document.getElementById('email-signup').value.trim();
   let password = document.getElementById('password-signup').value.trim();
@@ -73,7 +74,7 @@ const signUserUp = async (event) => {
       // get validation errors from back end
       const errors = await response.json();
 
-      // do an alert depending on what the messages are
+      // show an alert depending on what the messages are
       if (errors.email && errors.username) {
         alert(`Sign up failed:\n${errors.email}\n${errors.username}`);
       } else if (errors.email) {
@@ -83,9 +84,8 @@ const signUserUp = async (event) => {
       } else {
         alert('Oops, something went wrong! Sign up failed.');
       }
-
       // after the alert is closed, refresh login page
-      document.location.replace('/login');
+      // document.location.replace('/login');
     }
   }
 };

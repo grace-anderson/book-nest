@@ -29,7 +29,7 @@ User.init(
           })
             .then((user) => {
               if (user.length !== 0) {
-                next(new Error('Username is already in use.'));
+                next(new Error('Username is already in use'));
               }
               next();
             })
@@ -53,7 +53,7 @@ User.init(
           })
             .then((user) => {
               if (user.length !== 0) {
-                next(new Error('Email address is already in use.'));
+                next(new Error('Email address is already in use'));
               }
               next();
             })
