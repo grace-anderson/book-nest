@@ -13,6 +13,7 @@ const {
 
 // GET THE HOMEPAGE
 router.get('/', (req, res) => {
+  // pass in the logged in status
   res.render('homepage', {
     loggedIn: req.session.loggedIn
   });
@@ -20,10 +21,12 @@ router.get('/', (req, res) => {
 
 // GET THE LOGIN PAGE
 router.get('/login', (req, res) => {
+  // if user is logged in and somehow gets to this page, redirect
   if (req.session.loggedIn) {
     res.redirect('/view-books');
     return;
   }
+  // otherwise display login page
   res.render('login');
 });
 
@@ -44,14 +47,8 @@ router.get('/view-books', async (req, res) => {
       ]
     });
 
-    // console.log('\n---HOME ROUTES: BOOK DATA');
-    // console.log(bookData);
-
-    // map to plain text
+    // map to plain object
     const books = bookData.map((book) => book.get({ plain: true }));
-
-    // console.log('\n---HOME ROUTES: BOOK (mapped) DATA');
-    // console.log(books);
 
     res.render('viewBooks', {
       books,
@@ -67,6 +64,7 @@ router.get('/view-books', async (req, res) => {
 // RETRIEVE AND DISPLAY A SINGLE BOOK BY ITS ID
 router.get('/books/:id', async (req, res) => {
   try {
+    // get the book id out of req.params
     const bookId = req.params.id;
 
     // find the book using the req id
@@ -83,11 +81,8 @@ router.get('/books/:id', async (req, res) => {
       ]
     });
 
-    // map to plain text
+    // map to plain object
     const selectedBook = bookData.get({ plain: true });
-
-    console.log('\n---HOME ROUTES: SELECTED BOOK');
-    console.log(selectedBook);
 
     res.render('bookCard', {
       selectedBook,
@@ -102,6 +97,7 @@ router.get('/books/:id', async (req, res) => {
 
 // GET THE SHARE BOOK PAGE with the share book form
 router.get('/share-book', withAuth, async (req, res) => {
+  // render sharebook page and pass in logged in status
   res.render('shareBook', {
     loggedIn: req.session.loggedIn
   });
@@ -110,15 +106,13 @@ router.get('/share-book', withAuth, async (req, res) => {
 // RETRIEVE AND DISPLAY BOOKS SHARED BY USER
 router.get('/profile', withAuth, async (req, res) => {
   try {
+    // get the id of the session user
     const sessionUserId = req.session.user_id;
 
     // getting the username out
     const userData = await User.findByPk(sessionUserId);
     const user = userData.get({ plain: true });
     const { username } = user;
-
-    // console.log('\n---HOME ROUTES: REQ.SESSION PROFILE');
-    // console.log(req.session.user_id);
 
     // get the reading list data out of db
     const readingListBookData = await Book_Reading_List.findAll({
@@ -138,13 +132,10 @@ router.get('/profile', withAuth, async (req, res) => {
       ]
     });
 
-    // map to plain text
+    // map to plain object
     const readingListBooks = readingListBookData.map((readingListBooks) =>
       readingListBooks.get({ plain: true })
     );
-
-    // console.log('\n---HOME ROUTES: READING LIST DATA');
-    // console.log(readingListBooks);
 
     // get the list of books shared by the user
     const sharedBookData = await Book.findAll({
@@ -163,11 +154,8 @@ router.get('/profile', withAuth, async (req, res) => {
       }
     });
 
-    // map to plain text
+    // map to plain object
     const sharedBooks = sharedBookData.map((book) => book.get({ plain: true }));
-
-    // console.log('\n---HOME ROUTES: SHARED BOOKS (mapped) DATA');
-    // console.log(sharedBooks);
 
     res.render('profile', {
       username,
@@ -222,7 +210,7 @@ router.get('/find-book', async (req, res) => {
       }
     });
 
-    // get the returned books and map to plain text
+    // get the returned books and map to plain object
     const payload = books.map((book) => book.get({ plain: true }));
 
     // if there are books then set payload flag to true
