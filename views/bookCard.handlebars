@@ -48,6 +48,8 @@
             {{selectedBook.user.username}}
           </li>
         </ul>
+
+        {{! only show the add to and remove from reading list buttons if the user is logged in }}
         {{#if loggedIn}}
           <div class="mx-3">
             <button
