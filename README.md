@@ -3,9 +3,9 @@
 
 ## Description
 
-Book Nest is an app for book lovers. Book Nest is a charming community for those who love to read e-books. Readers can find their new favourite book. Book owners can share their e-books. Authors can share their stories. 
+Book Nest is an app for book lovers, a charming community for those who love to read e-books. Readers can find a new favourite book. Book owners can share their e-books. Also, authors can share their stories with the Book Nest community.
 
-The application was designed following the [MVC (Model View Control)](https://www.educba.com/what-is-mvc-design-pattern/) design pattern using a MySQL database with Sequelize ORM, an Express.js back end, the Handlebars templating engine to present data to the user.
+The application was designed following the [MVC (Model View Control)](https://www.educba.com/what-is-mvc-design-pattern/) design pattern using a MySQL database with Sequelize ORM, an Express.js back end, and Handlebars templating to present data to the user.
 
 Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest app's code. See the deployed app on **[Heroku](TO DO)**.
 
@@ -18,9 +18,17 @@ Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest ap
   - [Usage](#usage)
   - [Installation](#installation)
   - [Contribution Guidelines](#contribution-guidelines)
-  - [Test Instructions](#test-instructions)
-  - [Demo](#demo)
+  - [Demos](#demos)
   - [Screenshots](#screenshots)
+    - [Mobile](#mobile)
+      - [Homepage, Navbar and 'View Our Books'](#homepage-navbar-and-view-our-books)
+      - ['Find a Book', 'My Profile' and a Book Card](#find-a-book-my-profile-and-a-book-card)
+    - [Desktop (>960px)](#desktop-960px)
+      - [Homepage](#homepage)
+      - [View our Books](#view-our-books)
+      - [Find A Book](#find-a-book)
+      - [Login or Sign Up](#login-or-sign-up)
+  - [Future enhancements](#future-enhancements)
   - [License](#license)
   - [Resources](#resources)
 
@@ -28,9 +36,10 @@ Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest ap
 
 This application uses the following technologies...
 
-* JavaScript
+  JavaScript
 * [Node.js](https://nodejs.dev/)
 * [Express.js](https://expressjs.com/)
+* [handlebars](https://handlebarsjs.com)
 * [Express-Handlebars](https://github.com/express-handlebars/express-handlebars)
 * [Express-Session](https://www.npmjs.com/package/express-session)
 * [MySQL 2](https://www.npmjs.com/package/mysql2)
@@ -38,19 +47,23 @@ This application uses the following technologies...
 * [Connect Session Store using Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 * [dotenv](https://www.npmjs.com/package/dotenv)
 * [bcrypt](https://github.com/kelektiv/node.bcrypt.js)
-* [handlebars](https://handlebarsjs.com)
-* 
 
-...and the following dev dependencies:
+Dev dependencies:
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 * [Husky](https://typicode.github.io/husky/#/)
 * [lint-staged](https://github.com/okonet/lint-staged)
 * [ESLint](https://eslint.org/)
 * [Prettier](https://prettier.io/docs/en/index.html)
 
+Deployment
+* [Heroku](https://www.heroku.com/)
+* [JawsDB](https://www.jawsdb.com/)
+
 ## Usage
+
 * Access the deployed Book Nest app via **[Heroku](TODO)**
-* See **#Demo [screenshot and gifs](#screenshots) - TODO** below that visually depict the Book Nest's functionality
+* See [Demos](#demos) below that depict the Book Nest's functionality
+* Book Nest is a responsive app. See [Screenshots](#screenshots) to view mobile and desktop screen sizes.
 
 ## Installation
 
@@ -62,26 +75,71 @@ To install Book Nest locally,
   * **TO COMPLETE - Sush help please :-)**
 
 ## Contribution Guidelines
+
 * Contributions are welcome.
 * The code is located in the [GitHub](https://github.com/grace-anderson/book-nest)
 * To contribute, open a new issue describing your proposed enhancement or fix.
-  * Before contributing, browse through the open issues to see if your issue already exists or if there is an issue you might be able to solve. 
+  * Before contributing, browse through the [Future enhancements](#future-enhancements) and open issues to see if your issue already exists or if there is an issue/enhancement you might be able to solve. 
   * If you're a newbie dev, start contributing by looking for issues labelled "good first issue"
 * It is good practice to set up your project repository as an "upstream" remote and synchronize with the project repository
-  * Don't update the main branch. Rather create your own branch using a descriptive brief name
+  * Don't update the main branch. Rather create your own branch using a brief descriptive name
 * You can create pull requests, but only admins can review and merge.
-  * Be nice to your reviewer by adding adding a plain English explanation of your pull request and how your updates addresses the issue/s or enhancements it concerns
+  * Be nice to your reviewer by adding adding a plain English explanation of your pull request and how your updates addresses the issue/s or enhancements  
 * Also see the [GitHub Community Guidelines](https://docs.github.com/en/site-policy/github-terms/github-community-guidelines)
 
-## Test Instructions
-Test using the following User Story and Acceptance Criteria to validate the features of the Note Taker app.
-## Demo
+## Demos
 
-demo
+These gifs demonstrate Book Nest's current functionality
+
+1. View Our Books (user is not logged in)
+    >![The user clicks on 'View Our Books'. They then browse Book Nest's list of books, select a book and view its details](./utils/img/view-our-books.gif)  
+2. Find A Book (user is not logged in)
+    >![On the homepage, the user clicks on 'Find A Book' then searches for a book. They click on a retrieved book to view its details. The user then clicks on Find A Book in the navbar to carry out another search](./utils/img/find-a-book.gif)  
+3. Sign up and My Profile
+    >![On Login page, a new user enters username, email and password and clicks Sign Up. The homepage opens. They click 'Go to My Book Nest' to open 'My Profile'](./utils/img/sign-up-and-my-profile.gif)  
+4. Find A Book and add to My Reading List
+    >![User clicks on 'Find A Book'. They search and retrieve a book. They click on the retrieved book to open its details and add it to their 'Reading List'](./utils/img/find-a-book-reading-list.gif) 
+5. Remove a book from My Reading List
+    >![User clicks on 'My Profile'. They click on a book in their reading list. They remove the book from their Reading List by clicking 'Remove from Reading List'](./utils/img/remove-from-reading-list.gif) 
+6. Share a Book
+    >![User clicks on 'My Profile'. They click 'Share a book to Book Nest', complete the books details and then click 'Add that book to Book Nest'. The user is returned to 'My Profile' where they click on the shared book to view its details](./utils/img/share-a-book.gif) 
+7. Login, navigate, Logout
+    >![User logs in, navigates through Book Nest. Finally, they log out](./utils/img/login-navigate-logout.gif)  
 
 ## Screenshots
+### Mobile 
+#### Homepage, Navbar and 'View Our Books'
+![Screenshots of mobile size for homepage, navbar and 'View Our Books'](./utils/img/mobile.png) 
 
-screenshots
+#### 'Find a Book', 'My Profile' and a Book Card
+![Screenshots of mobile size for homepage, navbar and 'View Our Books'](./utils/img/mobile-2.png) 
+
+### Desktop (>960px)
+Screenshots of desktop (>960px) size for homepage, 'View Our Books', 'Find A Book', and 'Login'
+
+#### Homepage
+![Screenshot of desktop size for homepage](./utils/img/desktop-homepage.png) 
+
+#### View our Books
+![Screenshot of desktop size for 'View Our Books'](./utils/img/desktop-view-our-books.png) 
+
+#### Find A Book
+![Screenshot of desktop size for 'Find A Book'](./utils/img/desktop-find-a-book.png) 
+
+#### Login or Sign Up
+![Screenshot of desktop size for login or signup](./utils/img/desktop-login.png) 
+
+
+## Future enhancements
+
+* Link book record on reading list to its ebook
+* User checkout to read or reserve an ebook
+* Delete a book record
+* Edit a book record
+* Add images to a book record
+* Enhanced context-sensitive navigation
+* Notifications (e.g. when a new book in a favourite genre is shared)
+* Login with social media account
 
 ## License
 
@@ -91,7 +149,14 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Resources
 
-* [resource]()
+* [GitHub](https://github.com/)
+* [Google Drive](https://drive.google.com/)
+* [Google Slides](https://www.google.com/slides/about/)
+* [Miro](https://miro.com/miroverse/)
+* [PhotoShop](https://www.adobe.com/au/products/photoshopfamily.html)
+* [Visual Studio Code's](https://code.visualstudio.com/)
+
+
 
 
 
