@@ -30,6 +30,17 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+  // pass in the logged in status
+  res.render('logout', {
+    loggedIn: req.session.loggedIn
+  });
+});
+
 // RETRIEVE AND DISPLAY ALL BOOKS
 router.get('/view-books', async (req, res) => {
   try {
