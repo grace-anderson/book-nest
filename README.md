@@ -7,7 +7,7 @@ Book Nest is an app for book lovers, a charming community for those who love to 
 
 The application was designed following the [MVC (Model View Control)](https://www.educba.com/what-is-mvc-design-pattern/) design pattern using a MySQL database with Sequelize ORM, an Express.js back end, and Handlebars templating to present data to the user.
 
-Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest app's code. See the deployed app on **[Heroku](TO DO)**.
+Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest app's code. See the deployed app on [Heroku](https://the-book-nest.herokuapp.com/).
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ Deployment
 
 ## Usage
 
-* Access the deployed Book Nest app via **[Heroku](TODO)**
+* Access the deployed Book Nest app via [Heroku](https://the-book-nest.herokuapp.com/)
 * See [Demos](#demos) below that depict the Book Nest's functionality
 * Book Nest is a responsive app. See [Screenshots](#screenshots) to view mobile and desktop screen sizes.
 
@@ -92,7 +92,7 @@ To install and run Book Nest locally,
 ## Contribution Guidelines
 
 * Contributions are welcome.
-* The code is located in the [GitHub](https://github.com/grace-anderson/book-nest)
+* The code is located in this [GitHub](https://github.com/grace-anderson/book-nest) repo
 * To contribute, open a new issue describing your proposed enhancement or fix.
   * Before contributing, browse through the [Future enhancements](#future-enhancements) and open issues to see if your issue already exists or if there is an issue/enhancement you might be able to solve. 
   * If you're a newbie dev, start contributing by looking for issues labelled "good first issue"
@@ -111,13 +111,13 @@ These gifs demonstrate Book Nest's current functionality
 2. Find A Book (user is not logged in)
     >![On the homepage, the user clicks on 'Find A Book' then searches for a book. They click on a retrieved book to view its details. The user then clicks on Find A Book in the navbar to carry out another search](./utils/img/find-a-book.gif)  
 3. Sign up and My Profile
-    >![On Login page, a new user enters username, email and password and clicks Sign Up. The homepage opens. They click 'Go to My Book Nest' to open 'My Profile'](./utils/img/sign-up-and-my-profile.gif)  
+    >![On Login page, a new user enters username, email and password and clicks Sign Up. The homepage opens. They click 'My Profile' to open their profile](./utils/img/sign-up-and-my-profile.gif)  
 4. Find A Book and add to My Reading List
     >![User clicks on 'Find A Book'. They search and retrieve a book. They click on the retrieved book to open its details and add it to their 'Reading List'](./utils/img/find-a-book-reading-list.gif) 
 5. Remove a book from My Reading List
-    >![User clicks on 'My Profile'. They click on a book in their reading list. They remove the book from their Reading List by clicking 'Remove from Reading List'](./utils/img/remove-from-reading-list.gif) 
+    >![User clicks on 'Go to your Book Nest'. They click on a book in their reading list. They remove the book from their Reading List by clicking 'Remove from Reading List'](./utils/img/remove-from-reading-list.gif) 
 6. Share a Book
-    >![User clicks on 'My Profile'. They click 'Share a book to Book Nest', complete the books details and then click 'Add that book to Book Nest'. The user is returned to 'My Profile' where they click on the shared book to view its details](./utils/img/share-a-book.gif) 
+    >![User clicks on 'Go to your Book Nest'. They click 'Share a book to Book Nest', complete the books details and then click 'Add that book to Book Nest'. The user is returned to 'My Profile' where they click on the shared book to view its details](./utils/img/share-a-book.gif) 
 7. Login, navigate, Logout
     >![User logs in, navigates through Book Nest. Finally, they log out](./utils/img/login-navigate-logout.gif)  
 
@@ -144,9 +144,12 @@ Screenshots of desktop (>960px) size for homepage, 'View Our Books', 'Find A Boo
 #### Login or Sign Up
 ![Screenshot of desktop size for login or signup](./utils/img/desktop-login.png) 
 
-
 ## Future enhancements
 
+* User interface: margins on nav buttons to stop pushing out, more colour contrast
+* Manage when user tries to add a book already in their reading list (e.g. no "add to reading list button)
+* Manage when user tries to remove a book already in their reading list (e.g. no "remove from reading list" button)
+* Retain text in search so user sees their typed search
 * Link book record on reading list to its ebook
 * User checkout to read or reserve an ebook
 * Delete a book record
@@ -170,8 +173,3 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 * [Miro](https://miro.com/miroverse/)
 * [PhotoShop](https://www.adobe.com/au/products/photoshopfamily.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
-
-
-
-
-
