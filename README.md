@@ -111,13 +111,13 @@ These gifs demonstrate Book Nest's current functionality
 2. Find A Book (user is not logged in)
     >![On the homepage, the user clicks on 'Find A Book' then searches for a book. They click on a retrieved book to view its details. The user then clicks on Find A Book in the navbar to carry out another search](./utils/img/find-a-book.gif)  
 3. Sign up and My Profile
-    >![On Login page, a new user enters username, email and password and clicks Sign Up. The homepage opens. They click 'Go to My Book Nest' to open 'My Profile'](./utils/img/sign-up-and-my-profile.gif)  
+    >![On Login page, a new user enters username, email and password and clicks Sign Up. The homepage opens. They click 'My Profile' to open their profile](./utils/img/sign-up-and-my-profile.gif)  
 4. Find A Book and add to My Reading List
     >![User clicks on 'Find A Book'. They search and retrieve a book. They click on the retrieved book to open its details and add it to their 'Reading List'](./utils/img/find-a-book-reading-list.gif) 
 5. Remove a book from My Reading List
-    >![User clicks on 'My Profile'. They click on a book in their reading list. They remove the book from their Reading List by clicking 'Remove from Reading List'](./utils/img/remove-from-reading-list.gif) 
+    >![User clicks on 'Go to your Book Nest'. They click on a book in their reading list. They remove the book from their Reading List by clicking 'Remove from Reading List'](./utils/img/remove-from-reading-list.gif) 
 6. Share a Book
-    >![User clicks on 'My Profile'. They click 'Share a book to Book Nest', complete the books details and then click 'Add that book to Book Nest'. The user is returned to 'My Profile' where they click on the shared book to view its details](./utils/img/share-a-book.gif) 
+    >![User clicks on 'Go to your Book Nest'. They click 'Share a book to Book Nest', complete the books details and then click 'Add that book to Book Nest'. The user is returned to 'My Profile' where they click on the shared book to view its details](./utils/img/share-a-book.gif) 
 7. Login, navigate, Logout
     >![User logs in, navigates through Book Nest. Finally, they log out](./utils/img/login-navigate-logout.gif)  
 
@@ -146,6 +146,10 @@ Screenshots of desktop (>960px) size for homepage, 'View Our Books', 'Find A Boo
 
 ## Future enhancements
 
+* User interface: margins on nav buttons to stop pushing out, more colour contrast
+* Manage when user tries to add a book already in their reading list (e.g. no "add to reading list button)
+* Manage when user tries to remove a book already in their reading list (e.g. no "remove from reading list" button)
+* Retain text in search so user sees their typed search
 * Link book record on reading list to its ebook
 * User checkout to read or reserve an ebook
 * Delete a book record
