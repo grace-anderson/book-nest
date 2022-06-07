@@ -61,7 +61,7 @@ router.get('/view-books', async (req, res) => {
     // map to plain object
     const books = bookData.map((book) => book.get({ plain: true }));
 
-    res.render('viewBooks', {
+    res.render('viewbooks', {
       books,
       loggedIn: req.session.loggedIn
     });
