@@ -13,34 +13,43 @@
   </div>
 
   <div class="row mx-5 justify-content-md-center">
-    {{#each books as |book|}}
-      {{! for each card, present it using this bootstrap card format }}
-      <div class="col-12 col-md-4 col-lg-3 my-3">
-        <a href="/books/{{book.id}}" class="book-link">
-          <div class="card h-100 w-100 custom-card-border">
-            <div class="card-header">
-              <h5>
-                <i class="bi bi-book icon-purple"></i>
-                {{book.title}}
-              </h5>
+
+    {{#if books}}
+      {{#each books as |book|}}
+        {{! for each card, present it using this bootstrap card format }}
+        <div class="col-12 col-md-4 col-lg-3 my-3">
+          <a href="/books/{{book.id}}" class="book-link">
+            <div class="card h-100 w-100 custom-card-border">
+              <div class="card-header">
+                <h5>
+                  <i class="bi bi-book icon-purple"></i>
+                  {{book.title}}
+                </h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Author:
+                  <span class="normal-weight">
+                    {{book.author}}
+                  </span>
+                </li>
+                <li class="list-group-item">
+                  Genre:
+                  <span class="normal-weight">
+                    {{book.genre.genre_title}}
+                  </span>
+                </li>
+              </ul>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Author:
-                <span class="normal-weight">
-                  {{book.author}}
-                </span>
-              </li>
-              <li class="list-group-item">
-                Genre:
-                <span class="normal-weight">
-                  {{book.genre.genre_title}}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </a>
+          </a>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="col-12 col-md-4 col-lg-3 my-3">
+        <h5>Hmm ... Looks like there aren't any books here.</h5>
+        <a class="btn btn-custom btn-block mt-2 mb-1 w-100" href="login">Sign up
+          and add a book to Book Nest!</a>
       </div>
-    {{/each}}
+    {{/if}}
   </div>
 </div>
