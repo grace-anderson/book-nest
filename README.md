@@ -92,7 +92,7 @@ To install and run Book Nest locally,
 ## Contribution Guidelines
 
 * Contributions are welcome.
-* The code is located in the [GitHub](https://github.com/grace-anderson/book-nest)
+* The code is located in this [GitHub](https://github.com/grace-anderson/book-nest) repo
 * To contribute, open a new issue describing your proposed enhancement or fix.
   * Before contributing, browse through the [Future enhancements](#future-enhancements) and open issues to see if your issue already exists or if there is an issue/enhancement you might be able to solve. 
   * If you're a newbie dev, start contributing by looking for issues labelled "good first issue"
