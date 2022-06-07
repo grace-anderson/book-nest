@@ -1,6 +1,7 @@
+{{! page render: view all books }}
+
 <div class="container">
   <div class="row mx-5 justify-content-md-center">
-
     <div
       class="col-12 col-md-8 col-lg-6 my-4 p-3 text-center transparent-white"
     >
@@ -12,9 +13,7 @@
   </div>
 
   <div class="row mx-5 justify-content-md-center">
-
     {{#each books as |book|}}
-
       {{! for each card, present it using this bootstrap card format }}
       <div class="col-12 col-md-4 col-lg-3 my-3">
         <a href="/books/{{book.id}}" class="book-link">
@@ -42,8 +41,6 @@
           </div>
         </a>
       </div>
-
     {{/each}}
-
   </div>
 </div>

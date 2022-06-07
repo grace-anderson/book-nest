@@ -7,6 +7,7 @@ const withAuth = require('../../utils/auth');
 // get all book reading lists (for testing purposes)
 router.get('/', async (req, res) => {
   try {
+    // get all book reading list data
     const bookReadingListData = await Book_Reading_List.findAll();
 
     res.status(200).json(bookReadingListData);
@@ -38,10 +39,6 @@ router.post('/add', withAuth, async (req, res) => {
     // grab the reading list ID out of the returned data
     const readingListId = readingListData.id;
 
-    // console.log('\n---RL ROUTE: GET READING LIST');
-    // console.log(userId, readingListId, bookId);
-    // console.log(book);
-
     // first see if the book exists on the user's reading list
     const isBookOnReadingList = await Book_Reading_List.findOne({
       where: {
@@ -50,17 +47,12 @@ router.post('/add', withAuth, async (req, res) => {
       }
     });
 
-    // console.log('\n---RL ROUTES: DOES BOOKLIST EXIST');
-    // console.log(isBookOnReadingList);
-
     // if a bookList does NOT exist (ie. a book is NOT on a user's reading list), then go ahead and create a new match
     if (!isBookOnReadingList) {
       await Book_Reading_List.create({
         book_id: bookId,
         reading_list_id: readingListId
       });
-
-      // console.log(bookReadingList);
 
       // send details of the book that is to be added to the reading list
       res.status(200).json({
@@ -83,6 +75,7 @@ router.post('/add', withAuth, async (req, res) => {
 // WHEN A USER REMOVES A BOOK FROM THEIR READING LIST
 router.delete('/remove', withAuth, async (req, res) => {
   try {
+    // grab ids
     const { bookId } = req.body;
     const userId = req.session.user_id;
 
@@ -93,9 +86,6 @@ router.delete('/remove', withAuth, async (req, res) => {
         reading_list_id: userId
       }
     });
-
-    // console.log('\n---RL DELETE: IS BOOK ON READING LIST');
-    // console.log(isBookOnReadingList);
 
     // if the book IS on the user's reading list:
     if (isBookOnReadingList) {

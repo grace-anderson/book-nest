@@ -6,13 +6,11 @@ const signUpForm = document.getElementById('signup-form');
 const logUserIn = async (event) => {
   event.preventDefault();
 
+  // grab inputs from user
   const email = document.getElementById('email-login').value.trim();
   const password = document.getElementById('password-login').value.trim();
 
-  // console.log('\n----LOGIN ROUTE: EMAIL');
-  // console.log(email);
-
-  // email validation here
+  // email validation
   const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
   if (!regexEmail.test(email)) {
     alert('Please enter a valid email address.');
@@ -24,6 +22,7 @@ const logUserIn = async (event) => {
     return;
   }
 
+  // do fetch call if previous validations do not fail
   if (email && password) {
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -34,9 +33,17 @@ const logUserIn = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert(
-        'Login failed.\nPlease check that your email and password are correct.'
-      );
+      // get the error message from back end
+      // reference:
+      // https://stackoverflow.com/questions/63856212/how-to-display-sequelize-validation-error-messages-in-express-api
+      const errors = await response.json();
+      const errMsg = errors.message;
+
+      // show an alert with the error message
+      alert(`Login failed.\n${errMsg}`);
+
+      // IF you want the page to refresh after a validation check fails, uncomment the following line:
+      // document.location.replace('/login');
     }
   }
 };
@@ -45,12 +52,10 @@ const logUserIn = async (event) => {
 const signUserUp = async (event) => {
   event.preventDefault();
 
+  // get form values
   const username = document.getElementById('username-signup').value.trim();
   const email = document.getElementById('email-signup').value.trim();
-  const password = document.getElementById('password-signup').value.trim();
-
-  // let validUsername;
-  // let validEmail;
+  let password = document.getElementById('password-signup').value.trim();
 
   if (!username || !email || !password) {
     alert('Please fill in the username, email, and password fields.');
@@ -63,34 +68,6 @@ const signUserUp = async (event) => {
     return;
   }
 
-  // tried to add validation checks for user and email to be unique but it's not working 100%
-
-  // const usernameCheck = await fetch('/api/users/signup-check', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ username }),
-  //   headers: { 'Content-Type': 'application/json' }
-  // });
-
-  // const emailCheck = await fetch('/api/users/signup-check', {
-  //   method: 'POST',
-  //   body: JSON.stringify({ email }),
-  //   headers: { 'Content-Type': 'application/json' }
-  // });
-
-  // if (usernameCheck.ok) {
-  //   return (validUsername = username);
-  // } else {
-  //   alert('Username is already taken');
-  // }
-
-  // if (emailCheck.ok) {
-  //   return (validEmail = email);
-  // } else {
-  //   alert('Email is already taken');
-  // }
-
-  // console.log(validUsername, validEmail, password);
-
   if (username && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
@@ -101,11 +78,23 @@ const signUserUp = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert(
-        'Sign up failed.\nA user already exists with that username or email. Please try again.'
-      );
-      // after the alert is closed, refresh login page
-      document.location.replace('/login');
+      // get validation errors from back end
+      // reference:
+      // https://stackoverflow.com/questions/63856212/how-to-display-sequelize-validation-error-messages-in-express-api
+      const errors = await response.json();
+
+      // show an alert depending on what the messages are
+      if (errors.email && errors.username) {
+        alert(`Sign up failed:\n${errors.email}\n${errors.username}`);
+      } else if (errors.email) {
+        alert(`Sign up failed:\n${errors.email}`);
+      } else if (errors.username) {
+        alert(`Sign up failed:\n${errors.username}`);
+      } else {
+        alert('Oops, something went wrong! Sign up failed.');
+      }
+      // IF you want the page to refresh after a validation check fails, uncomment the following line:
+      // document.location.replace('/login');
     }
   }
 };

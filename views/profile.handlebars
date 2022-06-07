@@ -1,4 +1,8 @@
+{{! page render: user's profile }}
+{{! sections for: welcome, user's reading list, user's shared books }}
+
 <div class="container">
+  {{! cute welcome message }}
   <div class="row mx-5 my-2">
     <div class="col-12 my-3">
       <h2 class="mb-3 green-text really-embolden">Welcome back,
@@ -7,8 +11,9 @@
     </div>
   </div>
 
+  {{! reading list section }}
   <div class="row mx-5">
-    <div class="col-12 col-md-10 col-lg-auto transparent-white">
+    <div class="col-12">
       <h3>My Reading List</h3>
     </div>
   </div>
@@ -57,17 +62,15 @@
         </div>
       {{/each}}
     {{else}}
-      <div class="col-12">
+      <div class="col-12 col-md-auto transparent-white">
         <p class="mt-2">Nothing on my reading list for now.</p>
         <p class="mt-4"><a href="/view-books" class="btn btn-custom">Check out
             some books?</a></p>
       </div>
     {{/if}}
   </div>
-</div>
 
-<div class="container">
-
+  {{! shared books section }}
   <div class="row mx-5">
     <div class="col-12">
       <h3 class="my-3">
@@ -76,12 +79,11 @@
     </div>
   </div>
 
-  {{! add shared books here }}
-
   <div class="row mx-5">
     {{#if sharedBooks}}
       <div class="col-12">
-        <p>Look at all these books you've added to Book Nest!</p>
+        <p class="py-3 pe-3 display-inline transparent-white">Look at all these
+          books you've added to Book Nest!</p>
       </div>
       {{#each sharedBooks as |book|}}
 
@@ -127,8 +129,8 @@
 
       {{/each}}
     {{else}}
-      <div class="col-12 transparent-white">
-        <p>I haven't shared any books yet.</p>
+      <div class="col-12 col-md-auto transparent-white">
+        <p class="mt-2">I haven't shared any books yet.</p>
       </div>
     {{/if}}
     <div class="row mt-3 mb-1 align-items-center">
@@ -141,5 +143,4 @@
       </div>
     </div>
   </div>
-
 </div>

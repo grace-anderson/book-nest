@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
 // WHEN USER LOGS IN
 router.post('/login', async (req, res) => {
   try {
+    // get the values from front end
     const { email, password } = req.body;
 
     // if if there is an existing user
@@ -34,13 +35,10 @@ router.post('/login', async (req, res) => {
       }
     });
 
-    // console.log(`\n----RETURNING USER`);
-    // console.log(returningUser);
-
     // send error if user doesn't exist
     if (!returningUser) {
       return res.status(400).json({
-        message: 'Incorrect email. Please try again.'
+        message: 'Email address could not be found. Please try again.'
       });
     }
 
@@ -75,42 +73,8 @@ router.post('/login', async (req, res) => {
 // SIGN A NEW USER UP
 router.post('/', async (req, res) => {
   try {
+    // get values from front end
     const { username, email, password } = req.body;
-
-    // console.log('\n---USER ROUTES: REQ.BODY');
-    // console.log(username, email, password);
-
-    // BELOW: trying to add validation checks and return useful message in the browser, but not working 100%
-
-    // const doesUserExist = await User.findOne({
-    //   where: {
-    //     username: username
-    //   }
-    // });
-
-    // const doesEmailExist = await User.findOne({
-    //   where: {
-    //     email: email
-    //   }
-    // });
-
-    // console.log('\n---IS USERNAME & EMAIL UNIQUE');
-    // console.log(doesUserExist, username);
-    // console.log(doesEmailExist, email);
-
-    // if (doesUserExist) {
-    //   console.log('username exists');
-    //   return res.status(400).json({
-    //     message: 'Username already exists'
-    //   });
-    // }
-
-    // if (doesEmailExist) {
-    //   console.log('email exists');
-    //   return res.status(400).json({
-    //     message: 'Email already exists'
-    //   });
-    // }
 
     if (username && email && password) {
       // make a new user
@@ -141,7 +105,15 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.log('\n---USER ROUTE: SIGNUP ERR');
     console.log(error);
-    res.status(500).json(error);
+
+    // create an error object to store the errors
+    const errObj = {};
+    // map the errors as 'email': 'email error msg' and 'username': 'username error msg'
+    error.errors.map((er) => {
+      errObj[er.path] = er.message;
+    });
+    // send status and error object
+    res.status(400).json(errObj);
   }
 });
 
@@ -155,68 +127,5 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
-
-// ==== BELOW:
-// ROUTES IN PROGRESS
-
-// ===== BELOW:
-// ROUTES NOT IN USE OR NOT WORKING
-
-// SIGN UP CHECK - NOT WORKING
-// router.post('/signup-check', async (req, res) => {
-//   try {
-//     // console.log(`\n---REQ.BODY SIGNUP?`)
-//     // console.log(req.body);
-
-//     const { username, email, password } = req.body;
-
-//     console.log('\n---USER ROUTES: REQ.BODY');
-//     console.log(username, email, password);
-
-//     const doesUserExist = await User.findOne({
-//       where: {
-//         username: username
-//       }
-//     });
-
-//     const doesEmailExist = await User.findOne({
-//       where: {
-//         email: email
-//       }
-//     });
-
-//     console.log('\n---IS USERNAME & EMAIL UNIQUE');
-//     console.log(doesUserExist, username);
-//     console.log(doesEmailExist, email);
-
-//     if (doesUserExist) {
-//       console.log('username exists');
-//       return res.status(400).json({
-//         message: 'Username already exists'
-//       });
-//     }
-
-//     if (doesEmailExist) {
-//       console.log('email exists');
-//       return res.status(400).json({
-//         message: 'Email already exists'
-//       });
-//     }
-
-//     if (!doesUserExist && !doesEmailExist) {
-//       res
-//         .status(200)
-//         .json({ message: 'Validations passed! All set to create a new user' });
-//     } else {
-//       res.status(400).json({
-//         message: 'Something went wrong'
-//       });
-//     }
-//   } catch (error) {
-//     console.log('\n---ERROR:');
-//     console.log(error);
-//     res.status(500).json(error);
-//   }
-// });
 
 module.exports = router;
