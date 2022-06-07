@@ -7,7 +7,7 @@ Book Nest is an app for book lovers, a charming community for those who love to 
 
 The application was designed following the [MVC (Model View Control)](https://www.educba.com/what-is-mvc-design-pattern/) design pattern using a MySQL database with Sequelize ORM, an Express.js back end, and Handlebars templating to present data to the user.
 
-Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest app's code. See the deployed app on **[Heroku](TO DO)**.
+Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest app's code. See the deployed app on [Heroku](https://the-book-nest.herokuapp.com/).
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ Deployment
 
 ## Usage
 
-* Access the deployed Book Nest app via **[Heroku](TODO)**
+* Access the deployed Book Nest app via [Heroku](https://the-book-nest.herokuapp.com/)
 * See [Demos](#demos) below that depict the Book Nest's functionality
 * Book Nest is a responsive app. See [Screenshots](#screenshots) to view mobile and desktop screen sizes.
 
@@ -144,7 +144,6 @@ Screenshots of desktop (>960px) size for homepage, 'View Our Books', 'Find A Boo
 #### Login or Sign Up
 ![Screenshot of desktop size for login or signup](./utils/img/desktop-login.png) 
 
-
 ## Future enhancements
 
 * Link book record on reading list to its ebook
@@ -170,8 +169,3 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 * [Miro](https://miro.com/miroverse/)
 * [PhotoShop](https://www.adobe.com/au/products/photoshopfamily.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
-
-
-
-
-
