@@ -34,9 +34,9 @@ Go to [GitHub](https://github.com/grace-anderson/book-nest) for the Book Nest ap
 
 ## Technologies Used
 
-This application uses the following technologies...
+This application uses the following technologies:
 
-  JavaScript
+  Dependencies
 * [Node.js](https://nodejs.dev/)
 * [Express.js](https://expressjs.com/)
 * [handlebars](https://handlebarsjs.com)
@@ -48,10 +48,9 @@ This application uses the following technologies...
 * [dotenv](https://www.npmjs.com/package/dotenv)
 * [bcrypt](https://github.com/kelektiv/node.bcrypt.js)
 
-Dev dependencies:
+Dev dependencies
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 * [Husky](https://typicode.github.io/husky/#/)
-* [lint-staged](https://github.com/okonet/lint-staged)
 * [ESLint](https://eslint.org/)
 * [Prettier](https://prettier.io/docs/en/index.html)
 
@@ -67,12 +66,28 @@ Deployment
 
 ## Installation
 
-To install Book Nest locally,
+To install and run Book Nest locally,
 * Download or clone the code from the [Book Nest GitHub Repository](https://github.com/grace-anderson/book-nest
 * Open in your preferred terminal (e.g. [Visual Studio Code's](https://code.visualstudio.com/) integrated terminal)
-* Run the following commands
-  * npm install
-  * **TO COMPLETE - Sush help please :-)**
+* Navigate to the specified folders in order and run the listed command(s):
+  * In the 'db' folder:
+  ```
+  mysql -u root -p;
+  [at the prompt, enter your password to access your MySQL Shell]
+
+  source schema.sql;
+  ```
+  * In the root directory:
+  ```
+  npm install
+
+  npm run seed
+  ```
+* To start the app: 
+  * After installation, in the root directory, run the following command:
+  ```
+  npm run watch
+  ```
 
 ## Contribution Guidelines
 
@@ -82,7 +97,7 @@ To install Book Nest locally,
   * Before contributing, browse through the [Future enhancements](#future-enhancements) and open issues to see if your issue already exists or if there is an issue/enhancement you might be able to solve. 
   * If you're a newbie dev, start contributing by looking for issues labelled "good first issue"
 * It is good practice to set up your project repository as an "upstream" remote and synchronize with the project repository
-  * Don't update the main branch. Rather create your own branch using a brief descriptive name
+  * Don't update the main branch. Rather create your own branch using a brief descriptive name and make your changes there
 * You can create pull requests, but only admins can review and merge.
   * Be nice to your reviewer by adding adding a plain English explanation of your pull request and how your updates addresses the issue/s or enhancements  
 * Also see the [GitHub Community Guidelines](https://docs.github.com/en/site-policy/github-terms/github-community-guidelines)
@@ -154,7 +169,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 * [Google Slides](https://www.google.com/slides/about/)
 * [Miro](https://miro.com/miroverse/)
 * [PhotoShop](https://www.adobe.com/au/products/photoshopfamily.html)
-* [Visual Studio Code's](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 
 
