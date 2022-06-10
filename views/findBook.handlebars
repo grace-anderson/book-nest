@@ -6,7 +6,12 @@
       <h3>Find a book</h3>
       <p>Search for a word or words in a book's title</p>
       <form action="/find-book" method="get">
-        <input class="mt-2 w-100" type="input" name="title" />
+        <input
+          class="mt-2 w-100"
+          type="input"
+          name="title"
+          value="{{queryTitleFlag}}"
+        />
         <button class="btn btn-custom btn-block my-3 w-100">Find a Book</button>
       </form>
 
@@ -16,7 +21,7 @@
           <h4>Books that match your search:</h4>
           <p>Click on a book to see its details.</p>
         {{else}}
-          <h5>Sorry, no results found!</h5>
+          <h5>Sorry, no results found for '{{queryTitleFlag}}'!</h5>
         {{/if}}
       {{else}}
         {{! leave as empty space }}
