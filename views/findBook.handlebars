@@ -6,7 +6,12 @@
       <h3>Find a book</h3>
       <p>Search for a word or words in a book's title</p>
       <form action="/find-book" method="get">
-        <input class="mt-2 w-100" type="input" name="title" />
+        <input
+          class="mt-2 w-100"
+          type="input"
+          name="title"
+          value="{{queryTitleFlag}}"
+        />
         <button class="btn btn-custom btn-block my-3 w-100">Find a Book</button>
       </form>
 
